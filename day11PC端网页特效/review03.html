@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .w {
+            width: 1300px;
+            margin: 0 auto;
+        }
+
+        header,
+        .banner,
+        footer {
+            font-size: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+
+        }
+
+        header {
+            height: 200px;
+            line-height: 200px;
+            background-color: pink;
+        }
+
+        .banner {
+            height: 800px;
+            line-height: 800px;
+            background-color: skyblue;
+
+
+        }
+
+        footer {
+            height: 1000px;
+            line-height: 500px;
+            background-color: purple;
+
+        }
+
+        .aside_nav {
+            position: absolute;
+            top: 400px;
+            left: 1410px;
+            width: 80px;
+        }
+
+        .aside_nav div {
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            background-color: orange;
+        }
+
+        .aside_nav .current {
+            background-color: red;
+        }
+
+        .aside_nav p {
+            display: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            cursor: pointer;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="w">
+        <header id="head">header</header>
+        <div class="banner">banner</div>
+        <footer>footer</footer>
+        <div class="aside_nav">
+            <div class="current">header</div>
+            <div>banner</div>
+            <div>footer</div>
+            <p href="">top</p>
+        </div>
+    </div>
+
+
+
+    <script>
+        // 获取元素
+        var banner = document.querySelector('.banner');
+        var footer = document.querySelector('footer');
+        var asideNav = document.querySelector('.aside_nav');
+        var divs = asideNav.querySelectorAll('div');
+
+        var p = asideNav.querySelector('p');
+        console.log(asideNav.offsetTop);
+        console.log(banner.offsetTop);
+        asideNavTop = asideNav.offsetTop - banner.offsetTop;
+
+        document.addEventListener('scroll', function () {
+            for (var i = 0; i < divs.length; i++) {
+                // 排他
+                divs[i].className = '';
+
+                // 存己
+                if (window.pageYOffset < banner.offsetTop) {
+                    asideNav.style.position = 'absolute';
+                    asideNav.style.top = '400px'
+                    divs[0].className = 'current';
+                    p.style.display = 'none';
+                }
+                else if (window.pageYOffset < footer.offsetTop) {
+                    asideNav.style.position = 'fixed';
+                    asideNav.style.top = asideNavTop + 'px';
+                    divs[1].className = 'current';
+                    p.style.display = 'none';
+
+                }
+                else {
+                    divs[2].className = 'current';
+                    p.style.display = 'block';
+                }
+
+
+            }
+
+
+
+
+
+
+
+        })
+    </script>
+</body>
+
+</html>

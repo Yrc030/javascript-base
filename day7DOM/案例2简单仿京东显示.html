@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .box {
+            position: relative;
+            width: 500px;
+            margin: 100px auto;
+        }
+
+        #pwd {
+            display: block;
+            width: 90%;
+            height: 30px;
+            margin: 0 auto;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            border-radius: 0;
+        }
+
+        #eye {
+            position: absolute;
+            top: 3px;
+            right: 105px;
+            cursor: pointer;
+        }
+
+        #eye img {
+            width: 20px;
+            vertical-align: middle;
+        }
+
+        span {
+            position: absolute;
+            top: 10px;
+            right: 30px;
+            height: 14px;
+            padding-left: 10px;
+            line-height: 14px;
+            font-size: 14px;
+            border-left: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <input type="password" id="pwd">
+        <label for="pwd" id="eye"><img src="images/close.png" alt="close" title="显示密码" id="eye_img"></label>
+        <span>忘记密码</span>
+    </div>
+
+
+    <script>
+        var pwd = document.getElementById('pwd');
+        var eyeImg = document.getElementById('eye_img');
+        var flag = 0;
+        eyeImg.onclick = function () {
+            if (flag == 0) {
+                pwd.type = 'text';
+                eyeImg.src = 'images/open.png';
+                eyeImg.alt = 'open';
+                eyeImg.title = '隐藏密码';
+                flag = 1;
+            } else {
+                pwd.type = 'password';
+                eyeImg.src = 'images/close.png';
+                eyeImg.title = '显示密码';
+                flag = 0;
+            }
+
+        }
+    </script>
+</body>
+
+</html>

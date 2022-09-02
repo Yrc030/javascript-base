@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 作业1 用户输入任意两个数字的任意算数运算，并能弹出运算会的结果 
+        console.log('----作业1----');
+
+        do {
+            var symb = prompt('欢迎使用简单计算器:\n 1.加法运算：\n 2.减法运算：\n 3.乘法运算：\n 4.除法运算：\n 5.退出 \n 请输入您的选项：');
+
+            if (symb !== '5') {
+                var num1 = parseFloat(prompt('请输入第一个值'))
+                var num2 = parseFloat(prompt('请输入第二个值'))
+                function calc(symb, num1, num2) {
+                    switch (symb) {
+                        case '1':
+                            return num1 + num2;
+                        case '2':
+                            return num1 - num2;
+                        case '3':
+                            return num1 * num2;
+                        case "4":
+                            return num1 / num2;
+                        default:
+                            alert('请输入正确的选项')
+                            break;
+                    }
+                }
+                var re = calc(symb, num1, num2);
+                alert('计算结果为:' + re);
+            } else {
+                alert('退出成功')
+            }
+        } while (symb !== '5')
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

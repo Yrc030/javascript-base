@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button>click</button>
+    <p>abc</p>
+    <div class="inner"></div>
+    <div class="creat"></div>
+    <script>
+        // 创建动态元素的三种方式以及区别
+        // 1. document.write()  [了解]
+        // document.write('<div>123</div>');
+        // document.write() 是直接将内容写入页面的内容流，但是文档流执行完毕，则他会导致页面全部重绘
+        // var btn = document.querySelector('button');
+        // btn.onclick = function () {
+        //     document.write('<div>456</div>');
+        // }
+        // 重绘： 当点击按钮创建元素后，文档里只剩下这个div，其他元素都消失包括 (head里面的标签)
+        // 也就是重新创建了一个新页面，里面只有div
+
+        // 2. element.innerHTML
+        // 1) 创建一个与document.creatElment()区别不大
+        var inner = document.querySelector('.inner');
+        // inner.innerHTML = "<a href='#'>百度</a>";
+        // // // 2) 创建多个,因文字符串的不可变特性，每次都需要在内存中开辟一个新空间，效率低
+        // for (var i = 0; i <= 10000; i++) {
+        //     inner.innerHTML += "<a href='#'>1</a>"
+        // }
+        // // 3) 为了解决innerHTML创建多个元素时效率的低的问题
+        // // 可以采用数组形式，效率最高，结构稍复杂
+        // // 创建一个数组用来保存元素
+        var arr = [];
+        // // 通过for循环 将元素重复添加至arr中
+        for (var i = 0; i < 10000; i++) {
+            // arr.push 最加至数组尾部
+            arr.push("<a href='#'>腾讯</a>")
+        }
+        // // 通过join 将数组元素，转化成字符串
+        // // 中间默认用, 号隔开 一个逗号分隔的就是一个a标签
+        inner.innerHTML = arr.join('');
+
+        // 3. document.creatElment()
+        // 1) 创建一个与element.innerHTML区别不大
+        // var creat = document.querySelector('.creat');
+        // var a = document.createElement('a');
+        // creat.appendChild(a);
+
+        // // // 2) 创建多个，不需要拼接字符串效率高
+        // for (var i = 0; i <= 10000; i++) {
+        //     var a = document.createElement('a');
+        //     a.innerHTML = '阿里';
+        //     a.setAttribute('href', '#');
+        //     creat.appendChild(a);
+        // }
+    </script>
+</body>
+
+</html>

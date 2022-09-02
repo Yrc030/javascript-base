@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 证明不超过100的连续正整数同时是幂次数的只有8和9
+        var num1 = 0;
+        var arr = [];
+        var arr1 = []
+        for (var i = 2; i < 100; i++) {
+            for (var j = 2; j < 7; j++) {
+                num1 = Math.pow(i, j);
+                if (num1 <= 100) {
+                    arr.push(num1);
+                }
+            }
+        }
+        for (var k = 0; k < arr.length; k++) {
+            for (var o = 0; o < arr.length; o++) {
+                if (arr[o] - arr[k] === 1) {
+                    arr1.push(arr[k], arr[o])
+                }
+            }
+        }
+        console.log(arr);
+        console.log(arr1);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

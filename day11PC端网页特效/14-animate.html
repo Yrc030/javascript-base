@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .box {
+            margin: 100px auto;
+            width: 200px;
+            height: 500px;
+            background-color: rgba(0, 0, 0, .3);
+            border: 1px solid #333;
+        }
+
+        span {
+            top: 0;
+            left: 200px;
+            position: absolute;
+            width: 200px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        .one {
+            top: 100px;
+            background-color: pink;
+        }
+
+        .two {
+            top: 170px;
+            background-color: skyblue;
+        }
+
+        .three {
+            top: 240px;
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <span class="one">1号元素</span><span class="two">2号元素</span><span class="three">3号元素</span>
+</body>
+
+<script>
+    var span = document.querySelectorAll("span");
+    console.log(span[0]);
+
+
+
+
+
+    let toTop = setInterval(function () {
+        var x = span[0].offsetLeft;
+        var y = span[0].offsetTop;
+        if (y <= 10) {
+            clearInterval(toTop);
+            a(x, y);
+        }
+        // div.style.left = x + 1 + 'px';
+        span[0].style.top = y - 1 + 'px';
+    })
+
+    let toLeft = setInterval(function a(x, y) {
+        if (x >= 300) {
+            clearInterval(toTop);
+        }
+        span[0].style.left = x + 1 + 'px';
+    })
+
+
+</script>
+
+</html>

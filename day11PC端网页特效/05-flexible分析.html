@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 1.851852rem;
+            height: 1.851852rem;
+            background-color: skyblue;
+            font-size: .12963rem;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div>1</div>
+    <script>
+        // 最外层函数为立即执行函数
+        (function flexible(window, document) {
+            // document.documentElement 获取HTML根元素
+            var docEl = document.documentElement
+            // dpr 物理像素比
+            // pc端物理像素比为1， 移动端物理像素比一般为2
+            // 如果可以获得dpr=实际dpr，无法获得时dpr=1
+            var dpr = window.devicePixelRatio || 1
+            // adjust body font size
+            function setBodyFontSize() {
+                // 判断页面中是否存在body
+                if (document.body) {
+                    // 设置body的fontsize = 12*dpr
+                    document.body.style.fontSize = (12 * dpr) + 'px'
+                } else {
+                    //否则 初始HTML文档被完全加载后，再来设置body的fontsize
+                    document.addEventListener('DOMContentLoaded', setBodyFontSize)
+                }
+            }
+            setBodyFontSize();
+
+            // set HTML element font size
+            // set 1rem = viewWidth / 10
+            // separate viewport into 10 parts 
+            function setRemUnit() {
+                //rem  = HTML根元素宽度 / 10
+                var rem = docEl.clientWidth / 10
+                docEl.style.fontSize = rem + 'px'
+            }
+
+            setRemUnit()
+
+            // 当页面尺寸大小发送变化时，重新设置REM大小
+            // reset rem unit on page resize
+            // resize事件，当文档视图调整大小时触发
+            // 每次触发都调用上面的setRemUnit函数
+            window.addEventListener('resize', setRemUnit)
+            // pageshow事件，重新加载页面时触发
+            // pageshow事件，是添加给window对象的
+            window.addEventListener('pageshow', function (e) {
+
+                // e.persisted属性判断页面是否从缓存中加载
+                // 返回Boolean value
+                if (e.persisted) {
+                    // 如果从缓冲中加载，也调用setRemUnit()
+                    setRemUnit()
+                }
+            })
+
+            // 有些移动端的浏览器不支持0.5px的写法
+            // detect 0.5px supports 
+            if (dpr >= 2) {
+                var fakeBody = document.createElement('body')
+                var testElement = document.createElement('div')
+                testElement.style.border = '.5px solid transparent'
+                fakeBody.appendChild(testElement)
+                docEl.appendChild(fakeBody)
+                if (testElement.offsetHeight === 1) {
+                    docEl.classList.add('hairlines')
+                }
+                docEl.removeChild(fakeBody)
+            }
+        }(window, document))
+    </script>
+</body>
+
+</html>

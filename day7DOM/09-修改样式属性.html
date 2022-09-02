@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            margin: 100px auto;
+            transition: all 1s;
+        }
+
+
+
+
+        .change {
+            background-color: purple;
+            width: 300px;
+            transform: translate(200px);
+        }
+
+        .change1 {
+            background-color: red;
+            width: 100px;
+            transform: translate(-200px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box1">
+    </div>
+    <div class="box2"></div>
+    <script>
+        // 1. element.style 行内样式操作
+        // 样式名采用驼峰命名法
+        // 产生的是行内样式，CSS权重比较高
+        // 样式较少，功能简单的情况下使用
+        var div = document.querySelector('.box1');
+        var flag = 0;
+        div.onclick = function () {
+            if (flag == 0) {
+                this.style.backgroundColor = 'pink';
+                this.style.width = '300px'
+                this.style.transform = 'translate(200px)';
+                flag = 1;
+            } else {
+                this.style.backgroundColor = 'skyblue';
+                this.style.width = '100px'
+                this.style.transform = 'translate(-200px)';
+                flag = 0;
+            }
+        }
+
+
+        // 2. element.className 类名样式操作
+        var div1 = document.querySelector('.box2');
+        var flag1 = 0;
+        div1.onclick = function () {
+            if (flag1 == 0) {
+                // 将css的类名赋值给className，可以直接调用相关样式
+                // 相当于在相应元素中写入 class='类名'
+                // ''里面不用加. 
+                // 适用样式较多，功能复杂的情况
+                // className会覆盖掉元素之前的css类名
+                this.className = 'change';
+                flag1 = 1;
+            } else {
+                // this.className = 'change1';
+
+                // 如果想保留原来的类型，可以写将之前的类名也写入''中,多类名选择器
+                this.className = 'box2 change1 '
+                flag1 = 0;
+            }
+        }
+    </script>
+</body>
+
+</html>

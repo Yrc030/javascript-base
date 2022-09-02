@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 给定一个字符串，如:'abaasdffggghhjjkkgfddsssss3444343'
+        // 1. 求字符串的长度
+        let str = 'abaasdffggghhjjkkgfddsssss3444343'
+        console.log(str.length);  // 33
+
+        // 2. 取出指定位置的字符
+        console.log(str.charAt(3)); // a 
+
+        // 3. 查找指定字符是否在以上字符串中存在
+
+        console.log(str.indexOf('s'));
+        console.log(str.indexOf('i'));
+
+        // 4. 替换指定的字符
+        console.log(str.replace('g', 22));
+        // abaasdff22gghhjjkkgfddsssss3444343
+
+        console.log(str.replace('ss', 'b'));
+        // abaasdffggghhjjkkgfddbsss3444343
+
+        // 5. 截取指定开始位置到结束位置的字符串
+        console.log(str.substring(1, 5));
+        // baas
+
+        // 6. 找出以上字符串中出现最多的字符和出现的次数
+        let o = {};
+        for (var i = 0; i < str.length; i++) {
+            let chars = str.charAt(i);
+            if (o[chars]) {
+                o[chars]++;
+            } else {
+                o[chars] = 1;
+            }
+        }
+        console.log('----对象里的属性与值----');
+        console.log(o);
+        let max = 0;
+        let str1 = '';
+        for (var k in o) {
+            if (o[k] > max) {
+                max = o[k];
+                str1 = k;
+            }
+        }
+        let arr = [str1, max];
+        console.log('结果为' + arr);
+
+        //7、 遍历字符串，并将遍历出的字符两头添加符号“@”
+        var arr1 = [];
+        for (i = 0; i < str.length; i++) {
+            arr1.push(str.charAt(i));
+        }
+        console.log(arr1);
+        console.log(arr1 instanceof Array);
+        console.log(typeof arr1);
+        arr1.push('@');
+        arr1.unshift('@');
+        console.log(arr1.join());
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

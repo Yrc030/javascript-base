@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 作业1 1-100求和
+        console.log('----作业1-----');
+        var sum = 0;
+        for (var i = 1; i <= 100; i++) {
+            sum += i;
+        }
+        console.log(sum);
+
+        // 作业2求1-100之间所偶数的和
+        console.log('----作业2-----');
+        var sum1 = 0;
+        for (var i = 1; i <= 100; i++) {
+            if (i % 2 == 0) {
+                sum1 += i;
+            }
+        }
+        console.log(sum1);
+
+        // 作业3 求100以内7的被数的和
+        console.log('----作业3-----');
+        var sum2 = 0;
+        for (var i = 1; i <= 100; i++) {
+            if (i % 7 == 0) {
+                sum2 += i;
+            }
+        }
+        console.log(sum2);
+
+
+        // 作业4 使用for 循环打印矩形
+        console.log('----作业4-----');
+        var str = '';
+        for (var i = 1; i <= 5; i++) {
+            for (var j = 1; j <= 5; j++) {
+                str += '♥';
+            }
+            str += '\n';
+        }
+        console.log(str);
+
+        // 作业5 使用for循环打印三角
+        console.log('----作业5-----');
+        var str1 = '';
+        for (var i = 1; i <= 5; i++) {
+            for (var j = 1; j <= i; j++) {
+                str1 += '♥';
+            }
+            str1 += '\n';
+        }
+        console.log(str1)
+
+        // 作业6 使用for循环打印99乘法表
+        console.log('----作业6-----');
+        var str2 = '';
+        for (var i = 1; i <= 9; i++) {
+            for (var j = 1; j <= i; j++) {
+                str2 += j + '×' + i + '=' + j * i + '\t';
+            }
+            str2 += '\n';
+        }
+        console.log(str2);
+        // 作业7 验证账户密码
+        console.log('----作业7-----');
+        do {
+            var account = prompt('请输入账号：');
+            var passwd = prompt('请输入密码：');
+        } while (account !== 'admin' || passwd !== '123456')
+        alert('登录成功');
+        // 作业8 求整数1-100不包含个位为3的和
+        console.log('----作业8-----');
+        var sum3 = 0;
+        for (i = 1; i <= 100; i++) {
+            if (i % 10 == 3) {
+                continue;
+            }
+            sum3 += i;
+        }
+        console.log(sum3);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

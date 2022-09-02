@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //1. if 的语法结构
+        /* if (条件表达式) {
+             执行语句
+        } */
+
+        //1.1 执行思路
+        // if (条件表达式为真) 执行{执行语句}
+        // if (条件表达式为假) 执行if语句后面的代码
+
+
+        //2. if else 双分支语句
+        /*  if (条件表达式) {
+             语句1
+         } else {
+             语句2
+         } */
+
+        //2.1 执行思路
+        // if   如果 (条件表达式为真) 执行{语句1}
+        // else 否则                 执行{语句2}
+
+        //进入网吧案例
+        /*  var age = prompt('请输入您的年龄');
+         if (age >= 18) {
+             alert("您可以进入网吧");
+         } else {
+             alert('滚回去学习！')
+         } */
+
+        //判断闰年案例
+        /* let year = prompt('请输入您要检测的年份')
+        if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+            alert(year + '是闰年')
+        } else {
+            alert(year + '是平年')
+        } */
+
+        //判断是否中奖案例
+        /*  let userName = prompt('请输入您的姓名');
+         if (userName == '庸人冲') {
+             alert('恭喜您中了5000亿')
+         } else {
+             alert('下次一定')
+         } */
+
+        //3. if else if 语句 多分支语句 多选1
+        /* if (条件表达式1) {
+            语句1
+        } else if (条件表达式2) {
+            语句2
+        } else if (条件表达式n) {
+            语句n
+        } else {
+            最后的语句
+        } */
+        //3.1 执行思路
+        // if(条件表达式1为真) 执行{语句1} 执行完毕后，退后整个if分值语句
+        // if(条件表达式1为假) 则判断(条件表达式2) 
+        // else if(条件表达式2为真) 执行{语句2}
+        // else if(条件表达式2为假) 则判断(条件表达式3)
+        // 依次类推，如果所有条件表达式为假
+        // 则执行else{最后的语句}
+        //3.2 注意点
+        // 1） 多分支语句还是多选1，最后只能有一个语句执行
+        // 2) else if 里面的条件理论上可以是任意多个的
+        // 3) else if 中间有个空格
+        // 4) else 后面直接跟{执行语句}
+
+        //判断成绩级别案例
+        let score = prompt('请输入您的分数');
+        if (score >= 90) {
+            alert('Excellent!');
+        } else if (score >= 80) {
+            alert('Good!');
+        } else if (score >= 70) {
+            alert('medium!');
+        } else if (score >= 60) {
+            alert('Poor!');
+        } else {
+            alert('Eetremely poor!');
+        }
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

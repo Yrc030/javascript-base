@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //1.  判断字符串中是否数字
+        console.log('----作业1----');
+        let str = 'JavaScript的标准是ECMAScript 。截至 2012 年，所有浏览器都完整的支持ECMAScript 5.1，旧版本的浏览器至少支持ECMAScript 3 标准。2015年6月17日，ECMA国际组织发布了ECMAScript的第六版，该版本正式名称为 ECMAScript 2015，但通常被称为ECMAScript 6 或者ES2015。'
+        for (let i = 0; i < str.length; i++) {
+            let ascii = str.charCodeAt(i);
+            let flag = 0;
+            if (ascii < 57 && ascii > 48) {
+                flag = 1;
+                break;
+            }
+
+        }
+
+        if (flag = 1) {
+            console.log('文本中存在数字');
+        } else {
+            console.log('文本中不存在数字');
+        }
+
+        // 2.  判断某个字符在字符串中出现的位置和出现的次数
+        console.log('----作业2----');
+
+        let string = '丽丽是一个女生，丽丽今年已经24岁了，丽丽的属相是狗。'
+        let index = string.indexOf('丽丽')
+        let num = 0;
+        while (index !== -1) {
+            console.log('第一次的下标' + index);
+            num++
+            index = string.indexOf('丽丽', index + 1);
+        }
+
+        console.log('总共查找到' + num + '次');
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

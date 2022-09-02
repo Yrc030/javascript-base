@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 返回数组元素索引号方法
+        // 1  .indexOf() 方法返回在数组中可以找到一个指定元素的第一个索引，从前向后搜索，如果不存在，则返回-1。
+        var arr = ['red', 'green', 'pink', 'blue', 'pink'];
+        console.log(arr.indexOf('pink'));
+        //  返回索引  2  返回给定元素的第一个索引号
+        console.log(arr.indexOf('skyblue'));
+        //  返回索引 -1  不存在的元素  
+        console.log(arr.indexOf('pink', 3));
+        //  返回索引  4  从索引号3开始往后查找
+
+        // 2  .lastIndexOf() 方法返回在数组中被指定元素最后一次出现的索引，从后向前搜索，如果不存在，则返回-1。
+        console.log(arr.lastIndexOf('pink'));
+        //  返回索引  4  返回指定元素的最后一次出现的索引号
+        console.log(arr.lastIndexOf('skybule')); // -1
+        //  返回索引 -1  不存在的元素 
+        console.log(arr.lastIndexOf('pink', 3));
+        //  返回索引  2 从索引号3开始往前查找
+
+
+        // 案例1. 判断一个元素是否在数组里，不在则更新数组
+        console.log('----案例1----');
+        function updateColor(arr, color) {
+            if (arr.indexOf(color) === -1) {
+                arr.push(color);
+                console.log(color + '被添加进arr中');
+            } else if (arr.indexOf(color) > -1) {
+                console.log(color + '已经在arr中');
+            }
+            return arr;
+        }
+        var color = updateColor(arr, 'skyblue');
+        console.log(color);
+
+
+
+        //  案例2. 找出指定元素出现的所有位置
+        console.log('----案例2----');
+        function positionArr(arr1, element) {
+            var indices = [];
+            // 创建新数组用于存储指定元素在目标数组中的索引号
+            var idx = arr1.indexOf(element);
+            // 创建变量 idx 接收indexOf()返回指定元素的索引号
+            while (idx != -1) {
+                indices.push(idx);
+                // 将接收到的值追加到新数组的尾部
+                idx = arr1.indexOf(element, idx + 1);
+                // 变量 idx 每接收到一个指定元素的索引号后,下次的查找起点就是idx + 1, 也就是跳过上一个已经被查找过的指定元素
+            }
+            return indices;
+        }
+        var arr1 = ['a', 'b', 'c', 'a', 'a', 'd', 'f', 'a'];
+        var elem = 'a';
+        console.log(positionArr(arr1, elem));
+
+
+        // 案例3 数组去重 (重点案例)
+        // 将旧数组里面不重复的元素选取出来放到新数组中，重复的元素只保留一个
+        console.log('----案例3----');
+        function unique(arr) {
+            var newArr = []
+            // 创建新数组用来存放不重复元素
+            for (i = 0; i < arr.length; i++) {
+                // for循环用来遍历array
+                if (newArr.indexOf(arr[i]) === -1) {
+                    // 判断条件为，如果arr[i] 不存在于新数组中
+                    newArr.push(arr[i]);
+                    // 就将arr[i] 的值赋给 newArr
+                }
+            }
+            return newArr;
+        }
+
+        var array = ['c', 'a', 'z', 'a', 'x', 'a', 'x', 'c', 'b'];
+        console.log(unique(array));
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

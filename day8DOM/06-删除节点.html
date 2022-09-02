@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>删除</button>
+    <ul>
+        <li>熊1</li>
+        <li>熊2</li>
+        <li>熊3</li>
+    </ul>
+
+    <script>
+        // node.removeChild(child) 从DOM中删除一个子节点，返回删除的节点。
+        let btn = document.querySelector('button');
+        let ul = document.querySelector('ul');
+        btn.onclick = function () {
+            if (ul.children.length == 0) {
+                // 如果li全部删除，禁用按钮
+                this.disabled = true;
+            } else {
+                ul.removeChild(ul.children[0]);
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            display: block;
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="ldh">图片1</button>
+    <button id="zxy">图片2</button>
+    <img src="images/ldh.jpg" alt="刘德华" title="刘德华">
+
+
+
+    <script>
+        // 修改元素属性
+        // 1) 获取元素
+        var ldh = document.getElementById('ldh');
+        var zxy = document.getElementById('zxy');
+        var img = document.querySelector('img');
+        // 2) 注册事件 
+        // 3) 处理程序
+        ldh.onclick = function () {
+            // 鼠标点击相应的按钮，就将对应图片路径给img
+            img.src = 'images/ldh.jpg';
+            // 鼠标点击相应的按钮，就将对应文字给img
+            img.alt = '刘德华';
+            img.title = '刘德华';
+        }
+        zxy.onclick = function () {
+            img.src = 'images/zxy.jpg';
+            img.alt = '张学友';
+            img.title = '张学友';
+        }
+
+        // 修改其他元素的其他属性也可以使用这种方法 如 id、href等
+    </script>
+</body>
+
+</html>

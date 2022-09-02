@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 递增和递减运算符必须和变量配合使用
+        // 1. 前置递增运算符 ++在变量前面
+        console.log('1.前置递增运算符');
+        var num = 10;
+        ++num; // 类似于num = num + 1;
+        console.log(num) // 11
+        //1.1 . ++前置运算优先 先自加，后返回原值
+        var p = 10;
+        console.log(++p + 10); //21
+        var b = 10;
+        console.log(++b * 10)  //110
+        var c = 10;
+        console.log(++c / 10)  //1.1
+        // 2. 后置递增运算符 变量++ 单独使用与前置效果相同
+        console.log('2.后置递增运算符');
+        var num1 = 10;
+        num1++;
+        console.log(num1); // 11
+        // 2.1 与前置递增的区别：先返回原值，后自加1
+        var age = 10;
+        console.log(age++ + 10); //20 
+        // age++先将原值返回后参与加法运算与后面10相加, 加完得到结果后，再自加1。
+        console.log(age); // 11 先返回原值，后自加1
+        //2.2
+        var a = 10;
+        ++a;  // ++a=11  a=11
+        var b = ++a + 2; // ++a=12,a=12
+        console.log(b); // 14
+
+        var c = 10;
+        c++; // c++=11,C=11
+        var d = c++ + 2; // c++=11  
+        console.log(d); // 13  c=12
+
+        var e = 10;
+        var f = e++ + ++e;
+        // 1. e++=10  e=11  2. ++e=12 e=12  
+        console.log(f); // 22
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

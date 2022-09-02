@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            position: absolute;
+            left: 0;
+            width: 150px;
+            height: 150px;
+            background-color: pink;
+            /* animation: move 2s ease-in-out infinite alternate forwards; */
+        }
+
+        /* @keyframes move {
+            from {
+                transform: translateX(0px);
+            }
+
+            to {
+                transform: translateX(300px);
+            }
+        } */
+    </style>
+</head>
+
+<body>
+    <button class="btn300">点击到300</button>
+    <button class="btn500">点击到500</button>
+    <div></div>
+
+    <script>
+        // 缓动动画就是让元素速度有所变化，最常见的是让速度慢慢停下来
+        // 1. 让盒子每次移动的距离慢慢变小，速度就会慢慢落下来。
+        // 2. 核心算法： (目标值 - 现在的位置) / 10    做为每次移动的距离步长
+        // 3. 停止的条件是： 让当前盒子位置等于目标位置就停止定时器
+        // 4. 注意步长值需要取整
+
+        //封装animate函数
+        function animate(obj, target) {
+            // 先清除原来的定时器
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                // 获取对象的位置
+                let x = obj.offsetLeft;
+                // 计算步长值(目标值 - 现在的位置) / 划分的份数 
+                let step = (target - x) / 10;
+                // step必须取整，不然小数在除法中永远无法达到整数终点点
+                //  判断step>0时， 向上取整
+                //  step <= 0 时，向下取整
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                // 设置清除定时器的条件
+                if (x == target) {
+                    clearInterval(obj.timer);
+                }
+                // 设置定时器的效果
+                // x + 步长值
+                obj.style.left = x + step + 'px';
+            }, 15);
+        }
+        let div = document.querySelector('div');
+        let btn300 = document.querySelector('.btn300');
+        let btn500 = document.querySelector('.btn500');
+        btn300.addEventListener('click', function () {
+            // 点击调用函数
+            animate(div, 300);
+        });
+        btn500.addEventListener('click', function () {
+            animate(div, 500);
+        });
+
+    </script>
+</body>
+
+</html>

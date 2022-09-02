@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .box {
+            position: relative;
+            width: 120px;
+            height: 140px;
+            margin: 100px auto;
+            border: 1px solid #ccc;
+        }
+
+        .close {
+            position: absolute;
+            top: -1px;
+            left: -15px;
+            width: 14px;
+            height: 14px;
+            font-size: 12px;
+            line-height: 11px;
+            text-align: center;
+            color: #f04f2a;
+            border: 1px solid #ccc;
+            border-right: none;
+            cursor: pointer;
+        }
+
+        p {
+            margin-top: 5px;
+            text-align: center;
+            color: #f04f2a;
+
+        }
+
+
+        .qr_code {
+            display: block;
+            width: 100px;
+            margin: 5px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <span class="close">×</span>
+        <p>淘宝二维码</p>
+        <img src="images/tao.png" alt="" class="qr_code">
+    </div>
+
+
+    <script>
+        var box = document.querySelector('.box');
+        var btn = document.querySelector('.close');
+
+        btn.onclick = function () {
+            box.style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1. 语法结构
+        /*   do {
+              循环体
+          } while (条件表达式) */
+        // 2. 执行思路
+        // do while 先执行依次循环体，再判断条件
+        // 为true循环执行，否则退出循环
+        // 3. 代码验证
+        // 初始化变量
+        var i = 1;
+        do {
+            console.log('hello word!');
+            i++; //操作表达式
+        } while (i <= 100); // 条件表达式
+        // 4. do while 循环体至少执行一次
+
+        // 案例1 打印一生
+        var i = 1;
+        do {
+            switch (i) {
+                case 1:
+                    console.log('这个b出生了');
+                    break;
+                case 100:
+                    console.log('这个b挂了');
+                    break;
+                default:
+                    console.log('这个b' + i + '岁了');
+                    break;
+            }
+            i++;
+        } while (i <= 100)
+        // 案例2 1-100求和
+        var sum = 0;
+        var j = 1;
+        do {
+            sum += j;
+            j++;
+        } while (j <= 100);
+        console.log(sum);
+
+        // 案例3 弹出提示框
+        do {
+            var message = prompt('您傻吗？')
+        } while (message !== '是');
+        alert('勇敢的面对自己');
+        // 在这个案例中，do while 比while要更加简单
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

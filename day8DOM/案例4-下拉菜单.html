@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .nav {
+            position: relative;
+            width: 500px;
+            margin: 100px auto;
+        }
+
+        ul {
+            list-style: none;
+            cursor: pointer;
+        }
+
+        .nav_hd>li p {
+            position: relative;
+            float: left;
+            padding: 15px 30px;
+        }
+
+        .nav_hd>li p::after {
+            position: absolute;
+            top: 18px;
+            right: 10px;
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-right: 2px solid #ff8400;
+            border-bottom: 2px solid #ff8400;
+            transform: rotate(45deg);
+        }
+
+        .p_color {
+            color: #ff8400;
+            background-color: #f0f0f0;
+        }
+
+        .nav_hd>li div {
+            position: absolute;
+            display: none;
+            top: 51px;
+        }
+
+        .nav_hd>li div li {
+            border: 1px solid #ff8400;
+            border-top: none;
+            background-color: #fff;
+        }
+
+
+        .login_box {
+            display: block;
+            right: 200px;
+            width: 500px;
+            height: 500px;
+            border: 1px solid #ff8400;
+            background-color: #fff5da;
+        }
+
+        .wb_box {
+            right: 314px;
+        }
+
+        .wb_box li {
+            padding: 8px 30px;
+        }
+
+        .bk_box {
+            right: 186px;
+        }
+
+        .bk_box li {
+            width: 130px;
+            padding: 8px 0 8px 28px;
+        }
+
+        .email_box {
+            right: 72px;
+        }
+
+        .email_box li {
+            padding: 8px 10px 8px 28px;
+        }
+
+        .dison {
+            display: block;
+            z-index: 99;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nav">
+        <ul class="nav_hd">
+            <li>
+                <p>登录</p>
+                <div class="login_box"></div>
+            </li>
+            <li>
+                <p>微博</p>
+                <div class="wb_box">
+                    <ul class="items">
+                        <li>私信</li>
+                        <li>评论</li>
+                        <li>@我</li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <p>博客</p>
+                <div class="bk_box">
+                    <ul class="items1">
+                        <li>博客评论</li>
+                        <li>未读提醒</li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <p>邮箱</p>
+                <div class="email_box">
+                    <ul class="items2">
+                        <li>免费邮箱</li>
+                        <li>VIP邮箱</li>
+                        <li>企业邮箱</li>
+                        <li>新浪邮箱客户端</li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <p>网站导航</p>
+                <div></div>
+            </li>
+        </ul>
+    </nav>
+
+
+    <script>
+        var lis = document.querySelector('.nav_hd').children;
+        var list1 = document.querySelector('.items').children
+        var list2 = document.querySelector('.items1').children
+        var list3 = document.querySelector('.items2').children
+
+
+        for (var i = 0; i < lis.length; i++) {
+            // var p = lis[i].querySelector('p');
+            lis[i].onmouseover = function () {
+                this.children[0].className = "p_color";
+                this.children[1].style.display = 'block';
+            }
+
+            lis[i].onmouseout = function () {
+                this.children[0].className = '';
+                this.children[1].style.display = '';
+            }
+
+        }
+
+
+        for (i = 0; i < list1.length; i++) {
+            console.log(list1[i]);
+            list1[i].onmouseover = function () {
+                this.style.backgroundColor = '#fff5da';
+            }
+            list1[i].onmouseout = function () {
+                this.style.backgroundColor = '';
+            }
+        }
+        for (i = 0; i < list2.length; i++) {
+            console.log(list2[i]);
+            list2[i].onmouseover = function () {
+                this.style.backgroundColor = '#fff5da';
+            }
+            list2[i].onmouseout = function () {
+                this.style.backgroundColor = '';
+            }
+        }
+        for (i = 0; i < list3.length; i++) {
+            console.log(list3[i]);
+            list3[i].onmouseover = function () {
+                this.style.backgroundColor = '#fff5da';
+            }
+            list3[i].onmouseout = function () {
+                this.style.backgroundColor = '';
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1. parseInt(变量)  取整数
+        var age = prompt('输入您的年龄');
+        console.log(parseInt(age));
+        console.log(parseInt('3.94')); // 得到结果为3，取整，不进位
+        console.log(parseInt('120px')); // 单位会去掉
+        console.log(parseInt('庸人冲')); // 结果为NaN
+
+        // 2. parseFloat(变量)  小数，浮点数
+        console.log(parseFloat('3.94')); // 结果为3.94
+
+        // 3.Number(变量) 强制转换函数
+        var str = '123';
+        console.log(Number(str));
+        console.log(Number('rem120px')); //结果同样为NaN
+
+        // 利用算数运算符号 - * / 进行隐式转换
+        console.log('12' - 0);  //结果为数字型12
+        console.log('123' - '120'); //结果为数字型3，用+就变成字符拼接
+
+        // 案例1. 计算年龄
+        // 要求在页面中弹出一个输入框，输入出生年份后，能计算出我们的年龄。
+        var birthYear = prompt('请输入您的出生年份');
+        var thisYear = 2021;
+        var userAge = thisYear - birthYear; // 隐式转换
+        alert('您的年龄为' + userAge + '岁');
+
+        // 案例2. 简单加法器
+        // 计算两个数的值，用户输入第一个值后，继续弹出第二个输入框并输入第二个值，最后通过弹出窗口显示出量词输入值相加的结果。
+        var num1 = prompt('请输入数值1');
+        var num2 = prompt('请输入数值2');
+        var result = parseFloat(num1) + parseFloat(num2);
+        alert('结果为：' + result);
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

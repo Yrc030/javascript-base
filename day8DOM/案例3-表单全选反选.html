@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 300px;
+            margin: 100px auto;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+
+        }
+
+        thead tr {
+            height: 30px;
+            color: #fff;
+            background-color: #0099cc;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #d0d0d0;
+        }
+
+        tbody tr {
+            height: 30px;
+            background-color: #f0f0f0;
+        }
+
+        tbody tr:hover {
+            cursor: pointer;
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th><input type="checkbox" id="js_chboxALL"></th>
+                <th>商品</th>
+                <th>价钱</th>
+            </tr>
+        </thead>
+        <tbody id="js_tb">
+            <tr>
+                <td>
+                    <input type="checkbox" />
+                </td>
+                <td>iPhone8</td>
+                <td>8000</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" />
+                </td>
+                <td>iPad Pro</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" />
+                </td>
+                <td>iPad Air</td>
+                <td>2000</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" />
+                </td>
+                <td>Apple Watch</td>
+                <td>2000</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script>
+
+        // 注释很重要请认真看完！
+
+        let chboxAll = document.querySelector('#js_chboxALL');
+        let tbs = document.getElementById('js_tb').querySelectorAll('input');
+        console.log(tbs);
+        chboxAll.onclick = function () {
+            // 可以通过this.checked 的返回值来判断当前被是否被选择，选中返回true，未选中返回false
+            // console.log(this.checked);
+            for (var i = 0; i < tbs.length; i++) {
+                // 通过for循环，当点击chboxAll 时，将它的checked值赋给tbs所有元素的 checked属性
+                tbs[i].checked = this.checked;
+                // console.log(tbs[i].checked);
+            }
+        }
+
+        // 利用for循环给tbs里每一个元素绑定点击事件
+        for (var i = 0; i < tbs.length; i++) {
+            tbs[i].onclick = function () {
+                // flag 控制全选按钮是否选中
+                var flag = true;
+                // var num = 0;
+                // 每次点击tbs[i] 都要循环检查tbs每个元素是否被选中
+                for (var i = 0; i < tbs.length; i++) {
+                    // tbs中存在一个按钮没被选中,也就是返回值为false时 则进入if语句
+                    //下面条件表达式 <=> tbs[i].checked === false;
+                    if (!tbs[i].checked) {
+                        // 改变flag的布尔值，来控制全选按钮是否被选中
+                        flag = false;
+                        break;  // 退出for循环 这样可以提高执行效率 因为只要有一个没有选中，剩下的就无需循环判断了
+                    }
+
+                }
+
+                // 当所有按钮被选中时flag为true，全选按钮才被选中
+                // 否则每次一次都将进入if分支语句，将flag = false，使得全选按钮不被选中
+                chboxAll.checked = flag;
+            }
+        }
+
+
+
+        // 下面的方法是结合弹幕自己想出来的，没有上面的方法精妙，但是比较好理解： 
+        // if (tbs[i].checked == true) {
+        //     num++;
+        // } else {
+        //     num--;
+        // }
+
+        // if (num < 4) {
+        //     chboxAll.checked = false;
+        // } else {
+        //     chboxAll.checked = true;
+
+        // }
+
+        // console.log(num);
+
+        console.log('------1返回值-------');
+        console.log(tbs[i].checked);
+        console.log('------2否定-------');
+        console.log(!tbs[i].checked);
+        console.log('------3全选框-------');
+        console.log(chboxAll.checked);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1. for 重复执行某些代码，通常跟计数有关系。
+        // 2. for 语法结构
+        /*  for (初始化变量; 条件表达式; 操作表达式) {
+             循环体;
+         } */
+        // 初始化变量： 用var 声明的一个普通变量，通常用于作为计数器使用。
+        // 条件表达式： 终止条件
+        // 操作表达式： 每次循环最后执行的代码，经常用于对计数器变量进行更新(递增或递减)
+        // 3. 代码体验
+        for (var i = 1; i <= 100; i++) {
+            console.log('hello world');
+        }
+        // 4.执行过程
+        // 1) 首先执行初始化变量 var i = 1; 在for语句里只执行一次;
+        // 2) 执行条件表达式 i <= 100; 判断表达式是否为真;
+        // 3) 条件表达式为真，执行循环体语句
+        // 4) 循环体语句执行完毕后，执行操作表达式 i++
+        // 5) 再执行条件表达式，判断真假，为真继续循环
+        // 6) 为假终止循环并退出for循环，执行下面的代码。
+
+        // 5. for循环让用户控制输出的次数
+        /* var num = prompt('请输入次数');
+        for (var i = 1; i <= num; i++) {
+            console.log('您让我循环' + num + '次我就循环' + num + '次');
+        } */
+
+        // 6. for循环重复不相同的代码
+        /* for (var i = 1; i <= 100; i++) {
+            console.log('此人今年' + i + '岁了');
+        } */
+
+        // 7. for循环中嵌套if分支语句
+        /*  for (var i = 1; i <= 100; i++) {
+             if (i == 1) {
+                 console.log('此人出生了')
+             } else if (i == 100) {
+                 console.log('此人挂了');
+             } else {
+                 console.log('此人今年' + i + '岁了');
+             }
+         } */
+
+        // 8. for 循环重复某些相同的操作
+        // 1-100整数累加和
+        console.log('案例一');
+        var sum = 0;
+        for (var i = 1; i <= 100; i++) {
+            sum += i;
+        }
+        console.log(sum);
+        // 算法思路：
+        // 1) 先声明sum变量来存储相加的结果，因为i从1开始，所以sum = 0;
+        // 2) 第一个循环sum = 0, i = 1 sum = sum + 1; 所以sum = 1;
+        // 3) 第二个循环sum = 1, i = 2 sum = 3;
+        // 4) 第三个循环sum = 3, i = 3 sum = 6;
+        // 5）依次类推直到for循环结束;
+
+        // 9. 案例求1-100之间所有数的平均值
+        console.log('案例二');
+        var sum = 0;
+        var average = 0;
+        for (var i = 1; i <= 100; i++) {
+            sum = sum + i;
+
+        }
+        average = sum / 100;
+        console.log(average);
+
+        //10. 求1-100之间所有偶数和奇数的和
+        console.log('案例三');
+        var odd = 0;
+        var even = 0;
+        for (var i = 1; i <= 100; i++) {
+            if (i % 2 == 0) {
+                even += i;
+            } else {
+                odd += i;
+            }
+        }
+        console.log('1-100所有的奇数和是：' + odd);
+        console.log('1-100所有的偶数和是：' + even);
+
+
+        // 11. 求1-100之间所有能被3整除的数字的和
+        console.log('案例四');
+        var res = 0;
+        for (var i = 1; i <= 100; i++) {
+            if (i % 3 == 0) {
+                res = res + i;
+            }
+        }
+        console.log('1-100能被3整除的和是：' + res);
+
+        // 12. 打印总成绩以及平均成绩
+        /*    var num = prompt('请输入班级总人数');
+           var sum = 0;
+           for (var i = 1; i <= num; i++) {
+               var score = prompt('请输入第' + i + '个学生的成绩')
+               sum = sum + parseFloat(score);
+           }
+           var average = sum / num;
+           alert('班级总成绩为：' + sum);
+           alert('班级平均分为：' + average);
+           console.log(sum); */
+
+        // 一行打印⭐
+        var input = prompt('请输入打印次数')
+        var star = '';
+        for (var i = 1; i <= input; i++) {
+            star = star + '⭐';
+        }
+        console.log(star);
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

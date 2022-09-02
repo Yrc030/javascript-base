@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1. 利用new关键字，创建数组;
+        var arr = new Array(); // 创建了一个空的数组 A大写
+
+
+        // 2. 利用数组字面量创建数组[] “常用”
+        var arr = [];  // 创建了一个空的数组
+        var arr1 = [1, 2, 'pink老师', true];
+        // 2.1数组里可以放任意的数据类型，里面的数据用逗号分隔
+        // 2.2 里面的数据叫做数组元素
+
+        // 3. 访问数据元素 访问就是获取
+        console.log(arr1); // 会访问数组里所有元素
+        // 3.1 访问指定数据元素 数据名[索引号] 索引号从0开始
+        console.log(arr1[0]); // 访问 数字1
+        console.log(arr1[1]); // 访问 数字2
+        console.log(arr1[2]); // 访问 pink老师
+        console.log(arr1[3]); // 访问 true
+        console.log(arr1[4]); // undefined
+
+        console.log('----案例1----');
+        var week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        console.log(week[6]);
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

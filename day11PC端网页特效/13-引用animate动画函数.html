@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="animate.js"></script>
+    <style>
+        .sliderbar {
+            position: fixed;
+            top: 300px;
+            right: 0px;
+            width: 50px;
+            height: 50px;
+            line-height: 45px;
+            text-align: center;
+            cursor: default;
+            color: #fff;
+        }
+
+        .con {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 120px;
+            height: 50px;
+            padding-left: 50px;
+            line-height: 50px;
+            background-color: pink;
+            text-align: left;
+            box-sizing: border-box;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sliderbar">
+        <span>👈</span>
+        <div class="con">反馈问题</div>
+    </div>
+
+
+    <script>
+        let sliderbar = document.querySelector('.sliderbar');
+        let con = document.querySelector('.con');
+        let span = document.querySelector('span');
+        // 鼠标经过 sliderbar 就会让con 这个盒子滑动到左侧
+        sliderbar.addEventListener('mouseenter', function () {
+            con.style.paddingLeft = '10px';
+            animate(con, -70, function () {
+                span.innerHTML = '👉';
+            });
+
+        });
+        // 鼠标离开 sliderbar 就会让con 这个盒子滑动到右侧
+        sliderbar.addEventListener('mouseleave',
+            function () {
+                con.style.paddingLeft = '50px';
+                animate(con, 0, function () {
+                    span.innerHTML = '👈';
+                });
+
+            })
+
+    </script>
+</body>
+
+</html>

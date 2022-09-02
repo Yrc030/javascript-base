@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // 注意：
+        // 使用传统注册事件需要加 on
+        // 使用addEventListener 不需要加 on
+
+        // 1. onkeyup 某个键盘按键被松开时触发
+        // document.onkeyup = function (e) {
+        //     console.log(e.key);
+        //     // e.key 返回按下哪个键
+        // }
+
+        document.addEventListener('keyup', function (e) {
+            console.log('up');
+        })
+
+        // 2. onkeypress 某个键盘按键被按下时触发,但是不识别功能键 如：ctrl shifit 箭头等
+        document.addEventListener('keypress', function (e) {
+            console.log('press');
+        })
+
+        // 3. onkeydown 某个键盘按键被按下时触发
+        document.addEventListener('keydown', function (e) {
+            console.log('down');
+        })
+
+
+        // 执行顺序是 
+        // 1. keydown
+        // 2. keypress
+        // 3. keyup
+
+
+
+    </script>
+</body>
+
+</html>

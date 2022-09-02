@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //1. && 逻辑与 与合取相同
+        console.log(3 > 5 && 3 > 2); //fasle
+        console.log(3 < 5 && 3 > 2); //true
+        //2. || 逻辑或 与析取相同
+        console.log(3 > 5 || 3 > 2); //true
+        console.log(3 > 5 || 3 < 2); //fales
+        //3. ! 逻辑非 与非相同
+        console.log(!true) // false
+        console.log(!false) // true
+
+        // 练习
+        console.log('----练习----');
+        var num = 7;
+        var str = '我爱您~中国~';
+
+        console.log(num > 5 && str.length >= num);
+        //true
+        console.log(num < 5 && str.length >= num);
+        // false
+        console.log(!(num < 10));
+        // false
+        console.log(!(num < 10 || str.length == num));
+        // false
+        console.log('----练习----');
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+
+
+        // 详细说明见day10 1.3 JS执行机制
+        // js语言最大特点是单线程，也就是说，同时只能做一件事。
+        // 单线程意味着，所有任务需要排队，前一个任务结束，才会执行后一个任务。
+        // 导致：如果js执行时间过长，会照常页面的渲染不连贯，导致页面渲染加载阻塞感
+
+        // 为了解决这个问题，利用多核 CPU 的计算能力，HTML5 提出 Web Worker 标准，允许 JavaScript 脚本创建多个线程，但是子线程完全受主线程控制。于是，JS 中出现了同步任务和异步任务。
+        // 1. 同步
+        // 前一个任务结束后再执行后一个任务，程序的执行顺序与任务的排列顺序是一致的、同步的
+
+        // 2. 异步
+        // 不进入主线程、而进入”任务队列”的任务，当主线程中的任务运行完了，才会从”任务队列”取出异步任务放入主线程执行。
+
+        // console.log(1);
+
+        // setTimeout(() => {
+        //     console.log(3);
+        // }, 1000);
+
+        // console.log(2);
+        // 采用异步的方式 打印结果的顺序为1 2 3
+
+
+        // 任务类型(位置)
+        console.log(1);                  // 同步任务1(执行栈)
+        document.onclick = function () { // 异步任务 ---> 提交给异步进程处理 --->点击后放入任务队列中
+            console.log('click');
+        }
+
+        setTimeout(function () {         // 异步任务 ---> 提交给异步进程处理  --->3s后放入任务队列中
+            console.log(3)
+        }, 3000)
+        console.log(2);                 // 同步任务2(执行栈)
+
+        // log打印结果为
+        // 1
+        // 2
+        // 3     (3s后打印)
+        // click (点击后打印，如果在3s内点击则在3之前出现)
+
+    </script>
+</body>
+
+</html>

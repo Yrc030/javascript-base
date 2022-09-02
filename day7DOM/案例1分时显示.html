@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img,
+        p {
+            width: 200px;
+            text-align: center;
+            font-size: 20px;
+            color: red;
+
+        }
+    </style>
+</head>
+
+<body>
+    <img src="images/s.gif" alt="">
+    <p></p>
+
+    <script>
+        // 2. 封装函数
+        function getTime() {
+            // 2. 获取当前小时
+            let nowTime = new Date();
+            console.log(nowTime);
+            let h = nowTime.getHours();
+            console.log(h);
+            // 3. 添加判断条件，输出不同结果
+            if (h > 6 && h <= 9) {
+                img.src = 'images/z.gif';
+                para.innerHTML = '早上好!';
+            } else if (h > 9 && h <= 12) {
+                img.src = 'images/s.gif';
+                para.innerHTML = '上午好!';
+            } else if (h > 12 && h <= 18) {
+                img.src = 'images/x.gif';
+                para.innerHTML = '下午好!';
+            } else {
+                img.src = 'images/w.gif';
+                para.innerHTML = '晚上好!';
+            }
+        }
+        // 1. 获取元素
+        let img = document.querySelector('img');
+        let para = document.querySelector('p');
+        img = getTime();
+
+    </script>
+</body>
+
+</html>

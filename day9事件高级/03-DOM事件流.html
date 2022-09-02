@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            margin: 100px auto;
+            padding: 50px;
+            box-sizing: border-box;
+        }
+
+        .son {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<div class="father">
+    <div class="son">sun of beach</div>
+</div>
+
+<body>
+
+
+    <script>
+        // js 代码中只能把执行捕获或者冒泡其中的一个阶段。
+        // onclick 和 attachEvent 只能得到冒泡阶段
+        // 1. 捕获阶段 如果addEventListener 第三个参数是 true, 则处于捕获阶段
+        // 如果处于捕获阶段，并且父级元素也注册了事件，那么会从父级依次往下执行注册事件
+        // document --> html --> body --> father --> son
+
+        let son = document.querySelector('.son');
+        son.addEventListener('click', function () {
+            alert('son');
+        }, true)
+        let father = document.querySelector('.father');
+        father.addEventListener('click', function () {
+            alert('father');
+        }, true)
+        document.addEventListener('click', () => {
+            alert('document');
+        }, true);
+
+
+        // 2. 冒泡阶段 如果addEventListener 第三个参数是 false 或者省略, 则处于冒泡阶段
+        // 如果处于冒泡阶段，并且父级元素也注册了事件，那么会从当前事件依次往上执行
+        // son --> father --> body --> html --> document
+        // let son = document.querySelector('.son');
+        // son.addEventListener('click', function () {
+        //     alert('son');
+        // }, false)
+        // let father = document.querySelector('.father');
+        // father.addEventListener('click', function () {
+        //     alert('father');
+        // }, false)
+        // document.addEventListener('click', function () {
+        //     alert('document');
+        // })
+
+        // 实际开发中很少使用事件捕获，更关注事件冒泡
+        // 有些事件没有冒泡，比如 onblur、onfocus、onmouseenter、 onmouseleave 
+
+    </script>
+</body>
+
+</html>

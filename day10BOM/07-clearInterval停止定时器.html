@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+
+    <button class="begin">开启定时器</button>
+    <button class="stop">停止定时器</button>
+
+    </div>
+
+    <script>
+        // window.clearInterval(intervalID);
+        // clearInterval() 方法取消了先前通过调用的setInterval() 建立的定时器；
+        // 1. window可以省略
+        // 2. 里面的参数就是定时器的标识符
+
+        var begin = document.querySelector('.begin');
+        var stop = document.querySelector('.stop');
+        var timer = null;
+        // 声明全局变量让clearInterval调用， = null是因为null 等于空对象， 定时器也是个对象。 而如果不给timer赋值会返回值为undefined 容易报错;
+        begin.addEventListener('click', function () {
+            // 给定时器声明标识符
+            timer = setInterval(function () {
+                console.log('Hello World~!');
+            }, 1000);
+        })
+
+        stop.addEventListener('click', function () {
+            clearInterval(timer);
+            // 将定时器的标识符写在()中
+            console.log('Fuck U World!!');
+        })
+
+
+    </script>
+</body>
+
+</html>

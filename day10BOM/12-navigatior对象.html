@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // navigator 对象包含有关浏览器的信息，具备很多属性，最常用的是userAgent, 该属性可以返回客户机发送服务器的user-agent头部的值。
+
+
+
+        // 如果判断条件为真 打开手机端页面， 否则 打开pc端页面
+        if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+            window.location.href = "";     //手机
+        } else {
+            window.location.href = "";     //电脑
+        }
+    </script>
+</body>
+
+</html>

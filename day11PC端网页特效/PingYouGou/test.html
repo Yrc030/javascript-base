@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        body,
+        div,
+        ul,
+        ol,
+        li {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        a {
+            color: #999;
+            text-decoration: none;
+        }
+
+        .focus {
+            position: relative;
+            width: 721px;
+            height: 455px;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+
+        .focus>a {
+            position: absolute;
+            top: 50%;
+            width: 30px;
+            height: 30px;
+            background-color: rgba(0, 0, 0, .5);
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+            display: none;
+            z-index: 999;
+        }
+
+        .prev {
+            left: 10px;
+            transform: translateY(-50%);
+        }
+
+        .next {
+            right: 10px;
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        .prev::after,
+        .next::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 40%;
+            width: 10px;
+            height: 10px;
+            border-left: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        ul {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 800%;
+        }
+
+        li {
+            float: left;
+        }
+
+        .btn {
+            position: absolute;
+            left: 50%;
+            bottom: 20px;
+            padding: 5px 10px;
+            background-color: rgba(0, 0, 0, .5);
+            border-radius: 10px;
+            transform: translateX(-50%);
+        }
+
+        .btn li {
+            width: 10px;
+            height: 10px;
+            margin-left: 10px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255.5);
+        }
+
+        .btn li img {
+            width: 100%;
+            height: 100%;
+            vertical-align: middle;
+        }
+
+        .btn li:first-child {
+            margin-left: 0;
+        }
+
+        .current {
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="focus">
+        <a href="javascript:;" class="prev"></a>
+        <a href="javascript:;" class="next"></a>
+        <ul>
+            <li><a href="javascript:;"><img src="upload/focus.jpg" alt=""></a></li>
+            <li><a href="javascript:;"><img src="upload/focus1.jpg" alt=""></a></li>
+            <li><a href="javascript:;"><img src="upload/focus2.jpg" alt=""></a></li>
+            <li><a href="javascript:;"><img src="upload/focus3.jpg" alt=""></a></li>
+        </ul>
+        <ol class="btn">
+        </ol>
+    </div>
+
+    <script src="js/animate.js"></script>
+    <script>
+        // 1. 获取元素
+        let focus = document.querySelector('.focus');
+        let prev = document.querySelector('.prev');
+        let next = document.querySelector('.next');
+        // 2. 鼠标经过显示隐藏左右按钮
+        focus.addEventListener('mouseenter', function () {
+            prev.style.display = 'block';
+            next.style.display = 'block';
+        })
+        focus.addEventListener('mouseleave', function () {
+            prev.style.display = 'none';
+            next.style.display = 'none';
+        })
+
+        // 3. 动态创建圆点按钮
+        let ul = document.querySelector('ul');
+        let ol = document.querySelector('.btn');
+        let focusWidth = focus.offsetWidth;
+        let arr = [];
+        // 利用for循环让按钮与图片数量一致
+        for (let i = 0; i < ul.children.length; i++) {
+            // arr.push('<li></li>')
+            // ol.innerHTML = arr.join('');
+            let li = document.createElement('li');
+            li.setAttribute('index', i);
+            ol.appendChild(li);
+            // 4. 给圆点按钮绑定点击事件
+            ol.children[0].className = 'current';
+            ol.children[i].addEventListener('click', function () {
+                for (let i = 0; i < ol.children.length; i++) {
+                    ol.children[i].className = '';
+                }
+                this.className = 'current';
+                let idx = this.getAttribute('index');
+                animate(ul, -idx * focusWidth);
+            })
+
+        }
+
+        // 4. 点击箭头移动图片
+        let num = 0;
+        var first = ul.children[0].cloneNode(true);
+        ul.appendChild(first);
+        next.addEventListener('click', function () {
+
+            animate(ul, -num * focusWidth);
+            if (num == ul.children.length - 1) {
+                // 终于发现问题了，权重的问题！！！！！！！！！！！！
+                ul.style.left = '0!important';
+                num = 0;
+            }
+            num++;
+        })
+
+    </script>
+</body>
+
+</html>

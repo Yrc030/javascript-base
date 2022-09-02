@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 求从1开始第35个能被7 和 3整除的整数
+        var count = 0; // 声明count 用作计数
+        var result = 0; // 声明result 用作存储结果
+        for (var i = 1; count < 35; i++) { // 从1开使计数，当count>=35时停止，每个循环结束后i++
+            if (i % 3 == 0 && i % 7 == 0) { // 用来筛选 能被3和7整除的数
+                result = i; // 筛选出的结果存入result
+                count++; // 并且count计数+1
+            }
+        }
+        console.log(result);
+
+        /*         var num = 1, count = 0, result = 0;
+                // num 用于关闭for循环， count用于记录第几个被能被3和7整除的数，result用于存储结果;
+                for (var i = 1; i <= num; i++) {
+                    num++;
+                    if (i % 3 == 0 && i % 7 == 0) {
+                        result = i;
+                        count++;
+                    } else if (count == 35) {
+                        break;
+                    }
+                }
+                console.log(result);
+        
+                var i = 1, count1 = 0, result1 = 0;
+                while (count1 < 35) { //当count等于35的时候就会停止执行
+                    i++; //i的自增
+                    if (i % 3 == 0 && i % 7 == 0) {
+                        result1 = i; //把能整除3和7的数字保存下来
+                        count1++; //一旦发现一次能整除3和7的数字，就加1
+                    }
+                } */
+        // console.log(result1);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

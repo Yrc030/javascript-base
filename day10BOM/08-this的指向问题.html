@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <button>按钮</button>
+
+    <script>
+        // this的指向在函数定义的时候无法确定，只有函数执行时才能确定this到底指向谁，一般情况下this的最后指向是调用它的对象
+
+        // 一、 全局作用域或普通函数种的this指向全局对象window(注意定时器里面的this指向window)
+
+        // 1. 全局作用域下this指向window
+        console.log(this); // window
+
+
+        // 2. 普通函数中this指向window
+        function fn() {
+            console.log(this);
+        }
+        fn(); // window
+        // 完整写法window.fn();
+
+        // 3. 全局下的定时器指向window
+        // 完整写法window.setInterval
+        setInterval(function () {
+            console.log(this); // window
+        }, 1000);
+
+        let div = document.querySelector('div');
+        div.addEventListener('click', function () {
+            setTimeout(function () {
+                console.log(this);
+            }, 1000);
+
+            setInterval(function () {
+                console.log(this); // window
+            }, 1000);
+        })
+
+        // 二、 方法调用中谁调用this执行谁
+        // 1. 
+        var o = {
+            sayHi: function () {
+                console.log(this);
+                // {sayHi: ƒ} 这个就代表是对象o
+                // 所以this 指向的是o;
+            }
+        }
+        o.sayHi();
+
+        // 2. 
+        let btn = document.querySelector('button');
+        btn.addEventListener('click', function () {
+            console.log(this);
+            // button
+            // this 指向btn
+        })
+
+        // 三、 构造函数中this指向构造函数的实例
+        function Fun(a) {
+            this.name = a;
+            console.log(this.name);
+            console.log(this);
+            // Fun {};
+            // this 指向实例对象
+        }
+
+        var fun = new Fun(1);
+        var fun1 = new Fun(2);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div>我是一段不愿分享的文字</div>
+    <script>
+        // 1. 禁止鼠标右键菜单
+        // contextmenu 主要控制应该何时显示上下文菜单，主要用于程序员取消默认的上下文菜单(右键菜单)
+
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+            // 阻止默认行为，无法右键调出上下文菜单
+        })
+
+        // 2. 禁止鼠标选中(selectstart 开始选中)
+        document.addEventListener('selectstart', function (e) {
+            e.preventDefault();
+            // 无法选中文档内的文本
+        })
+    </script>
+</body>
+
+</html>

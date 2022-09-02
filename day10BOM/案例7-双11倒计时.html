@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .box {
+            width: 500px;
+            margin: 100px auto;
+            text-align: center;
+        }
+
+        .time_box {
+            margin-top: 10px;
+        }
+
+        strong {
+            background-color: #ff9f00;
+            font-weight: 700;
+            font-size: 18px;
+            color: #fff;
+            border-radius: 3px;
+            padding: 0 5px;
+        }
+
+        .day {
+            display: inline;
+            color: #ff9f00;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <h2>距离双11还剩：</h2>
+        <div class="time_box">
+            <span class="day"></span>
+            <strong class="hours"></strong>
+            <strong class="minutes"></strong>
+            <strong class="seconds"></strong>
+        </div>
+    </div>
+
+    <script>
+        let timeBox = document.querySelector('.time_box');
+        let day = timeBox.children[0]
+        let hours = timeBox.children[1];
+        let minutes = timeBox.children[2];
+        let seconds = timeBox.children[3];
+        countDown('2021-11-11 00:00:00');
+        setInterval(countDown, 1000, '2021-11-11 00:00:00');
+        // 这里有个坑, setInterval(函数，延迟ms,[传递给函数的参数]);
+        // 如果第三个参数不指定，第一次调用函数是61行调用的，里面有参数，第二次调用定时器调用函数，里面没参数，所以，函数的形参time会返回undefined, 而调用形参并参与的计算都返回NaN
+        function countDown(time) {
+            console.log(time);
+            let timer = +new Date(time);
+            console.log(timer);
+            let now = +new Date();
+            let cdTime = (timer - now) / 1000;
+            let d = parseInt(cdTime / 60 / 60 / 24);
+            let h = parseInt(cdTime / 60 / 60 % 24);
+            h = h < 10 ? '0' + h : h;
+            let m = parseInt(cdTime / 60 % 60);
+            m = m < 10 ? '0' + m : m;
+            let s = parseInt(cdTime % 60);
+            s = s < 10 ? '0' + s : s;
+            day.innerHTML = d + '天';
+            hours.innerHTML = h + '时';
+            minutes.innerHTML = m + '分';
+            seconds.innerHTML = s + '秒';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //1. 逻辑与&& 短路运算
+        // 表达式1 && 表达式2 
+        // 表达式1为真，返回表达式2
+        // 表达式1为假，返回表达式1
+        console.log('1. 逻辑与&& 短路运算');
+        console.log(123 && 456); // 456
+        console.log(0 && 456); // 0
+        console.log(0 && 1 + 2 && 456 * 56789); // 0
+        console.log();
+        // 0  ' '  null  undefined   NaN  都表示false 
+        console.log(0 && 1 + 2 && 456 * 56789); // 0
+        console.log('' && 1 + 2 && 456 * 56789); // 返回空值
+        console.log(null && 1 + 2 && 456 * 56789); // null
+        console.log(undefined && 1 + 2 && 456 * 56789); // undefined
+        console.log(NaN && 1 + 2 && 456 * 56789); // NaN
+        //1. 逻辑或|| 短路运算
+        // 表达式1 && 表达式2 
+        // 表达式1为真，返回表达式1
+        // 表达式1为假，返回表达式2
+        console.log('2. 逻辑或|| 短路运算');
+        console.log(123 || 456); // 123
+        console.log(0 || 456 || 456 + 123); // 456
+        console.log(0 || ''); // ''
+
+        // 案例 
+        console.log('----案例----');
+        var num = 0;
+        console.log(123 || num++);
+        console.log(num);
+        // 结果为0， 表达式1为真，则返回表达式1并终止执行
+        console.log('----案例----');
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

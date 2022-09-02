@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 当点击按钮 div里面的文字会发生变化 -->
+    <button>显示当前时间</button>
+    <div>某个时间</div>
+    <p>123</p>
+    <p class="para"></p>
+    <p class="para1"></p>
+    <div class="box">
+        我是文字
+        <span>123</span>
+    </div>
+
+    <SCript>
+        // 1. Element.innerText 
+        // 从起始位置到终止位置的内容，但它去除html标签，同时空格和换行也会去掉
+
+        // 当点击按钮 div里面的会显示当前时间
+        // 1) 获取元素
+        var btn = document.querySelector('button');
+        var div = document.querySelector('div');
+        // 2) 注册事件
+        btn.onclick = function () {
+            // 3）事件处理程序
+            // div.innerText = '2021-5-19';
+            div.innerText = getDate();
+        }
+
+        function getDate() {
+            var nowTime = new Date();
+            var y = nowTime.getFullYear();
+            var m = nowTime.getMonth() + 1;
+            var d = nowTime.getDate();
+            var weekArr = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+            var day = nowTime.getDay();
+            return '今天是：' + y + '年' + m + '月' + d + '日 ' + weekArr[day];
+        }
+
+        // 元素可以不用注册事件
+        var p = document.querySelector('p');
+        p.innerText = getDate();
+        //  刷新页面，直接显示在p标签中
+
+        // 2. Element.innerHTML 
+        // 起始位置到终止位置的全部内容，包括html标签，同时保留空格和换行
+        // 与 innerText 的区别
+        var para = document.querySelector('.para');
+        var para1 = document.querySelector('.para1');
+        // 1) innerText 不识别html标签 非标准
+        para.innerText = '<strong>今年是：</strong> 2021';
+        // 2) innerHTML 识别html标签 W3C标准
+        para1.innerHTML = '<strong>今年是：</strong> 2021';
+
+        // 这两个属性时可读写的，可以获取元素里的内容
+        var box = document.querySelector('.box');
+        // innerText  会去除空格和换行
+        console.log(box.innerText);
+        // 我是文字 123
+
+        // innerHTML  保留空格和换行
+        console.log(box.innerHTML);
+        /* 我是文字
+                  <span>123</span> */
+
+
+
+    </SCript>
+</body>
+
+</html>

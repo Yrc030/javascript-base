@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 作用域 变量在某个范围内的作用和效果，目的为了提高程序的可靠性，更重要的式减少命名冲突
+        // js 的作用域 在(es6）之前： 全局作用域 局部作用域
+
+        // 1. 全局作用域: 整个script标签, 或者单独的js文件
+        var num = 10; // 全局变量
+        console.log(num);  // 20 与局部作用域名称相同，但是作用域不同不会相互影响;
+
+
+        // 2. 局部作用域（函数作用域）在函数内部就是局部作用域， 变量只在函数内部起作用和效果
+        function fn() {
+            var num = 20; // 局部变量
+            console.log(num); // 20 与全局作用域名称相同，但是作用域不同不会相互影响;
+            // 但是当全局变量作为实参传送给形参，则会发生冲突
+        }
+        fn();
+
+        // 3. 块级作用域 {}里的作用域， 如if{} for{}
+        if (3 < 5) {
+            var num2 = 20   // var 没有块级作用域
+            let num1 = 10;  // let 拥有块级作用域
+
+        }
+        console.log(num2);   // 20
+        console.log(num1);  // Uncaught ReferenceError: num1 is not defined
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

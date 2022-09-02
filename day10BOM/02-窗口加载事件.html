@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // 一、window.onload 窗口(页面)加载事件
+        // 当文档内容(包括图像、脚本文件、css文件等)完全加载完成后才触发该事件，就调用处理函数。
+
+        // 1. 写在window.onload 里面的内容，会在文档加载完毕后才执行，所以js代码放在页面元素的任何位置都可以执行
+        //  书写方式
+        // window.onload = function () {
+        //     let btn = document.querySelector('button');
+        //     btn.addEventListener('click', function () {
+        //         alert('点击');
+        //     })
+        // }
+
+        // 2. window.onload 传统注册事件方式只能写一次，如果有多个，会以最后一个window.onload为准。
+        // window.onload = function () {
+        //     alert(22);
+        // }
+
+        // 3. 注册监听事件的方式可以写多次，不存在冲突
+        window.addEventListener('load', function () {
+            let btn = document.querySelector('button');
+            btn.addEventListener('click', function () {
+                alert('点击');
+            })
+        })
+
+        window.addEventListener('load', function () {
+            alert('22');
+
+        })
+
+
+        // 二、 DOMContentLoaded 加载事件，侦听给document，仅当DOM加载完成，不包括css，图片，flash等等
+        // IE9+
+        // 如果页面的图片很多，从用户访问到onload触发可能需要较长的事件，交互效果就不能实现，必然影响用户体验，此时用DOMContentLoaded 事件比较合适。
+
+        document.addEventListener('DOMContentLoaded', function () {
+            alert(33);
+            // 先弹出33 再弹出 22 因为这个注册事件需要等待的加载项目要比 onload 少
+        })
+    </script>
+
+
+    <button>点击</button>
+
+</body>
+
+</html>

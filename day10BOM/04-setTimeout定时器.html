@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <script>
+        //  window 对象提供两种定时器方法
+        //  1. window.setTimeout(调用函数, [延迟时间ms]);
+        //  2. setTimeout() 方法用于设置一个定时器，该定时器在延迟时间到期后执行调用函数, 执行完调用函数后,不在执行这个方法
+        //  3. window 在调用时可以省略
+        //  4. 延迟时间省略默认是0
+        setTimeout(function () {
+            console.log('game over');
+        }, 2000);
+
+        // 5. 调用函数可以直接函数名
+        function callback() {
+            console.log('boom!');
+        }
+        setTimeout(callback, 3000);
+
+        // 6. '函数名()' 写法 ，不推荐
+        // setTimeout('callback()', 3000);
+
+        // 7. 页面中可能存在很多的定时器，需要给每个定时器加标识符
+        let time1 = setTimeout(callback, 3000);
+        let time2 = setTimeout(callback, 5000);
+        let time3 = setTimeout(callback, 7000);
+    </script>
+</body>
+
+</html>

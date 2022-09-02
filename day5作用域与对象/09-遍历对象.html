@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 遍历对象属性
+        // 对象里的属性时无序的，无法使用for循环遍历
+        // for...in 用于对数组或者对象的属性进行循环操作(建议对对象使用)
+        var obj = {
+            name: 'pink老师',
+            age: '12',
+            sex: 'unknow',
+            fn: function () { }
+        };
+        // for in 语法格式
+        // for (变量 in 对象) {}
+        for (var k in obj) {
+            console.log(k); // k变量 输出 得到的是属性名
+            console.log(obj[k]); //obj[k] 得到是属性值
+        }
+        // for in 里面得变量 一般用 k 或 key
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

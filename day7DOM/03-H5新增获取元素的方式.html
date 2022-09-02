@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box:first-child::after {
+            content: "123";
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="box">盒子1</div>
+    <div class="box">盒子2</div>
+    <div id="nav">
+        <ul>
+            <li class="index">首页</li>
+            <li class="register">注册</li>
+        </ul>
+    </div>
+
+    <script>
+        // 1. document.getElementsByClassName('names')  /  var elements = rootElement.getElementsByClassName(names)
+        // 返回一个包含了所有指定类名的子元素的类数组对象。当在document对象上调用时，会搜索整个DOM文档，包含根节点。
+        // names 是一个字符串，表示要匹配的类名列表；类名通过空格分隔
+
+        console.log(document.getElementsByClassName('box'));
+        // HTMLCollection(2) [div.box, div.box]
+
+        // // getElementsByClassName 可以在任何元素上调用，不仅仅是 document。 调用这个方法的元素将作为本次查找的根元素,它将返回的是以当前元素为根节点，所有指定类名的子元素。
+        var navs = document.getElementById('nav');
+        console.log(navs.getElementsByClassName('index')); // HTMLCollection [li.index]
+        console.log(navs.getElementsByClassName('register')[0]); // <li class="register">注册</li>
+
+        // 2. document.querySelector('selectors') 
+        // 返回指定选择器第一个元素对象，如果找不到匹配项，则返回null。
+        // selectors 包含一个或多个要匹配的选择器的 DOM字符串DOMString。 该字符串必须是有效的CSS选择器字符串；如果不是，则引发SYNTAX_ERR异常。
+        // 注意，要选择的是什么选择器，要在前面加相应选择器的符号，
+        // 例如 类选择器是 " . "  id选择器是 " # " 
+        var firstBox = document.querySelector('.box');
+        console.log(firstBox);
+        // <div class="box">盒子1</div> , 返回的是第一个元素对象
+
+        var nav = document.querySelector('#nav');
+        console.log(nav);
+        // <div id="nav">...</div>
+
+        // 同样也可以指定根元素来调用此方法
+        console.log(nav.querySelector('.index'));
+
+        // 3. parentNode.querySelectorAll('selectors') 
+        // 返回指定选择器的所有元素对象
+
+        var allBox = document.querySelectorAll('.box');
+        console.log(allBox);
+        // NodeList(2) [div.box, div.box]
+
+        var lis = document.querySelectorAll('li');
+        console.log(lis);
+        // NodeList(2) [li.index, li.register]
+    </script>
+</body>
+
+</html>

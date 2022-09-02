@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+
+    <script>
+        // 1. 传统注册方式 
+        // eventTarget.onclick = null;
+        let divs = document.querySelectorAll('div');
+        divs[0].onclick = function () {
+            alert('11');
+            // 如果想点击一次di后不再弹窗，就需要删除注册事件
+            divs[0].onclick = null;
+        }
+
+
+        // 2. 方法监听注册方式
+        // removeEventListener(type,listener,[useCapture]);
+
+        // 使用这种方法删除事件，在注册事件时不能采用匿名函数的方式
+        divs[1].addEventListener('click', fn)
+        function fn() {
+            alert('22')
+            // 在删除时listener的位置写上函数名就可以了
+            divs[1].removeEventListener('click', fn);
+        }
+
+        // 3. 不推荐 detachEvent
+        // divs[2].attachEvent('onclick', fn1);
+        // function fn1() {
+        //     alert('33');
+        //     divs[2].detachEvent('onclick', fn1);
+        // }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        .alert-btn {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            width: 400px;
+            margin: 10px auto;
+            text-align: center;
+            cursor: pointer;
+            z-index: 2;
+            transform: translateX(-50%);
+        }
+
+        .login {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            height: 300px;
+            text-align: center;
+            background-color: #fff;
+            box-shadow: 1px 1px 7px rgba(0, 0, 0, .5);
+            transform: translate(-50%, -80%);
+            z-index: 2;
+        }
+
+
+
+        .title {
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            cursor: move;
+        }
+
+        .accont,
+        .passwd {
+            margin-right: 40px;
+            margin-top: 15px;
+            height: 30px;
+            text-align: right;
+            line-height: 30px;
+        }
+
+        input {
+            outline: none;
+            width: 250px;
+            height: 25px;
+            border: 1px solid #ccc;
+            font-size: 12px;
+        }
+
+        input::placeholder {
+            color: #999;
+        }
+
+        .btn {
+            margin-top: 80px;
+            width: 200px;
+            height: 30px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+        }
+
+        .close {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 14px;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .bg {
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #afb2af;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="alert-btn">点击，弹出登录框</div>
+    <div class="login">
+        <div class="title">登录会员</div>
+        <div class="accont"><label for="user">用户名： </label><input type="text" id="user" placeholder="请输入用户名"></div>
+        <div class="passwd">
+            <label for="password">登录密码： </label>
+            <input type="password" id="password" placeholder="请输入登录密码">
+        </div>
+        <button class="btn">登录会员</button>
+        <span class="close">关闭</span>
+    </div>
+    <!-- 遮盖层 -->
+    <div class="bg"></div>
+
+    <script>
+
+        // login盒子
+        let login = document.querySelector('.login');
+        // 遮罩层
+        let mask = document.querySelector('.bg');
+        // 弹框按钮
+        let alertBtn = document.querySelector('.alert-btn');
+        // 关闭按钮
+        let colse = document.querySelector('.close');
+
+        // 点击显示登录框和遮罩层
+        alertBtn.addEventListener('click', function () {
+            login.style.display = 'block';
+            mask.style.display = 'block';
+        })
+        // 点击隐藏登录框和遮罩层
+        colse.addEventListener('click', function () {
+            login.style.display = 'none';
+            mask.style.display = 'none'
+
+        })
+        // 实现拖拽效果
+        // 创建 mousedown事件，mouseover事件，mouseup事件
+        // 模态框的坐标(变化) =鼠标在页面中的坐标(变化) - 鼠标在盒子内的坐标(不变) 
+        // 给p创建mousedown事件
+        let title = login.children[0];
+
+
+        title.addEventListener('mousedown', function (e) {
+            // 鼠标按下获取鼠标在盒子内的坐标
+            // 记住offset属性是相对于定位父级的距离
+            let x = e.pageX - login.offsetLeft;
+            let y = e.pageY - login.offsetTop;
+
+            // 移动事件要写在按下事件里面，只有按下了才触发拖拽
+            // !!! 这里事件源一点要写document. 因为是在文档任意位置移动!!!!
+            // !!! 还有要移动的盒子不要加margin值 会让盒子跑偏!!!!
+            document.addEventListener('mousemove', move);
+
+            function move(e) {
+                // 模态框的坐标
+                login.style.left = e.pageX - x + 'px';
+                login.style.top = e.pageY - y + 'px';
+            }
+            // 鼠标弹起，就让鼠标移动事件移除
+            document.addEventListener('mouseup', function (e) {
+                document.removeEventListener('mousemove', move);
+            });
+
+
+        })
+    </script>
+</body>
+
+</html>

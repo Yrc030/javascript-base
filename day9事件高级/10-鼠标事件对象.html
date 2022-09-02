@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            height: 3000px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        // MouseEvent 鼠标事件对象
+        // document.addEventListener('click', function (e) {
+        //     console.log(e);
+        // })
+
+        // 1. e.clientX \ Y 返回鼠标相对于浏览器可视区的X或者Y坐标
+        document.addEventListener('click', function (e) {
+            console.log('相对可视区X坐标:' + e.clientX);
+            console.log('相对可视区Y坐标:' + e.clientY);
+            // 鼠标不动，文档内容上下滚动，坐标不会发生变化
+            console.log('----------------------------');
+        })
+
+        // 2. e.pageX \ Y   返回鼠标相对于文档页面顶端的X或者Y坐标，IE9+ (重点记住)
+        document.addEventListener('click', function (e) {
+            console.log('相对文档页面顶端X坐标:' + e.pageX);
+            console.log('相对文档页面顶端Y坐标:' + e.pageY);
+            console.log('----------------------------');
+        })
+
+
+        // 3. e.screenX \ Y  返回鼠标相对于电脑屏幕的X或者Y坐标
+
+        document.addEventListener('click', function (e) {
+            console.log('相对电脑屏幕X坐标:' + e.screenX);
+            console.log('相对电脑屏幕Y坐标:' + e.screenY);
+            console.log('----------------------------');
+        })
+
+    </script>
+</body>
+
+</html>

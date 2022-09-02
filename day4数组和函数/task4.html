@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 作业5 能翻转传入的任意数组，并把翻转结果通过返回值返回。
+        var arr = [];
+        var newArr = [];
+        function rotateArr() {
+            for (i = arr.length; i > 0; i--) {
+                newArr[newArr.length] = arr[i - 1];
+            }
+            return newArr;
+        }
+        do {
+            var num = prompt('请输入参数');  // while循环将用户输入的数据依次存入到arr[]中
+            if (num === 'E') {
+                break;
+            } else { arr[arr.length] = num; }
+        } while (num !== "E")
+
+        var res = rotateArr(arr);
+        console.log(res);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

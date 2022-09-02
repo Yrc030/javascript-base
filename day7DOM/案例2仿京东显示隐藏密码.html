@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @media screen and (min-width:320px) {
+            html {
+                font-size: 32px;
+            }
+        }
+
+        @media screen and (min-width:396px) {
+            html {
+                font-size: 39.6px;
+            }
+        }
+
+        @media screen and (min-width:472px) {
+            html {
+                font-size: 47.2px;
+            }
+        }
+
+        @media screen and (min-width:548px) {
+            html {
+                font-size: 54.8px;
+            }
+        }
+
+        @media screen and (min-width:624px) {
+            html {
+                font-size: 62.4px;
+            }
+        }
+
+        @media screen and (min-width:700px) {
+            html {
+                font-size: 70px;
+            }
+        }
+
+        @media screen and (min-width:776px) {
+            html {
+                font-size: 77.6px;
+            }
+        }
+
+        @media screen and (min-width:852px) {
+            html {
+                font-size: 85.2px;
+            }
+        }
+
+        @media screen and (min-width:928px) {
+            html {
+                font-size: 92.8px;
+            }
+        }
+
+        @media screen and (min-width:1004px) {
+            html {
+                font-size: 100.4px;
+            }
+        }
+
+        @media screen and (min-width:1080px) {
+            html {
+                font-size: 108px;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-size: .166667rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: #666;
+        }
+
+        .header {
+            position: relative;
+            width: 100%;
+            padding: .092593rem 0;
+            text-align: center;
+        }
+
+        .header::before {
+            position: absolute;
+            top: 50%;
+            left: .092593rem;
+            content: '';
+            width: .111111rem;
+            height: .111111rem;
+            border-left: .018519rem solid #000;
+            border-bottom: .018519rem solid #000;
+            transform: translateY(-50%) rotate(45deg);
+            cursor: pointer;
+        }
+
+        .main {
+            width: 80%;
+            margin: .277778rem auto;
+        }
+
+        .main div {
+            position: relative;
+            width: 95%;
+            height: 30px;
+            margin: 0 auto .185185rem;
+            line-height: .324074rem;
+            font-size: .148148rem;
+        }
+
+        .main input {
+            width: 100%;
+            height: 30px;
+            font-size: .12963rem;
+            padding-right: 1.388889rem;
+            outline: none;
+            border: none;
+            border-bottom: .009259rem solid #ccc;
+        }
+
+        input::placeholder {
+            color: #000;
+        }
+
+        .main label {
+            position: absolute;
+            top: 50%;
+            right: .925926rem;
+            border: none;
+            border-radius: 0;
+            background: transparent;
+            cursor: pointer;
+            transform: translateY(-50%);
+        }
+
+        .main label img {
+            width: .222222rem;
+            vertical-align: middle;
+        }
+
+        .frogot {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            height: 14px;
+            padding-left: .185185rem;
+            font-size: .111111rem;
+            line-height: 14px;
+            border-left: .018519rem solid #ccc;
+            transform: translateY(-40%);
+        }
+
+        .log_btn {
+            display: block;
+            width: 95%;
+            height: 40px;
+            margin: 0 auto .185185rem;
+            border-radius: .231481rem;
+            border: none;
+            outline: none;
+            background-color: #f20600;
+            color: #fff;
+        }
+
+        .main .log_reg {
+            height: .277778rem;
+        }
+
+        .login {
+            float: left;
+            height: .277778rem;
+        }
+
+
+        .register {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">京东登录</header>
+    <div class="main">
+        <form action="">
+            <div>
+                <input type="text" placeholder="请输入用户名" class="username">
+            </div>
+            <div>
+                <input type="password" placeholder="请输入密码" class="passwd">
+                <label><img src="images/close.png" alt="" id="eye"></label>
+                <a href="#" class="frogot">忘记密码</a>
+            </div>
+            <button class="log_btn">登录</button>
+            <div class="log_reg">
+                <span class="login"><a href="#">短信验证码登录</a></span>
+                <span class="register"><a href="#">手机快速注册</a></span>
+            </div>
+            <div class="other"></div>
+        </form>
+    </div>
+
+
+    <script>
+        var eye = document.getElementById('eye');
+        var passWd = document.querySelector('.passwd');
+        var flag = 0;
+        // 变量flag用于判段flag的值，如果为0切换文本框，如果为1 切换为密码框
+        eye.onclick = function () {
+            if (flag == 0) {
+                passWd.type = 'text';
+                eye.src = 'images/open.png';
+                flag = 1;
+            } else {
+                passWd.type = 'password';
+                eye.src = 'images/close.png';
+                flag = 0;
+            }
+
+
+        }
+    </script>
+</body>
+
+</html>

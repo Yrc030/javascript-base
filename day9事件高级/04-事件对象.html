@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div>传统方式</div>
+    <div>listener</div>
+
+    <script>
+        // 事件对象
+        var divs = document.querySelectorAll('div');
+        // 1. (event) 就是一个事件对象,当形参来看
+        // 2. 事件对象只有有了事件才会存在，是系统自动创建的，不需要传递参数
+        // 3. 事件对象是 事件的一系列相关数据的集合，跟事件相关的,
+        // 比如: onclikc就包含了鼠标的相关信息，鼠标坐标... 
+        // 又如：键盘事件里面就包含了键盘事件，判断用户按下哪个键... 
+
+        // 传统方式
+        divs[0].onclick = function (event) {
+            console.log(event);
+            // 输出内容
+            // MouseEvent {isTrusted: true, screenX: 70, screenY: 176, clientX: 69, clientY: 64, …}
+        }
+
+        // listener 监听函数方式
+        // 4. 这个事件对象可以自定义命名， 如：event 、 evt、 e...
+        // divs[1].addEventListener('click', function (e) {
+        //     console.log(e);
+        // })
+
+        // 5. 事件对象也有兼容性问题 ie678通过window.event获取
+        divs[1].onclick = function (e) {
+            // console.log(window.event);
+            // 6. 兼容性写法
+            e = e || window.event;
+            console.log(e);
+        }
+
+
+
+    </script>
+</body>
+
+</html>

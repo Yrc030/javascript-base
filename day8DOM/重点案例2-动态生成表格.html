@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 500px;
+            margin: 100px auto;
+            text-align: center;
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            border: 1px solid #000;
+        }
+
+
+
+        thead tr {
+            height: 40px;
+            background-color: #ccc;
+        }
+
+        thead th:nth-child(2) {
+            width: 300px;
+        }
+
+        td a {
+            font-size: 12px;
+            color: #666;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <table cellspacing='0'>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+
+    <script>
+        // 1. 先准备数据,以对象的形式创建信息，以数组的形式存储每个对象
+        var datas = [
+            {
+                name: '张三',
+                subject: 'javascript',
+                score: 100
+            },
+            {
+                name: '李四',
+                subject: 'javascript',
+                score: 99
+            },
+            {
+                name: '王五',
+                subject: 'javascript',
+                score: 98
+            },
+            {
+                name: '赵六',
+                subject: 'javascript',
+                score: 97
+            },
+            {
+                name: '庸人冲',
+                subject: 'javascript/java/c/c++/python',
+                score: 100
+            }
+        ];
+        // 2. 创建行,创建的行数对应有多少人
+        var tbd = document.querySelector('tbody');
+        // 通过for循环来创建行数，数组的长度就是行数
+        for (i = 0; i < datas.length; i++) { // 外层for循环负责行数 
+            var tr = document.createElement('tr');
+            tbd.appendChild(tr);
+
+            // 3. 创建单元格(存放对象里的数据),写在for循环里面
+            // 1)单元格的数量取决于每个对象里面的属性个数
+            // 2)用for in 循环遍历对象得到属性个数
+            // 3)需要遍历对象就是 datas[i]
+            for (var k in datas[i]) { // 里层for循环负责列数
+                // 4) 创建单元格
+                var td = document.createElement('td');
+                tr.appendChild(td);
+                // 4. 将对象里的属性值 赋给td
+                // date[i] 表示当前遍历的对象
+                // [k] 代表当前遍历对象的属性名 k 所对应的值
+                td.innerText = datas[i][k];
+            }
+
+            // 4. 创建删除单元格，因为最后一列删除按钮，无法添加到对象中，需要单独创建
+            var td = document.createElement('td');
+            // 在td的内部添加 a标签，里面写上删除
+            td.innerHTML = "<a href='javascript:;'>删除</a>";
+            // 将创建的td单元格追加到tr的末尾
+            tr.appendChild(td);
+
+
+        }
+        //  写在for循环外面，因为所有元素创建好后才进行操作
+        // 5. 利用for循环 遍历所有a ,鼠标点击哪个a 就删除当前a所属的tr
+        // 1) 获取所有元素 a
+        var as = document.querySelectorAll('a');
+        // 2) 利用for循环遍历 a
+        for (var i = 0; i < as.length; i++) {
+            as[i].onclick = function () {
+                // 点击哪个 a 就删除当前a所属的tr
+                // 也就是 a.parentNode.parentNode
+                tbd.removeChild(this.parentNode.parentNode);
+            }
+        }
+
+
+        // 下面是自己写着玩的
+        // 6. 再最后创建一个统计平均数的行
+        var averTr = document.createElement('tr');
+        // 将averTr追加至tbody的末尾
+        tbd.appendChild(averTr);
+
+        // 获取上面内容行 tr 里所有的td, 将tds.length作为平均数行里 td 创建的个数
+        var tds = tr.querySelectorAll('td');
+        for (var i = 0; i < tds.length; i++) {
+            // 创建平均行内的单元格,个数由tds.length取决
+            var td = document.createElement('td');
+            averTr.appendChild(td);
+        }
+
+        // 获取平均数行内的所有td
+        var averTds = averTr.querySelectorAll('td');
+        // 将第一个td的内容设置为 平均成绩
+        averTds[0].innerHTML = '<strong>平均成绩</strong>';
+
+        // 创建两个变量用来 求和与求平均值
+        var averNum = 0;
+        var sum = 0;
+
+        // 利用for循环,遍历存放对象的数组datas
+        for (var i = 0; i < datas.length; i++) {
+            // 获取到每个datas[i].score属性值
+            // 并 +=  赋值给 sum
+            sum += datas[i].score;
+
+            //平均值 =  sum / datas.length 
+            averNum = sum / datas.length;
+        }
+
+        // 将获取的平均值赋值给 ，averTds的第三个td
+        averTds[2].innerHTML = averNum;
+
+        // 在对象的属性里获取成绩并计算的方法有缺陷
+        // 因为当点击删除按钮后，只删除了所在行，但是对象还存在，里面的成绩也还存在
+        // 所以当点击删除后，平均值不会发生变化
+        // 个人认为最好的获取节点应该是在 对应的td.innerHTML
+        // 不过暂时没有想到 获取的方法
+
+
+        // for(var k in obj)
+        // {
+        //     k 得到的是属性名
+        //     obj[k] 得到的是属性值
+        // }
+
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        console.log(3 >= 5); // false
+        console.log(2 <= 4); // true
+        // 1. 程序里等于号是 == 
+        console.log(2 == 2); // true
+        // ==默认转换数据类型 会把字符串型数据转换为数字型
+        console.log(2 == '2'); // true
+
+        console.log('----test----');
+        var str = '2'
+        console.log(2 == str);  // true
+        console.log(isNaN(str)); // false
+        console.log(typeof str);  // string
+        console.log('----test----');
+
+        // 2. 不等于号 !=
+        console.log(2 != 2); //false
+
+        // 3. 全等 === 两侧的值和数据类型必须完全一样
+        console.log(18 === 18); // true
+        console.log(18 === '18');  //false
+        // 4. 不全等 !==  
+        console.log(18 !== 18); // false
+        console.log(18 !== '18'); // true
+
+        // 案例
+        console.log('----案例----');
+        var num1 = 10, num2 = 100, res1 = num1 > num2, res2 = num1 == 11, res3 = num1 != num2;
+        console.log(res1); // false
+        console.log(res2); // false
+        console.log(res3); // true
+        console.log('----案例----');
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

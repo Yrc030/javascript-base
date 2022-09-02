@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1. arguments 的使用 ，只有函数才有arguments对象，而且每个函数都内置了arguments
+        function fn() {
+            console.log(arguments); // 里面存储了所有传递过来的实参
+        }
+        var re = fn(1, 2, 3);
+
+
+        // 2. 伪数组 并不是真正意义上的数组
+        // 1） 具有length属性
+        // 2) 按照索引的方式进行存储的
+        function fn1() {
+            console.log(arguments.length); // 4
+            console.log(arguments[0])  // 1
+            for (i = 0; i < arguments.length; i++) {
+                console.log(arguments[i]); // 遍历arguments
+            }
+        }
+        fn1(1, 2, 3, 4, 5);
+
+        // 3) 没有真正数组的一些方法pop() push()等
+
+
+        // 案例1 利用函数求任意个数的最大值
+        console.log('----案例1----');
+        function getNumMax() {
+            var max = arguments[0];
+            for (var i = 1; i < arguments.length; i++) {
+                if (arguments[i] > max) {
+                    max = arguments[i];
+                }
+            }
+            return max;
+        }
+        var res = getNumMax(1, 2, 3, 4, 5, 6, 9);
+        console.log('最大值为' + res);
+
+        // 案例2 利用函数翻转任意一个数组
+        console.log('----案例2----');
+
+        /*         function reverse(arr) { // reverse  v.颠倒; 彻底转变; 使完全相反
+                    var newArr = [];
+                    for (var i = arr.length - 1; i >= 0; i--) {
+                        newArr[newArr.length] = arr[i];
+                    }
+                    return newArr;
+                }
+        
+                function input() {
+                    var arr = [];
+                    do {
+                        var temp = prompt('请输入参数\n"+"确认');
+                        if (temp === '+') {
+                            break;
+                        } else {
+                            arr[arr.length] = temp;
+                        }
+                    } while (temp !== '+')
+                    var re = reverse(arr);
+                    return re;
+                }
+                var res = input();
+                console.log(res); */
+
+
+
+        // 案例3 利用函数 冒泡排序
+        /* console.log('----案例3----');
+        function sort(arr) {  // sort 排序
+
+            for (var i = 0; i < arr.length - 1; i++) {
+                for (var j = 0; j < arr.length - i - 1; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        let temp1 = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp1;
+                    }
+                }
+            }
+            return arr;
+        }
+        let arr1 = [];
+        do {
+            var temp = prompt('请输入参数\n键入"+"确认');
+            if (temp === '+') {
+                break;
+            } else {
+                arr1[arr1.length] = temp;
+            }
+        } while (temp !== '+')
+        var re = sort(arr1);
+        console.log(re); */
+
+        // 案例4 判断闰年
+        /* function isLeapYear(year) {
+            let flag = false;
+            // 判断是否为闰年，能被4整除并且不能被100整除，或者能被400整除
+            if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+                flag = true;
+            }
+            return flag;
+        }
+        var res = isLeapYear(parseInt(prompt('请输入年份')));
+        alert(res); */
+
+        // 案例5 函数可以调用另一个函数
+        function fn1() {
+            console.log(11);
+            fn2(); // 在 fn1函数 里调用了 fn2函数
+            console.log(22);
+        }
+
+        function fn2() {
+            console.log(33);
+            console.log(44);
+        }
+
+        fn1();
+        // 执行顺序
+        // 1. 执行 调用函数fn1();
+        // 2. 执行 fn1函数 log(11);
+        // 3. 执行 调用函数fn2();
+        // 4. 执行 fn2函数 log(33);
+        // 5. 执行fn2函数体 log(44);
+        // 6. 执行fn1函数体 log(22);
+        // 输出结果顺序为 11 33 44 22
+
+        // 案例6. 输入年月，输出当年二月份的天数
+
+        function backDay() {
+            var year = prompt('请输入年份');
+            if (isLeapYear(year)) {
+                // 这里用isLeapYear调用了下面的函数，并把year的值传给形参使用
+                // 注意 if(true) 会执行{}里的语句, 
+                // 所以当flag = ture 那么 isLeapYear = ture (上面return flag了), 并执行后面{}的语句， 
+                // 如果为false则执行else里面的语句。
+                alert('当年年份是闰年2月份29天');
+            } else {
+                alert('当年年份是平年2月份28天')
+            }
+        }
+        backDay();
+
+        function isLeapYear(year) {
+            var flag = false;
+            if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+                flag = true;
+            }
+            return flag;
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

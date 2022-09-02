@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1. 基本包装类型
+        var str = 'andy';
+        console.log((str.length));
+        // 对象(复杂数据类型)才有属性和方法
+        // 简单数据类型为什么会有length属性？
+        // 基本包装类型： 将简单数据类型 包装成 复杂数据类型,这样基本数据类型就有了属性和方法
+        // (1) 把简单数据类型包装为复杂数据类型
+        var temp = new String('andy');
+        // (2) 把临时变量的值 给 str
+        str = temp;
+        // (3) 销毁这个临时变量
+        temp = null;
+
+        // 2. 字符串的不可变性
+        var str1 = 'andy';
+        console.log(str1);
+        var str1 = 'red'
+        console.log(str1);
+        // 字符串里的字是不可变的，看上去内容发生该变，实际上是内存新开辟了一块空间存入了'red',并将变量str1 指向 新开辟的内存空间， 旧的值依然存在
+        // 因为字符串的不可变，所以不要大量拼接字符串(如下)
+        // let string = '';
+        // for (let i = 1; i <= 1000000000; i++) {
+        //     string += i;
+        // }  // 需要开辟1000000000的空间会导致浏览器卡死
+        // console.log(string);
+
+        // 3. 根据字符返回位置
+        // (1) String.indexOf('要查找的字符 ',[起始位置]) 找不到返回-1，开始位置是index号
+        var str2 = '改革春风吹满地,春天来了';
+        console.log(str2.indexOf('春')); // 2
+        console.log(str2.indexOf('春', 3)); // 8,从索引3开始往后查找
+        console.log(str2.indexOf('春', 9)); // -1, 索引9后面不存在'春' 因此返回-1;
+
+        // (2) String.lastIndexOf('要查找的字符 ', [起始位置]  从后往前，返回的索引号不会颠倒顺序
+        console.log(str2.lastIndexOf('春')); // 8
+        console.log(str2.lastIndexOf('春', 7)); // 2 从索引7 开始往前查找
+        console.log(str2.lastIndexOf('春天', 1)); // -1 索引1之前没有'春'
+
+        //案例1 查找字符串'abcoefoxyozzopp' 中所有o出现的位置及次数
+        console.log('----案例1----');
+        function searchStr(str, elm) {
+            var posit = [];
+            // 创建数组，用于存放指定元素在字符串中的位置
+            var idx = str.indexOf(elm);
+            // 创建idx变量，存储indexOf查找到指定元素的一个索引
+            while (idx !== -1) {
+                // 利用while循环，只要idx !== -1 也就是指定元素还存在于字符串中，就继续循环
+                posit.push(idx);
+                // 将idx接受到的索引，push进数组中
+                idx = str.indexOf(elm, idx + 1);
+                // 然后idx+1 继续下一个起点的查找
+            }
+            return posit;
+        }
+        var str = 'oabcoefoxyozzopp'
+        console.log(searchStr(str, 'o'));
+        console.log('o出现的次数为：' + searchStr(str, 'o').length);
+
+        // 案例2 ['red','blue','red','green','pink','red'], 求red出现的位置和次数 
+        console.log('----案例2----');
+        function repeated(arr, elm) {
+            var num = 0;
+            // 创建num变量用来统计指定元素出现的次数
+            var index = arr.indexOf(elm);
+            while (index !== -1) {
+                console.log(index);
+                num++;
+                // 每当indexOf的值仍然被查找到，num就加1
+                index = arr.indexOf(elm, index + 1);
+                // 下一次indexOf的起点为index + 1
+            }
+            return num;
+        }
+        var arr = ['red', 'blue', 'red', 'green', 'pink', 'red'];
+        var elm = 'red'
+        console.log(elm + '出现的次数为：' + repeated(arr, elm));
+
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

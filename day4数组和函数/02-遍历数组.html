@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1. 遍历 从头到尾访问一遍数组元素
+        var num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+        // num的length为10
+        for (var i = 0; i < num.length; i++) {
+            console.log(num[i]);
+        }
+        // 数组索引号从0开始，所以i也必须从0开始,i即使计数器也是索引号
+
+        // 2. 数组长度 数组名.length 可以访问数组元素的数量(数组长度)
+        console.log(num.length);  // 10
+        // 2.1 数组长度是元素的个数，不要跟索引号混淆
+        // 2.2 arr.length 动态坚持数组元素的个数
+
+        // 案例1 数组求和及平均值
+        console.log('----案例1----');
+        var numb = [2, 6, 1, 7, 4], sum = 0, average = 0;
+        for (var i = 0; i < numb.length; i++) {
+            sum += numb[i];
+            // 加的是数组元素numb[i],而不是计数器i
+        }
+        average = sum / numb.length;
+        console.log(sum, average);
+
+        // 案例2 访问数组最大值
+        console.log('----案例2----');
+        var arr = [2, 6, 1, 77, 52, 25, 80, -5, -7], max = arr[0];
+        for (var i = 1; i < arr.length; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+        }
+        console.log('该数组里的最大值是：' + max);
+
+        // 案例3 访问数组最小值
+        console.log('----案例3----');
+        var min = arr[0];
+        for (var i = 1; i < arr.length; i++) {
+            if (arr[i] < min) {
+                min = arr[i];
+            }
+        }
+        console.log('该数组里的最小值是：' + min);
+
+
+        // 案例4 数组转换为分隔字符串
+        console.log('----案例4----');
+        var arr1 = ['red', 'green', 'blue', 'pink'];
+        var str1 = '';
+        var separate = '|'
+        for (i = 0; i < arr1.length; i++) {
+            str1 += arr1[i] + separate;
+        }
+        console.log(str1);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

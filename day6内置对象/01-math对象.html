@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // Math数学对象 不是一个构造函数，所有不需要new来调用，而是直接使用里面的属性和方法即可
+        // 1. PI属性，求圆周率
+        console.log(Math.PI);
+        // 2. max属性，求最大值
+        console.log(Math.max(1, 2, 3, 4, 99)); //99
+        console.log(Math.max(-1, -10)); // -1
+        console.log(Math.max(-1, 99, 'max')); // NaN
+        console.log(Math.max()); // -Infinity
+        // 3. min属性, 求最小值
+        console.log(Math.min(-1, -10, 10, 1)); // -10
+        console.log(Math.min(-1, -10, 10, 'min')); // NaN
+        console.log(Math.min()); // Infinity
+
+        // 4. abs属性, 求绝对值
+        console.log(Math.abs(-10)) // 10
+        console.log(Math.abs('-10')) // 10 隐式转换
+        console.log(Math.abs('absolute')) // NaN
+        console.log(Math.abs()) // NaN
+
+        // 5. floor, 向下取整
+        console.log(Math.floor(2.13)); // 2
+        console.log(Math.floor(2.93)); // 2
+        console.log(Math.floor(-2.13)); // -3
+        console.log(Math.floor()); // NaN
+
+        // 6. ceil 向上取整
+        console.log(Math.ceil(2.13));  // 3
+        console.log(Math.ceil(-2.13));  // -2
+
+        // 7. round 四舍五入(就近取整) 
+        console.log(Math.round(2.3)); // 2
+        console.log(Math.round(2.7)); // 3
+        console.log(Math.round(2.5)); // 3
+        console.log(Math.round(-2.3)); // -2
+        console.log(Math.round(-2.7)); // -3
+        console.log(Math.round(-2.5)); // -2  .5 向上取
+
+        // 8. random() 返回随机浮点数 0 <= x < 1 ,random() 里面不加参数
+        // 1) 得到一个大于等于0，小于1之间的随机数  
+        console.log(Math.random()); //0.834751667625151
+
+        // 2) 得到一个两数之间的随机数 min <= x < max
+        // Math.random() * (max - min) + min;
+        console.log(Math.random() * (10 - 1) + 1); //-1.320251928897998
+
+
+        // 3) 得到一个两数之间的随机整数 min <= x < max x为整数， min为小数时，x会大于等于min的向上取整数
+        // Math.floor(Math.random() * (max - min)) + min;
+        console.log(Math.floor(Math.random() * (10 - 1) + 1));  // 9
+
+        // 4) 得到一个两数之间的随机整数，包括两个数在内
+        // Math.floor(Math.random() * (max - min + 1)) + min;
+        function getRandomInt(min, max) {
+            min = Math.ceil(min); // min值向上取整 1
+            max = Math.floor(max); // max向下取整 9
+            return Math.floor(Math.random() * (max - min + 1) + min); // 得到的随机浮点数向下取整
+        }
+        console.log(getRandomInt(0.1, 9.9));
+
+        // 案例1. 随机点名
+        console.log('----案例1----');
+
+        var arr = ['张三', '李四', '王五', '赵六', '刘七']
+
+        function getRandomName(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        console.log(arr[getRandomName(0, arr.length - 1)]);
+
+
+
+        // 案例2s  封装自己的数学对象
+        console.log('----案例2----');
+        var myMath = {
+            PI: 3.141592653,
+            max: function () {
+                var max = arguments[0];
+                for (var i = 1; i < arguments.length; i++) {
+                    if (max < arguments[i]) {
+                        max = arguments[i]
+                    }
+                }
+                return max;
+            },
+            min: function () {
+                var min = arguments[0];
+                for (var i = 1; i < arguments.length; i++) {
+                    if (min > arguments[i]) {
+                        min = arguments[i];
+                    }
+                    return min;
+                }
+            }
+        };
+        console.log(myMath.PI);
+        console.log(myMath.max(1, 5, 9));
+        console.log(myMath.min(1, 5, 9));
+
+        // 案例3 猜数字游戏 1-50只有10次机会
+        console.log('----案例3----');
+
+        function getRandomNum(min, max) {
+            var randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+            for (var i = 0; i < 10; i++) {
+                var num = prompt('随机输入一个数字');
+                if (num < randomNum) {
+                    alert('小了继续猜');
+                } else if (num > randomNum) {
+                    alert('大了继续猜')
+                } else {
+                    alert('猜对了数字是' + num);
+                    break;
+                }
+            }
+        }
+        getRandomNum(1, 10);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

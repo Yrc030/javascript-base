@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1. str.concat(str2, [, ...strN]) 方法将一个或多个字符串与原字符串连接合并，形成一个新的字符串并返回。不影响原字符串。
+        // 如果参数不是字符串内省，它们在链接之前将被转换成字符串
+        // 实际开发用 + 连接字符串
+
+        // 连接字符串
+        let hello = 'Hello'
+        console.log(hello.concat(' World'));
+        // Hello World
+
+        // 连接对象
+        let obj = {
+            name: 'joker',
+        }
+        console.log(hello.concat(obj));
+        // Hello[object Object]
+
+        // 连接数组
+        let arr = [1, 2, 3, 4, 5]
+        console.log(hello.concat(arr));
+        // Hello1, 2, 3, 4, 5
+
+        // 连接数字
+        console.log(hello.concat(1, 2, 3, 4, 5));
+        // Hello12345
+
+        // 3. str.substring(indexStart[, indexEnd])
+        // substring() 方法返回一个字符串在开始索引到结束索引之间的一个子集, 或从开始索引直到字符串的末尾的一个子集。
+        // indexStart 需要截取的第一个字符的索引，该索引位置的字符作为返回的字符串的首字母。
+        // indexEnd 可选。一个 0 到字符串长度之间的整数，以该数字为索引的字符不包含在截取的字符串内。
+        var str = 'abcdefghij'
+        console.log(str.substring(0, 3))
+        // abc 
+
+        console.log(str.substring(3, 0));
+        // abc indexStart > indexEnd 会调换参数位置执行，因此结果与上面一致
+
+        console.log(str.substring(3, -3));
+        console.log(str.substring(NaN, 3));
+        // abc if 任一参数 < 0 || NaN ,then 任一参数 == 0
+
+        console.log(str.substring(1, 1));
+        // ''  If indexStart is equal to indexEnd, substring() returns an empty string.
+
+        console.log(str.substring(4));
+        // efghij  If indexEnd is omitted, substring() extracts characters to the end of the string.
+
+        // 2. str.substr(start[, length]) 方法返回一个字符串中从指定位置开始到指定字符数的字符。(可能被废除)
+        // start 开始提取字符的位置。如果为负值，则被看作 strLength + start
+        // length 可选,提取的字符数。如果 length 为 0 或负值，则 substr 返回一个空字符串。如果忽略 length，则 substr 提取字符，直到字符串末尾。
+        var str = "abcdefghij";
+        console.log("(1,2): " + str.substr(1, 2));
+        // (1,2): bc
+        console.log("(-3,2): " + str.substr(-3, 2));
+        // (-3,2): hi
+        console.log("(-3): " + str.substr(-3));
+        // (-3): hij
+        console.log("(1): " + str.substr(1));
+        // (1): bcdefghij
+        console.log("(-20, 2): " + str.substr(-20, 2));
+        // (-20, 2): ab
+        console.log("(20, 2): " + str.substr(20, 2));
+        // (20, 2):
+
+
+
+
+
+
+
+        // 4. str.slice(beginIndex[, endIndex]) 方法提取某个字符串的一部分，并返回一个新的字符串，且不会改动原字符串。
+
+        // beginIndex 从该索引（以 0 为基数）处开始提取原字符串中的字符。如果值为负数，会被当做 strLength + beginIndex 看待。
+
+        // endIndex 可选。在该索引（以 0 为基数）处结束提取字符串。如果省略该参数，slice() 会一直提取到字符串末尾。如果该参数为负数，则被看作是 strLength + endIndex。
+
+        // slice() 提取的新字符串包括beginIndex但不包括 endIndex。
+        let newStr = '改革春风吹满地，中国人民真争气';
+        console.log(newStr.slice(2, 4));
+        // 春风  从索引2开始,到4结束不包含4
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

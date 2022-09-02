@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 根据位置返回字符(重点)
+        // 1. charAt(index) 方法从一个字符串中返回指定的字符，从左向右索引， ()为空默认使用0
+        var anyString = "Brave new world";
+        console.log(anyString.charAt(0)); // B
+        console.log(anyString.charAt(5)); // '' 空格计入索引
+        console.log(anyString.charAt(6)); // n
+
+        // 遍历字符串
+        console.log('----遍历字符串----');
+        for (var i = 0; i < anyString.length; i++) {
+            console.log(anyString.charAt(i));
+        }
+
+        // 2. charCodeAt() 方法返回相应索引号字符的ASCII值, 判断用户按下了哪个键
+        // str.charCodeAt(index)
+        console.log(anyString.charCodeAt(0));
+        // 66  B 对应的ASCII码值
+        console.log(anyString.charCodeAt(2));
+        // 97  a 对应的ASCII码值
+
+        // 3. str[index] 获取指定位置处字符， H5新增，IE8+支持，与charAt()等效
+        console.log(anyString[0]); // B
+        console.log(anyString[3]); // v
+
+        // 案例1 判断一个字符串'abcoefoxyozzopp'中出现次数最多的字符，并统计其次数
+        console.log('----案例1----');
+        // 核心算法： 利用charAt 遍历字符串
+        // 把每个字符串都存储给对象，如果对象没有该属性，就为1，如果存在了就+1
+        // 遍历对象，得到最大值和该字符
+        function mostChar(str) {
+            var o = {};
+            // 创建空对象，用来储存字符
+            for (var i = 0; i < str.length; i++) {
+                // 通过for循环来遍历字符串
+                var chars = str.charAt(i);
+                // 利用charAt[i] 来遍历获取字符串每个字符并存入chars
+                if (o[chars]) {
+                    // 如果对象o里存在这个属性，就将对应属性的值+1;
+                    o[chars]++;
+                } else {
+                    o[chars] = 1;
+                    // 如果对象o里不存在这个属性，则将属性添加进对象中并赋值为1
+                }
+            }
+
+            // 利用for in 循环遍历对象
+            var max = 0; // max 存储属性最大值
+            var chr = '';// chr 存储最大值的属性名
+            for (var k in o) {
+                if (o[k] > max) {
+                    // k    得到属性名
+                    // o[k] 得到属性值
+                    max = o[k];
+                    // 通过for循环遍历属性值，最大值存入max
+                    chr = k;
+                    // 最大值所对应的k就是最大值的属性名，存入chr
+                }
+            }
+            var arr = [chr, max]
+            return arr;
+        }
+        var str = 'abcoefoxyozzopp';
+        console.log(mostChar(str));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

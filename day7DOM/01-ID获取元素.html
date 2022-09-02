@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="time">2021-5-18</div>
+
+
+    <script>
+        //  根据 ID获取 
+        //  document.getElementById(id) 返回一个匹配特定 ID的元素.
+        // 1. element是一个 Element 对象。如果当前文档中拥有特定ID的元素不存在则返回null.
+        // 2. id是大小写敏感的**字符串**，代表了所要查找的元素的唯一ID.
+        // 3. 返回匹配到 ID 的 DOM Element 对象
+        var elem = document.getElementById('time')
+        console.log(elem);  // <div id="time">2021-5-18</div>
+        console.log(typeof elem);  // object，
+        // 4. console.dir 在控制台中显示指定JavaScript对象的属性，并通过类似文件树样式的交互列表显示。
+        console.dir(elem);
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .box {
+            width: 180px;
+            height: 240px;
+            margin: 100px auto;
+            background-color: #e73732;
+            text-align: center;
+            padding-top: 40px;
+            cursor: pointer;
+        }
+
+        .title {
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+
+
+        .letter {
+            font-size: 18px;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, .5);
+        }
+
+        .end {
+            font-size: 14px;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            margin-left: 30px;
+            list-style: none;
+        }
+
+
+
+        ul li {
+            position: relative;
+            float: left;
+            width: 37px;
+            height: 37px;
+            margin-right: 5px;
+            font-size: 22px;
+            text-align: center;
+            line-height: 37px;
+            color: #fff;
+            background-color: #31322d;
+        }
+
+        li::after {
+            position: absolute;
+            top: 18px;
+            left: 0;
+            width: 100%;
+            content: '';
+            border-top: 2px solid #e73732;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="title">京东秒杀</div>
+        <div class="letter">FLASH DEALS</div>
+        <div class="end">本场距离结束还剩</div>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <script>
+        let ul = document.querySelector('ul');
+        let box = document.querySelector('.box');
+        let end = document.querySelector('.end');
+        box.addEventListener('selectstart', function (e) {
+            e.preventDefault();
+        })
+        countDown();//先调用一次函数，避免刷新会出现1s的间隔等待
+        setInterval(countDown, 1000);
+        function countDown() {
+            let date = +new Date();
+            let date1 = +new Date('2021-5-28 16:00:00');
+            let fullSec = (date1 - date) / 1000;
+            if (fullSec < 0) {
+                fullSec = 0 - fullSec;
+                let d = Math.floor(fullSec / 60 / 60 / 24);
+                d = d < 10 ? "0" + d : d;
+                end.innerHTML = '本场秒杀已过' + d + '天';
+            }
+            let s = Math.floor(fullSec % 60);
+            s = s < 10 ? '0' + s : s;
+            let m = Math.floor(fullSec / 60 % 60);
+            m = m < 10 ? '0' + m : m;
+            let h = Math.floor(fullSec / 60 / 60 % 24);
+            h = h < 10 ? '0' + h : h;
+            ul.children[0].innerHTML = h;
+            ul.children[1].innerHTML = m;
+            ul.children[2].innerHTML = s;
+        }
+
+
+
+    </script>
+</body>
+
+</html>

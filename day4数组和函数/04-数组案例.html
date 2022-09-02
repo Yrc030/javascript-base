@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 案例1 删除指定数组元素
+        // 方法1 筛选不等于10的元素并添加到新数组
+        console.log('----案例1----');
+        var arr = ['2', '0', '6', '1', '77', '0', '52', '0', '25', '7'], newArr = [];
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] !== '0') {
+                newArr[newArr.length] = arr[i];
+            }
+        }
+        console.log(newArr);
+
+        // 方法2 筛选等于10的元素，把剩下的元素添加到新数组
+        var newArr1 = [];
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] === '0') {
+                continue;
+            } else {
+                newArr1[newArr1.length] = arr[i];
+            }
+        }
+        console.log(newArr1);
+
+        // 案例2 翻转数组
+        console.log('----案例2----');
+
+        // 方法1 (自己想出来的)
+        var arr1 = [1, 2, 3, 4, 5];
+        var newArr2 = [];
+        for (var i = arr1.length; i > 0; i--) {
+            newArr2[newArr2.length] = arr1[i - 1];
+        }
+        console.log(newArr2); // (5) [5, 4, 3, 2, 1]
+
+        // 方法2  (案例答案)
+        var newArr3 = [];
+        for (var i = arr1.length - 1; i >= 0; i--) {
+            newArr3[newArr3.length] = arr1[i];
+        }
+        console.log(newArr3); // (5) [5, 4, 3, 2, 1]
+
+        // 案例3. 冒泡排序
+        // 冒泡排序，是一种算法，把一系列的数据按照一定的顺序进行排列显示(从小打到或从大到小)。
+        console.log('----案例3----');
+        // 方法1 (自己做的)
+        var arr2 = [5, 4, 3, 2, 1, 10, 60, 80, 20, 7, 6, 9, 33, 22, 77, 44, 92];
+        var temp = 0; // 声明变量用来交换数据
+        for (var i = 0; i < arr2.length; i++) {
+
+            for (var j = 0; j < arr2.length; j++) {  // 内循环负责控制每趟交换的次数
+                if (arr2[j] > arr2[j + 1]) {
+                    temp = arr2[j];
+                    arr2[j] = arr2[j + 1];
+                    arr2[j + 1] = temp;
+                }
+            }
+        }
+        console.log(arr2);
+        // 方法2 (案例答案，更简洁)
+        var arr3 = [3, 2, 4, 5, 1, 10, 60, 80, 20, 7, 6, 9, 33, 22, 77, 44, 92];
+        var temp1 = 0;
+        for (var i = 0; i < arr3.length - 1; i++) {
+            // 外循环负责控制交换的趟数， 有多少个元素就需要走length - 1 趟，因为每一趟都会把最大的元素放在最右边，最后一趟把第二小的元素放在左数第二个位置，那么最左边自然是最小的元素
+            for (var j = 0; j < arr3.length - i - 1; j++) {
+                // 内循环负责控制每趟交换的次数，每趟的次数为length - i - 1; 同样因为每一趟都会把最大的元素放在最右边，所以下一趟无须对比上一趟所确定位置的最大元素，那么每一趟循环次数都可以减1次，而随着i的不断递增，每一趟的循环的次数也不断递减 
+                if (arr3[j] > arr3[j + 1]) {   // 如果前一个元素大于后一个元素则互相交换位置，每一趟都会将本趟最大的元素移至数组的最右侧
+                    temp = arr3[j];
+                    arr3[j] = arr3[j + 1];
+                    arr3[j + 1] = temp;
+                }
+            }
+        }
+        console.log(arr3);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

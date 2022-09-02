@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            position: relative;
+            width: 400px;
+            margin: 100px auto;
+        }
+
+        input {
+            outline: none;
+            font-size: 12px;
+            height: 20px;
+        }
+
+        .eye {
+            position: absolute;
+            top: -2px;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+
+        .open {
+            background: url(images/open.png);
+            background-size: contain;
+        }
+
+        .close {
+            background: url(images/close.png);
+            background-size: contain;
+        }
+
+        .focuson {
+            border: 1px solid pink;
+            color: #333;
+        }
+
+        .bluron {
+            color: #999;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="text" id="input" value="邮箱/ID/手机号" class="bluron">
+        <input type="text" id="pwd" value="密码" class="bluron">
+        <label class="eye"></label>
+    </div>
+
+    <script>
+        var input = document.getElementById('input');
+        var pwd = document.getElementById('pwd');
+        var btn = document.querySelector('label');
+        var flag = 0;
+        input.onfocus = function () {
+            this.value = '';
+            this.className = 'focuson';
+
+        }
+        input.onblur = function () {
+            this.className = 'bluron';
+            if (this.value === '') {
+                this.value = '邮箱/ID/手机号';
+            }
+        }
+
+        pwd.onfocus = function () {
+            this.type = 'password';
+            this.value = '';
+            this.className = 'focuson';
+            btn.className = 'eye close';
+        }
+
+        pwd.onblur = function () {
+            this.className = 'bluron';
+            if (this.value === '') {
+                this.value = '密码';
+            }
+        }
+
+        btn.onclick = function () {
+            if (flag == 0) {
+                this.className = 'eye open';
+                pwd.type = 'text';
+                flag = 1;
+            } else {
+                this.className = 'eye close';
+                pwd.type = 'password';
+                flag = 0;
+            }
+        }
+
+    </script>
+</body>
+
+</html>

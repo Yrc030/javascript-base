@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>x
+    <div></div>
+
+    <script>
+        // client系列相关属性可以获取元素可视区的相关信息。通过client系列的相关属性可以动态的得到该元素的边框大小、元素大小等。
+        // clientWidth/Height 与offsetWidth/Height 的区别在于client返回值不包含边框，offset返回值包含边框
+        var div = document.querySelector('div');
+
+        // element.clientTop 返回元素上边框的大小
+        console.log(div.clientTop);     // 1
+        // element.clientLeft 返回元素左边框的大小
+        console.log(div.clientLeft);    // 1
+        // element.clientWidth 返回自身包括padding、内容区的宽度，不含边框，返回数值不带单位
+        console.log(div.clientWidth);   // 200
+        // element.clientHeight 返回自身包括padding、内容区的高度，不含边框，返回数值不带单位
+        console.log(div.clientHeight);  // 200
+
+
+    </script>
+</body>
+
+</html>

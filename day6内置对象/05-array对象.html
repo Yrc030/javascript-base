@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1. 数组的创建方式
+        // (1) 字面量方式
+        var arr = [20, 55, 3, 44, 578, 78, 67, 8, 9];
+        console.log(arr[0]);
+
+        // (2) new Array()
+        // var arr1= new Array();
+        // 创建了一个空数组
+
+        // var arr1 = new Array(2); 
+        // 创建了一个长度为2的空数组
+
+        // var arr1 = new Array(2, 3) 
+        // 创建了一个由[2,3]组成的数组
+
+
+        // 2. 检测参数是否为数组
+        // (1) instanceof  运算符 可以用来检测是否为数组
+        var arr1 = [];
+        console.log(arr instanceof Array);
+        // 是数组  返回  true
+        var obj = {};
+        console.log(obj instanceof Array);
+        // 不是数组 返回 false
+
+        // (2) Array.isArray() H5新增方法，IE9以上版本支持
+        console.log(Array.isArray(arr1)); // true
+        console.log(Array.isArray(obj));  // false
+
+        // 翻转数组判断是否为数组
+        function reverse(arr) {
+            // if (arr instanceof Array) {
+            if (Array.isArray(arr)) {
+                var newArr = [];
+                for (var i = arr.length - 1; i >= 0; i--) {
+                    newArr[newArr.length] = arr[i];
+                }
+                return newArr;
+            } else {
+                return 'error 请输入数组格式 [a,b,c]';
+            }
+        }
+        console.log(reverse(arr));
+
+
+        // 3. 添加删除数组元素
+
+        // (1) push()  在数组的末尾，添加一个或多个数组元素
+        var arr2 = [1, 2, 3];
+        arr2.push(4);
+        console.log(arr2);  // (4) [1, 2, 3, 4]
+
+        arr2.push(5, 'pink');
+        console.log(arr2);  // (6) [1, 2, 3, 4, 5, "pink"]
+
+        // push()处理完毕后，返回的结果是新数组的长度
+        console.log(arr2.push(6, 7)); // 8
+
+        // 原数组也会发生变化
+        console.log(arr2); // (8) [1, 2, 3, 4, 5, "pink", 6, 7]
+
+        // (2) unshift() 在数组的开头，添加一个或多个数组元素
+        arr2.unshift('red', 'purple');
+        console.log(arr2);
+        // ["red", "purple", 1, 2, 3, 4, 5, "pink", 6, 7]
+        // unshift() 处理完毕后，返回的结果是新数组的长度
+        // 原数组也会发生变化
+
+        // (3) pop()  删除数组的最后一个元素
+        arr2.pop(); // pop()里不跟参数，直接删除最后一个元素
+        console.log(arr2);  // 一次只能删除一个
+        // ["red", "purple", 1, 2, 3, 4, 5, "pink", 6]
+
+        // 返回值是被删除的元素
+        console.log(arr2.pop());  // 6
+        // 原数组也会发生变化
+
+        // (4) shift() 删除数组的第一个元素
+        arr2.shift(); // shift()同样不跟参数,直接删除第一个元素
+        console.log(arr2); // 一次只能删除一个
+        // ["purple", 1, 2, 3, 4, 5, "pink"]
+
+        // 返回值是被删除的元素
+        console.log(arr2.shift()); // purple
+        // 原数组也会发生变化
+
+        // 案例1 筛选数组 把大于2000的值删除，剩余的放到新数组里
+        console.log('----案例1----');
+        function screenArr(array) {
+            var newArray = [];
+            for (var i = 0; i < array.length; i++) {
+                if (array[i] < 2000) {
+                    newArray.push(array[i]);
+                    // 将小于2000的值，追加到newArray的尾部
+                } else {
+                    array[i] = array[array.length - 1];
+                    array.pop();
+                    //当array[i] > 2000 的时，将array[array.length - 1]的赋值给array[i]，等于将 > 2000的值覆盖，并删除末尾重复的值。
+                    // 注意：
+                    // array[i] = array[0];
+                    // array.shift();
+                    // 不能使用上面得方法 
+                    // 因为当array[i] > 2000 时，将array[0]赋值给array[i]，并删除array[0]，会导致数组内值的索引号全部进1，从而使得循环会跳过下一个值。
+                }
+
+            }
+            return array;
+        }
+        var array = [1500, 1200, 2000, 2100, 1800]
+        console.log(screenArr(array));
+
+        // 案例2 颠倒数组
+        console.log('----案例2----');
+        function reverse(array) {
+            var newArray = [];
+            for (i = array.length - 1; i >= 0; i--) {
+                newArray.push(array[i]);
+            }
+            return newArray;
+        }
+        var array1 = [2, 3, 5, 1, 4]
+        console.log(reverse(array1));
+
+        // 案例2 冒泡排序
+        console.log('----案例3----');
+
+        function bubbleSort(array) {
+            for (i = 0; i < array.length - 1; i++) {
+                for (j = 0; j < array.length - i - 1; j++) {
+                    if (array[j] > array[j + 1]) {
+                        var temp = 0;
+                        temp = array[j];
+                        array[j] = array[j + 1];
+                        array[j + 1] = temp;
+                    }
+                }
+            }
+            return array;
+        }
+        console.log(bubbleSort(array1));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

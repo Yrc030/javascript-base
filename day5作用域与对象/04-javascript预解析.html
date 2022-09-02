@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 预解析
+        // 问题1 ：下面结果是？
+        // console.log(num);
+        // Uncaught ReferenceError: num is not defined
+
+
+
+        // 问题2：下面结果是？
+        console.log(num); // undefined
+        var num = 10;
+
+        // 相当于执行了以下代码
+        // 1. 变量提升，不赋值;
+        var num1;
+        // 2. 输出num1到控制台
+        console.log(num1);
+        // 3. 赋值
+        num = 10;
+        // 因此第一行的输出结果为 undefined
+
+
+
+        // 问题3：函数调用的位置会影响调用吗？？
+        fn();
+        function fn() {
+            console.log(11);
+        }
+        // 命名函数不会
+
+
+        /* fun();
+        var fun = function () {
+            console.log(22); // Uncaught TypeError: fun is not a function
+        }
+        // 匿名函数放在声明变量前 无法调用函数，因为函数还为被创建 */
+        // 相当于执行了以下代码
+        // 1. 变量提升，不赋值
+        // var fun;
+        // 2. 调用函数
+        // fun();
+        // 3. 赋值
+        // fun = function () {
+        //     console.log(22);
+        // }
+        // 因此上面fun();在调用函数时报错
+
+
+        // 1. js解析器运行js代码分为两步：预解析 和 代码执行
+        // 1） 预解析  js解析器会把所有的  var 和 function 提升到作用域的最前面
+        // 2）代码执行 按照代码书写的顺序从上往下执行
+
+        // 2. 预解析分为 变量预解析(变量提升) 和 函数预解析(函数提升)
+        // 1) 变量提升 变量的声明会被提升到当前作用域的最上面，变量的赋值不会提升。
+        // 2) 函数提升 函数的声明会被提升到当前作用域的最上面，但是不会调用函数。
+
+        // 案例1 
+        console.log('----案例1----');
+
+        var num = 10;
+        fun();
+        function fun() {
+            console.log(num);
+            var num = 20; // undefiend
+        }
+
+        // 相当于执行了以下操作
+        // var num;
+        // function fun() {
+        //     var num;
+        //     console.log(num);
+        //     num = 20;     // undefiend
+        // }
+        // num = 10;
+        // fun();
+
+        // 案例2 
+        console.log('----案例2----');
+        var num = 10;
+        function fn() {
+            console.log(num); // undefiend
+            var num = 20;
+            console.log(num); // 20
+        }
+        fn();
+
+        // 案例3
+        // console.log('----案例3----');
+        // var a = 10;
+        // f1();
+        // function f1() {
+        //     var b = 9;
+        //     console.log(a); // undefined
+        //     console.log(b); // 9
+        //     var a = '123';
+        // }
+
+        // 案例4 
+        console.log('----案例4----');
+        f1();
+        console.log(c); // 9
+        console.log(b); // 9
+        console.log(a); // a is not defined
+        function f1() {
+            var a = b = c = 9;
+            // b 和 c 是全局变量
+            // 集体声明
+            // var a = 9, b = 9, c = 9
+            // 这样声明a b c都是局部变量 
+            console.log(a); // 9
+            console.log(b); // 9
+            console.log(c); // 9
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

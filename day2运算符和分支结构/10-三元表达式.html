@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //1. 三元表达式符号 ? :
+        //2. 语法结构
+        //3. 条件表达式?  表达式1 : 表达式2
+        //4. 执行思路
+        //1) 条件表达式为真，返回表达式1的值
+        //2) 条件表达式为假，返回表达式2的值
+        //5.代码体验
+        let num = 10;
+        var result = num > 5 ? '是的' : '不是的'
+        console.log(result); // 是的
+
+        // 等价于下面的if else语句，可以理解为简化版的if else语句
+        if (num > 5) {
+            result1 = '是的'
+        } else {
+            result1 = '不是的'
+        }
+        console.log(result1);
+
+        //数字补0 案例
+        let num1 = prompt('请输入数值');
+        let addition = num1 < 10 ? '0' + num1 : num1;
+        alert(addition);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

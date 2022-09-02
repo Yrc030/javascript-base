@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" style="height: 300px;"></div>
+    <script>
+        // offset 与 style 的区别
+        let box = document.querySelector('.box');
+        // offset 可以获取任何位置的样式值(行内、内嵌、外部)
+        // offset 获得的样式值不带单位
+        // offsetWidth/Height 包含padding/border/width;
+        // offset 只读属性
+        // 获取元素用offset 更合适
+        console.log(box.offsetWidth);
+        // 200 
+        console.log(box.offsetHeight);
+        // 加了padding后 320
+
+
+
+        // style 只能获取行内样式表中的样式值
+        // style 获取的样式值带单位
+        // style.Width/Height 不包含padding/border/width;
+        // style 读写属性
+        // 改变元素的值用style 更合适
+        console.log(box.style.width); // 没有返回值
+        console.log(box.style.height);
+        // 200px
+    // 加了padding后依然时300px
+    </script>
+</body>
+
+</html>

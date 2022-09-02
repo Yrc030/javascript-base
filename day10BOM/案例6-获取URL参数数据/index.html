@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div>尊敬的: <span></span> 欢迎登录</div>
+
+    <script>
+        // 通过location.search 拿到获取参数;
+        console.log(location.search);
+        // ?uname=123
+
+        // 获得的参数是字符串类型的
+        console.log(typeof (location.search));
+        // string
+
+        // 1. 通过substring(start,[end]) 方法截取字符串
+        var params = location.search.substring(1);
+        console.log(params); // uname=123
+
+        // 2. 通过split('分隔符')方法获取到login.html里input的value值，也就是用户输入的内容;
+        // split() 方法是将字符串的字符 按照指定的分隔符作为断点，分隔每个字符放入到数组中;
+        var arr = params.split('=');
+        console.log(arr); // (2) ["uname", "123"]
+
+
+        // 3. 通过数组索引号的方式将值赋给本页面的span.innerHTML
+        var span = document.querySelector('span');
+        span.innerHTML = arr[1];
+    </script>
+</body>
+
+</html>

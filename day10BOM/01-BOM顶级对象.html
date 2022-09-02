@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // 1. window 对象是浏览器的顶级对象
+        // 完整的调用方法
+        // window.document.querySelector() // window之前被省略了
+
+
+        // 2. 它是JS 访问浏览器窗口的一个借口
+
+        // 3. 它是一个全局对象。定义在全局作用域中的变量、函数都会变成window对象的属性和方法
+        // 全局变量会变成window对象中的属性
+        var num = 10; // 全局变量
+        // 完整的调用方法 
+        console.log(num);
+        console.log(window.num);
+
+        // 函数会变成window对象的方法
+        function fn() {
+            console.log(11);
+        }
+
+        fn(); // 11
+        window.fn(); // 11
+
+        // 4. 在调用时一般省略window
+        // alert() prompt(); 都属于window对象的方法
+        // 完整写法
+        window.alert(11);
+        window.prompt();
+
+        // 5. name是window下的一个特殊属性，不能用作变量名
+        console.log(window.name);
+
+    </script>
+</body>
+
+</html>

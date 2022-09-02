@@ -1,0 +1,175 @@
+.w {
+    width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* header模块start */
+header {
+    height: 84px;
+    border-bottom: 2px solid #b1191a;
+    line-height: 82px;
+    text-align: left;
+}
+
+header .logo {
+    display: block;
+}
+
+/* header模块end */
+
+/* registerarea模块start */
+.registerarea {
+    height: 522px;
+    margin-top: 20px;
+    border: 1px solid #dfdfdf;
+}
+
+.registerarea h3 {
+    height: 42px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 42px;
+    color: #333333;
+    border-bottom: 1px solid #dfdfdf;
+    background-color: #ececec;
+    padding: 0 10px;
+}
+
+.registerarea h3 span {
+    float: right;
+    font-size: 14px;
+}
+
+.registerarea h3 span a {
+    color: #c81623;
+}
+
+.reg_form {
+    width: 600px;
+    margin: 50px auto 0;
+    color: #4c4c4c;
+}
+
+.reg_form ul li {
+    margin-bottom: 20px;
+}
+
+.reg_form ul li:nth-child(3),
+.reg_form ul li:nth-child(4) {
+    margin-bottom: 10px;
+}
+
+.reg_form ul li label {
+    display: inline-block;
+    width: 90px;
+    text-align: right;
+}
+
+.reg_form ul li:nth-child(-n+5) input {
+    width: 242px;
+    height: 37px;
+    margin: 0 5px;
+    border: 1px solid #999;
+}
+
+.error {
+    color: #df3033;
+}
+
+.error_icon {
+    background: url(../img/error.png) no-repeat;
+}
+
+.success {
+    color: green;
+}
+
+.success_icon {
+    background: url(../img/success.png) no-repeat;
+
+}
+
+.reg_form i[class$='icon'] {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    margin: -3px 5px 0 0;
+    vertical-align: middle;
+}
+
+.safe {
+    padding-left: 175px;
+}
+
+.safe em {
+    padding: 0 12px;
+}
+
+.safe .weak {
+    background-color: #de1111;
+}
+
+.safe .medium {
+    background-color: #40b83f;
+}
+
+.safe .strong {
+    background-color: #f79100;
+}
+
+.agree {
+    padding: 20px 0 40px 117px;
+}
+
+.agree input {
+    vertical-align: middle;
+    margin-top: -3px;
+}
+
+.agree a {
+    color: #1ba1e6;
+}
+
+.sub {
+    padding-left: 120px;
+}
+
+.sub input {
+    width: 200px;
+    height: 34px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 34px;
+    color: #fff;
+    background-color: #c81623;
+}
+
+/* registerarea模块end */
+
+/* footer模块start */
+.mod_copyright {
+    padding-top: 20px;
+    text-align: center;
+
+}
+
+.mod_copyright ul {
+    height: 12px;
+    width: 920px;
+    margin: 0 auto 10px;
+    line-height: 12px;
+}
+
+.mod_copyright ul li {
+    float: left;
+}
+
+.mod_copyright ul li:nth-child(even) {
+    width: 1px;
+    height: 12px;
+    background-color: #666;
+    margin: 0 15px;
+}
+
+/* footer模块end */

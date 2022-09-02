@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 作业4 判断素数
+
+        // 以下三种方法为网上大佬的算法，供自己学习
+        // 方法一：
+        // let num = parseInt(prompt('请输入数值'));
+        // function isPrimeNum(num) {
+        //     for (var i = 2; i < num; i++) {
+        //         // 从2~~自身之间如果有一个数,与这个数取模 == 0 则为合数，显示false;
+        //         if (num % i == 0) {
+        //             return false;
+        //         }
+        //     };
+        //     return true;
+        // }
+        // let res = isPrimeNum(num);
+        // alert(res);
+
+        // 方法二：取模到数值本身的一半（优化算法）
+        // let num = parseInt(prompt('请输入数值'));
+        // function isPrimeNum(num) {
+        //     for (var i = 2; i <= num / 2; i++) {
+        //         // 这里将取模的数值限制为num的一半,
+        //         // 因为如果是合数那么与自己的一半取模 必然为0，
+        //         // 如果是素数自己的一半为小数，与其取模必然不等于0;
+        //         if (num % i == 0) {
+        //             return false;
+        //         }
+        //     };
+        //     return true;
+        // }
+        // let res = isPrimeNum(num);
+        // alert(res);
+        // 方法三： 位数为双数或者为5则肯定是合数，将这些数进一步筛选出来
+        function isPrimeNum(num) {
+            if (!isDual(num)) {
+                return false;
+            }
+            for (var i = 2; i < num / 2 + 1; i++) {
+                if (num % i == 0) {
+                    return false;
+                }
+            };
+            return true;
+        }
+        function isDual(num) {
+            var num = num.toString();
+            var lastNum = num.substring(num.length - 1, num.length);
+            return lastNum % 2 == 0 || lastNum % 5 == 0 ? false : true;
+        }
+
+
+
+        /* let num = '1230';
+        let lastNum1 = num.substring(num.length - 1, num.length);
+        let res = lastNum1 % 2 == 0 || lastNum1 % 5 == 0 ? false : ture;
+        console.log(lastNum1);
+        console.log(res); */
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

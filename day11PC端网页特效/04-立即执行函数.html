@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // (fnction() {})() 立即执行函数
+        // 主要作用：创建一个独立的作用域
+
+        // 普通函数不调用不执行,如下
+        function fn() {
+            console.log(1);
+        }
+        fn();
+
+        // 立即执行函数:不需要调用，立马能够自己执行的函数
+        // ！立即执行函数最大的作用是创建了一个独立的作用域！
+        // 写法1 (function () {})()
+        (function (a, b) {
+            console.log(2);
+            console.log(a + b);
+            let num = 10; // 局部变量，不会与下面函数内的同名变量冲突
+        })(1, 2); // 最后一个()相当于调用函数
+        // 立即执行函数用;结尾
+
+        // 写法2 (function(){}());
+        (function sum(a, b) { // 也可已给函数取名
+            console.log(a + b);
+            let num = 10; // 局部变量
+        }(2, 3));
+
+        // 立即执行函数
+
+
+
+
+    </script>
+</body>
+
+</html>

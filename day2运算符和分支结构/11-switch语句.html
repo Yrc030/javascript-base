@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1. switch 语句也是多分支语句 也可以实现多选1
+        /*  switch (表达式) {
+             case value1:
+                 执行语句1;
+                 break;
+             case value2:
+                 执行语句2;
+                 break;
+                 ...
+             case value_n:
+                 执行语句n
+                 break;
+             default:
+                 执行最后的语句;
+         } */
+
+
+        // 2. 执行思路
+        // 表达式的值与哪个case value值匹配(全等)就执行哪个语句，如果无匹配就执行default
+
+
+        // 3.代码验证
+        switch (2) {
+            case 1:
+                console.log('这是1');
+                break;
+            case 2:
+                console.log('这是2');
+                break;
+            case 3:
+                console.log('这是3');
+                break;
+            default:
+                console.log('没有匹配结果');
+        } // '这是2';
+
+
+        // 4. switch 注意事项
+        var num = 3;
+        // 开发中表达式经常写成变量
+        switch (num) {
+            case 1:
+                console.log(1);
+                break;
+            // 表达式的值与case value必须全等
+            case 3:
+                console.log(3);
+                break;
+            //不写break在执行相应case后，会接着执行下面的case
+            default:
+                console.log('没有匹配结果');
+        }
+
+        // 查询水果案例
+        var fruit = prompt('请输入您查询的水果：')
+        switch (fruit) {
+            case '苹果':
+                alert('5元/500g');
+                break;
+            case '香蕉':
+                alert('3元/500g');
+                break;
+            case '橙子':
+                alert('4元/500g');
+                break;
+            case '橘子':
+                alert('2元/500g');
+                break;
+            default:
+                alert('没有此水果');
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

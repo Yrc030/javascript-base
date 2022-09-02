@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .w {
+            width: 1200px;
+            margin: 10px auto;
+        }
+
+        .header {
+            height: 300px;
+            background-color: skyblue;
+        }
+
+        .banner {
+            height: 500px;
+            background-color: pink;
+        }
+
+        .main {
+            height: 1000px;
+            background-color: purple;
+        }
+
+
+        .slider_bar {
+            position: absolute;
+            top: 400px;
+            left: 50%;
+            margin-left: 570px;
+        }
+
+
+        ul {
+            list-style: none;
+        }
+
+        ul li {
+            width: 80px;
+            height: 120px;
+            background-color: royalblue;
+        }
+
+        ul li:last-child {
+            display: none;
+            height: 20px;
+            background-color: saddlebrown;
+        }
+
+        .current {
+            background-color: red;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="w">
+        <div class="header w">header</div>
+        <div class="banner w">banner</div>
+        <div class="main w">main</div>
+        <ul class="slider_bar">
+            <li class="current">header</li>
+            <li>banner</li>
+            <li>main</li>
+            <li class="goback">返回顶部</li>
+        </ul>
+    </div>
+
+
+    <script>
+        // 分析
+        // 1. 原侧边栏是绝对定位
+        // 2. 当页面滚动到一定位置，侧边栏改为固定定位
+        // 3. 页面继续滚动，会让返回顶部显示出来
+
+        // 步骤
+        // 1. 获取元素
+        let sliderBar = document.querySelector('.slider_bar');
+        let lis = sliderBar.querySelectorAll('li');
+        let banner = document.querySelector('.banner');
+        let main = document.querySelector('.main');
+
+        // sliderBarTop改为固定定位后的top值 
+        // 得到的值是sliderBar的上边沿到banner上边沿的距离
+        let sliderBarTop = sliderBar.offsetTop - banner.offsetTop;
+        // 2. 需要用到页面滚动事件scroll，因为页面滚动，所以事件源是document
+        document.addEventListener('scroll', function () {
+
+            for (var i = 0; i < lis.length; i++) {
+                // 利用for循环排他
+                lis[i].className = '';
+                // 3. 页面被卷去的头部，通过window.pageYOffset 获得
+                // 注意：元素被卷去的头部是element.scrollTop获取，如果是页面被卷去的头部则是window.pageYOffset
+                // window.pageYOffset IE9+
+                // 页面被卷曲的头部兼容性解决方案
+                // 见笔记 Day11 1.3.5
+
+                // 4.当页面被卷去的头部 < banner.offsetTop 还原默认设置
+                if (window.pageYOffset < banner.offsetTop) {
+                    sliderBar.style.position = 'absolute';
+                    sliderBar.style.top = '400px'
+                    lis[0].className = 'current';
+                    lis[lis.length - 1].style.display = 'none';
+                }
+                // 5.当页面被卷去头部 < main.offsetTop时
+                else if (window.pageYOffset < main.offsetTop) {
+                    sliderBar.style.position = 'fixed';
+                    sliderBar.style.top = sliderBarTop + 'px';
+                    lis[1].className = 'current';
+                    lis[lis.length - 1].style.display = 'none';
+                }
+                // 6.当页面被卷去头部 >= main.offsetTop时
+                else {
+                    lis[2].className = 'current';
+                    lis[lis.length - 1].style.display = 'block';
+                }
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>

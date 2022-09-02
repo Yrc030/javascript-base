@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: url(images/1.jpg) no-repeat;
+            transition: all 1s;
+        }
+
+        .box {
+            position: relative;
+            width: 100px;
+            margin: 0 auto;
+
+        }
+
+        p {
+
+            width: 100px;
+            height: 30px;
+            margin: 0 auto;
+            line-height: 30px;
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        i {
+            position: absolute;
+            top: 12px;
+            right: 15px;
+            width: 8px;
+            height: 8px;
+            border-right: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+            transition: all .5s;
+        }
+
+        .hoveron {
+            background: rgba(0, 0, 0, .5);
+            color: #0078d4;
+        }
+
+        .arrow_right {
+            transform: rotate(-45deg);
+        }
+
+        .arrow_down {
+            transform: rotate(45deg);
+            border-color: #0078d4;
+        }
+
+        ul {
+            overflow: hidden;
+            position: absolute;
+            left: -250px;
+            display: none;
+            list-style: none;
+            width: 620px;
+            z-index: 99;
+
+        }
+
+
+        li {
+            overflow: hidden;
+            float: left;
+            margin-left: -2px;
+            border: 2px solid #fff;
+        }
+
+        li:first-child {
+            margin-left: 0;
+        }
+
+        .select_li {
+            position: relative;
+            border-color: #0078d4;
+
+        }
+
+        img {
+            width: 150px;
+            vertical-align: middle;
+            transition: all .5s;
+        }
+
+        li:hover img {
+            transform: scale(1.2);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="box">
+        <p>换肤<i class="arrow_right"></i></p>
+        <ul class="dis_on">
+            <li><img src="images/1.jpg" alt=""></li>
+            <li><img src="images/2.jpg" alt=""></li>
+            <li><img src="images/3.jpg" alt=""></li>
+            <li><img src="images/4.jpg" alt=""></li>
+        </ul>
+    </div>
+
+    <script>
+        var div = document.querySelector('div')
+        var btn = document.querySelector('p');
+        var arrow = document.querySelector('i');
+        var ul = document.querySelector('ul');
+        var li = document.getElementsByTagName('li');
+        var imgs = document.querySelector('.box').querySelectorAll('img');
+        console.log(imgs);
+        div.onmouseover = function () {
+            btn.className = 'hoveron'
+            ul.style.display = 'block';
+            arrow.className = 'arrow_down';
+        }
+        div.onmouseout = function () {
+            btn.className = '';
+            ul.style.display = 'none';
+            arrow.className = 'arrow_right';
+        }
+        for (var i = 0; i < li.length; i++) {
+            li[i].onmousemove = function () {
+                for (var i = 0; i < li.length; i++) {
+                    li[i].className = '';
+                }
+                this.className = 'select_li';
+            }
+            imgs[i].onclick = function () {
+                // this.src 是点击图片的路径, 将路径赋值给body的背景图片
+                // 获取body的方法
+                document.body.style.backgroundImage = 'url(' + this.src + ')';
+                // (' + + ') 书写方式将变量存入样式的属性值中
+            }
+        }
+
+
+    </script>
+
+</body>
+
+</html>

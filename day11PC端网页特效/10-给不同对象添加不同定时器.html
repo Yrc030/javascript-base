@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+
+        span {
+            display: block;
+            position: absolute;
+            top: 200px;
+            left: 0;
+            width: 150px;
+            height: 150px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <button>点击1走</button>
+    <div></div>
+    <span>1</span>
+    <script>
+        // 09-简单动画函数存在的问题：
+        // 1. 每次调用函数，里面的定时器都需要向内存申请空间，因此十分浪费内存资源
+        // 2. 每次调用函数，定时器的标识符都一样，容易引起歧义
+        // 3.解决方法：可以给不同的元素使用不同的定时器
+        function animate(obj, target) {
+            // 4.4 解决每点击一次移动速度就加快的办法
+            // 4.5 先清除原来的定时器，然后下面再创建新的定时器
+            clearInterval(obj.timer)
+
+            // 3.1这里采用给obj添加方法的方式，obj对应的对象已经声明了内存空间，只是向内存里添加了对象的一个方法
+            // 3.2而且因为对象不同，这个定时器是对该象内的一个方法，因此属于该对象专有的定时器
+            obj.timer = setInterval(function () {
+                let x = obj.offsetLeft;
+                if (x >= target) {
+                    // 3.3清除也是obj.timer
+                    clearInterval(obj.timer);
+                }
+                // 对象的一定要添加定位
+                obj.style.left = x + 1 + 'px';
+            }, 30);
+            console.log('111111111' + obj.timer);
+        }
+        let div = document.querySelector('div');
+        let span = document.querySelector('span');
+        let btn = document.querySelector('button');
+        animate(div, 300);
+        // 4.点击btn， span才调用动画函数;
+        // 4.1当点击btn次数越多，盒子移动速度越快
+        // 4.2因为每点击一次动画函数就给对象添加一个新的定时器
+        // 4.3解决方案：先在函数最上面清除定时器，再添加新的定时器
+        btn.addEventListener('click', function () {
+            animate(span, 400);
+        })
+        console.log(div.timer);
+
+    </script>
+
+</body>
+
+</html>

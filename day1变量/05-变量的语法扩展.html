@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+
+        //1. 变量更新，var变量可以多次声明下面的会覆盖上面的变量。
+        var myname = 'pink';
+        console.log(myname);
+        var myname = 'skybule';
+        console.log(myname);
+
+
+        // 2. 同时声明多个变量
+        // var age = 18;
+        // var address = '北京';
+        // var salary = '999999';
+        var age = 18,
+            address = '北京',
+            salary = '999999';
+        console.log(age, address, salary);
+
+
+
+        //3. 声明变量的特殊情况
+
+        //3.1 只声明不赋值， 结果为undefined 
+        var sex;
+        console.log(sex);
+
+        /* 
+        //3.2 不声明不赋值直接使用某个变量, 结果为Uncaught ReferenceError: tel is not defined
+        console.log(tel); 
+        
+        */
+        //3.3 不声明直接赋值使用 ,结果为110，js里可以使用但是会变成全局变量(不推荐使用)
+        qq = 110;
+        console.log(qq);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

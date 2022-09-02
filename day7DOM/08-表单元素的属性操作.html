@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>按钮</button>
+    <input type="text" value="" placeholder="输入内容">
+
+    <script>
+        // 表单常见的属性： type、 value 、 checked 、 selected 、 disabled 、placeholder...
+        let btn = document.querySelector('button');
+        let input = document.querySelector('input');
+
+        // 更改placeholder 里面的内容，value方法一样
+        input.placeholder = '换一个内容显示'
+
+        // 点击btn， input里面的placeholder内容发生改变
+
+        btn.onclick = function () {
+
+            // 当input的value值长度 等于0，更换提示文本
+            if (input.value.length === 0) {
+                input.placeholder = '请输入文本内容';
+            }
+
+            // 点击一次btn后禁用
+            // btn.disabled = true;
+            // 两种方法都可以实现
+            this.disabled = true;
+            // this 指向的是 事件函数的调用者 btn调用的
+        }
+
+
+
+
+
+    </script>
+</body>
+
+</html>

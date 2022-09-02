@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        section {
+            width: 600px;
+            margin: 100px auto;
+        }
+
+        table {
+            text-align: center;
+            border-collapse: collapse;
+        }
+
+        table,
+        tr {
+            border: 1px solid #000;
+        }
+
+        thead tr {
+            height: 30px;
+            background-color: purple;
+
+
+        }
+
+        td,
+        th {
+            border: 1px solid #000;
+
+        }
+
+        thead th:first-child,
+        tbody td:first-child {
+            width: 80px;
+            border-right: 1px solid #000;
+        }
+
+        thead th:last-child,
+        tbody td:last-child {
+            width: 400px;
+        }
+
+
+        tbody tr {
+            background-color: pink;
+        }
+
+        tbody td {
+            white-space: normal;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        td a {
+            float: right;
+            margin-right: 5px;
+            text-decoration: none;
+            color: #666;
+            font-size: 12px;
+            line-height: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <p><label for="name">请输入姓名:</label><input type="text" id="name" maxlength="5"></p>
+        <p><label for="email">请输入邮箱:</label><input type="email" id="email" maxlength="30"></p>
+        <button>添加</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>邮箱</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                </tr>
+            </tbody>
+        </table>
+
+    </section>
+
+
+    <script>
+        //  获取元素
+        var btn = document.querySelector('button');
+        //  创建按钮点击事件
+        btn.onclick = function () {
+            // 获取两个表单元素
+            var uname = document.querySelector('#name');
+            var emali = document.querySelector('#email');
+            // 如果有一个表单为空则弹出提示框
+            if (uname.value == '' || emali.value == '') {
+                alert('请将数据填入完全');
+                return false;
+            } else {
+                // 否则获取tbody元素
+                var tbody = document.querySelector('tbody');
+                // 创建tr元素节点
+                var tr = document.createElement('tr');
+                // 将tr节点添加至tbody的子节点的末尾
+                tbody.appendChild(tr);
+                // 创建两个td元素节点
+                var td1 = document.createElement('td');
+                var td2 = document.createElement('td');
+                var as = document.createElement('a');
+                // td1的文本内容 = 姓名输入框的value + a标签删除链接
+                td1.innerHTML = uname.value;
+                // td2的文本内容 = 邮箱输入框的value
+                td2.innerHTML = emali.value + "<a href='javascript:;'>删除</a>";
+                // 将两个节点按td1 和td2 的顺序添加至tr的子节点
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+                uname.value = '';
+                emali.value = '';
+
+                // 获取删除链接的元素
+                var as = document.querySelectorAll('a');
+                // 利用for 给所有a标签绑定点击事件
+                for (var i = 0; i < as.length; i++) {
+                    as[i].onclick = function () {
+                        // 点击a 删除当前a的父级tr，也就是a父级的父级
+                        tbody.removeChild(this.parentNode.parentNode);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

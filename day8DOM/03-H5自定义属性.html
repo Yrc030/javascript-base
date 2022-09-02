@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- H5规定所有自定义属性以 data- 开头 -->
+    <div data-nowTime="8" data-last-name="andy"></div>
+
+
+    <script>
+        var div = document.querySelector('div');
+        console.log(div.getAttribute('data-getTime'));
+
+        // 或者通过js设置
+        div.setAttribute('data-index', 2);
+        div.setAttribute('data-getTime', 20);
+
+        // 获取H5自定义属性
+        // 1. 兼容性获取 element.getAttribute('')
+        console.log(div.getAttribute('data-index'));
+
+        // 2. H5新增 element.dataset.name 
+        console.log(div.dataset); // DOMStringMap {gettime: "20", index: "2"}
+        // dataset 是所有以date- 开头自定义属性的集合
+
+        console.log(div.dataset.gettime);
+        // 不管设置时是否大小写，只要没有用符号分开在这里获取时都要小写不然会返回undefined 
+        console.log(div.dataset.index);
+        console.log(div.dataset.nowtime);
+        // 如果自定义属性 拥有多个符号串接在一起，获取时使用驼峰命名法来代替符号
+        console.log(div.dataset.lastName);
+
+        // 3. H5新增 element.dataset['index']
+        console.log('---------');
+        console.log(div.dataset['gettime']);
+        console.log(div.dataset['index']);
+        console.log(div.dataset['nowtime']);
+        console.log(div.dataset['lastName']);
+
+        // H5 只能获取data- 开头的自定义属性 
+
+    </script>
+</body>
+
+</html>

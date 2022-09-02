@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1. 替换字符 repleace('被替换的字符'，'接替的字符')
+        let str = 'andy,andy';
+        console.log(str.replace('an', 'bo'));
+        // body,andy  只替换第一个指定字符
+        console.log(str); // andy,andy 不改变原来的字符串
+
+        // 案例1. 将字符串'abcoefoxyozzopp'里的所有o 替换为 *
+        console.log('----案例1----');
+        let stri = 'abcoefoxyozzopp';
+        while (stri.indexOf('o') !== -1) {
+            // 当字符串里存在'o' 就一直循环
+            stri = stri.replace('o', '*');
+            // 每次循环把 'o' 替换为'*' 并重新赋值给stri
+        }
+        console.log(stri);
+
+        // 2. 字符转换为数组 str.split([separator[, limit]])
+        //  前面学过join 把数组转换为字符串
+        // separator 指定表示每个拆分应发生的点的字符串
+        // limit 一个整数，限定返回的分割片段数量
+
+        // 当字符串内没有分隔符时
+        let string = '123456'
+        console.log(string.split(''));
+        // (6) ["1", "2", "3", "4", "5", "6"]
+        // 使用 '' 会将每个字符分隔为一个数组元素
+
+        console.log(string.split('"'));
+        // ["123456"]
+        // 如果字符串中没有指定的分隔符，会将整个字符串作为数组中的一个元素
+
+        // 当字符串内有分隔符时
+        let monthString = "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec";
+        console.log(monthString.split(','));
+        // ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        // split() 会根据指定的分隔符，将分割符两侧的字符串分别作为数组中一个元素存入数组;
+        console.log(monthString.split(',', 4));
+        // ["Jan", "Feb", "Mar", "Apr"]
+        // 当指定limit时， split() 会将相应数值内的字符串作为数组元素存入数组，剩下的字符将不在返回
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

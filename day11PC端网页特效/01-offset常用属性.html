@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .father {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            margin: 100px;
+        }
+
+        .son {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            margin-left: 50px;
+        }
+
+        .grandson {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            margin: 0 auto;
+        }
+
+        .w {
+            width: 200px;
+            height: 300px;
+            background-color: purple;
+            margin: 100px auto;
+            padding: 20px;
+            border: 2px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son">
+            <div class="grandson"></div>
+        </div>
+    </div>
+    <div class="w">w</div>
+
+    <script>
+        // 一、offset属性 可以动态获取元素的位置(偏移)，返回的值不带单位;
+        let father = document.querySelector('.father');
+        let son = father.children[0];
+        // 1. offsetTop属性 返回元素相对于带有定位的父元素上方的偏移，父级没有定位，则返回相对于body的偏移
+        console.log(father.offsetTop); // 100 相对于body
+        console.log(son.offsetTop)  // 100 相对于body
+        // 2. offsetleft属性 返回元素相对于带有定位的父元素上方的偏移，父级没有定位，则返回相对于body的偏移
+        console.log(father.offsetLeft); // 100 相对于body
+        console.log(son.offsetLeft); // 150 相对于body
+
+
+        // 二、 offset属性可以动态获取元素的大小
+        let w = document.querySelector('.w');
+        // 1. offsetWidth 获取元素的宽度 ，content-box盒子的padding和border会影响返回值
+        console.log(w.offsetWidth); // 344
+
+
+        // 2. offsetHeight 获取元素的高度 ，content-box盒子的padding和border会影响返回值
+        console.log(w.offsetHeight); // 344  
+
+
+        // 三、 offsetParent 返回该元素带有定位的父级，如果父级都没有定位则返回body
+        let sunzi = document.querySelector('.grandson');
+        console.log(sunzi.offsetParent); // div.son
+        console.log(son.offsetParent); // body
+        // 返回有定位的父级，没有则返body
+
+        // 与 parentNode 的区别
+        console.log(son.parentNode); // div.father
+        // 返回最近一级的父级
+    </script>
+</body>
+
+</html>

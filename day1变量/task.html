@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        // 作业1. 交换两个变量值
+        var temp;
+        var value1 = 'hello world';
+        var value2 = 'goodbye world';
+        temp = value1;
+        value1 = value2;
+        value2 = temp;
+        console.log(value1);
+        console.log(value2);
+
+        // 作业2. 依次询问并获取用户的姓名、年龄、性别。并打印用户信息如图。
+        var userName = prompt('请输入您的姓名');
+        var age = prompt('请输入您的年龄');
+        var sex = prompt('请输入您的性别');
+        alert('您的姓名是：' + userName +
+            '\n您的年龄是：' + age +
+            '\n您的性别是：' + sex);
+
+        // 作业3. 增加年龄
+        var userAge = prompt('您现在多少岁了？');
+        var futherAge = 5 + parseInt(userAge);
+        alert('据我估计，五年后，您可能' + futherAge + '岁');
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #output {
+            font-family: Arial, Helvetica, sans-serif;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <p>按键盘上的键，查看每个键盘事件的键和代码值</p>
+    <div id="output">
+    </div>
+
+    <script>
+        // e.code 返回实际按下的是哪个键的值，不区分大小写，功能键返回预定值，对于组合输出的符号也不识别，例如！@#￥% (对于游戏交互)
+
+        // e.key 返回键盘输出的值，区分大小写，识别符号，功能键返回预定值 
+        window.addEventListener("keydown", function (e) {
+            // 查看e.key与e.code的区别
+            let str = "KeyboardEvent: key='" + e.key + "' | code='" +
+                e.code + "'";
+            let el = document.createElement("span");
+            el.innerHTML = str + "<br/>";
+
+            document.getElementById("output").appendChild(el);
+        }, true);
+
+    </script>
+
+</body>
+
+</html>

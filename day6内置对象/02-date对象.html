@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // Date 日期对象 是一个构造函数，必须使用new来调用创建
+        // 构造函数
+        let arr = new Array(); // 创建一个数组对象
+        let obj = new Object(); // 创建一个对象实例
+        // 1. 使用date
+        let date = new Date(); // 创建了一个日期对象
+        console.log(date); // Fri May 14 2021 11:00:17 GMT+0800 (中国标准时间)
+        // 1）. 数字型写法 返回的月份比实际大1 
+        var date1 = new Date(1995, 10, 17);
+        console.log(date1); //返回的是11月不是10月
+        var date2 = new Date(1995, 12, 17, 3, 24, 0);
+        console.log(date2); // 返回的是1月不是12月
+        // 2)字符串型写法 (常用)
+        var date3 = new Date('1995-12-17 03:24:00');
+        console.log(date3);
+        var date4 = new Date('December 17, 1995 03:24:00');
+        console.log(date4);
+
+        // 2. 日期格式化
+        var today = new Date();
+        // 1） getFullYear 返回指定日期的年份
+        //  dateObj.getFullYear()
+        console.log(today.getFullYear()); // 2021
+
+        // 2) getMonth 返回指定日期的月份，范围0-11 ,0表示一月. 所以要+1
+        console.log(today.getMonth() + 1); // 5
+
+        // 3） getDate 返回指定日期为当月中的哪一日（从1--31）。
+        console.log(today.getDate()); // 14
+
+        // 4) getDay 返回具体日期中一周的第几天，0表示星期天。(0-6)
+        console.log(today.getDay()); // 5
+
+        // 5) getHours 返回指定日期的小时
+        console.log(today.getHours()); // 14
+
+        // 6) getMinutes 返回指定日期的分钟
+        console.log(today.getMinutes()); // 2
+
+        // 7) getSeconds 返回指定日期的秒数
+        console.log(today.getSeconds()); //15
+
+        // 案例1 日期格式化 YYYY年MM月DD日 星期几 00:00:00 的格式
+        let year = today.getFullYear();
+        let month = today.getMonth() + 1;
+        let dates = today.getDate();
+        let array = ['星期日', '星期一', '星期二', ' 星期三', '星期四', '星期五', '星期六']
+        let day = today.getDay();
+        let hours = today.getHours();
+        let minutes = today.getMinutes();
+        let seconds = today.getSeconds();
+        console.log('今天是' + year + '年' + month + '月' + dates + '日 ' + array[day] + ' ' + hours + ':' + minutes + ':' + seconds);
+        // 创建array数组，按照索引号与getday返回的数值相对应，0是星期日，所以数组第一个写'星期日'
+        // 声明变量day接受getday返回的值，将day作为索引号，写在array[]里
+
+        // 案例2 封装一个函数返回当前的时分秒 格式 00:00:00
+        function getTimer() {
+            let time = new Date();
+            let h = time.getHours();
+            h = h < 10 ? '0' + h : h; // 小时小于10前面加0，下面同理
+            let m = time.getMinutes();
+            m = m < 10 ? '0' + m : m;
+            let s = time.getSeconds();
+            s = s < 10 ? '0' + s : s;
+            return h + ':' + m + ':' + s;
+        }
+        console.log(getTimer());
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

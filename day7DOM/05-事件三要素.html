@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <div>123</div>
+
+    <script>
+        // 1. 事件三要素： 事件源 事件类型 事件处理程序
+        // 1) 事件源 事件被触发的对象  
+        var btn = document.getElementById('btn');
+
+        // 2) 事件类型 如何触发什么事件，比如鼠标点击(onclick)、鼠标经过、键盘按下触发
+        // 3) 事件处理程序 事件触发后要执行的代码(函数形式)，事件处理函数
+
+        // btn 事件源  onclick  事件类型   function 事件处理程序
+        btn.onclick = function () {
+            alert('成功触发');
+        }
+
+        // 2. 执行事件的步骤
+
+
+
+        // 1) 获取事件源
+        var div = document.querySelector('div');
+        // 如果使用getElementsByTagName() 必须指定特定的元素对象
+        // var div = document.getElementsByTagName('div')[0];
+
+        // 2) 注册事件(绑定事件)
+        // 3) 添加事件处理程序(采取函数赋值形式)
+        div.onclick = function () {
+            console.log('我被选中了');
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

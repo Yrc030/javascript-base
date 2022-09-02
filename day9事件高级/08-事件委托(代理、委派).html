@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>000000001</li>
+        <li>000000002</li>
+        <li>000000003</li>
+        <li>000000004</li>
+        <li>000000005</li>
+    </ul>
+
+
+    <script>
+        // 事件委托 也成为事件代理，在JQuery里面称为事件委派。
+
+        // 事件委托的原理
+        // 不是给每个子节点单独设置事件监听器，而是设置在父节点上，然后利用冒泡原理影响设置每个子节点
+
+        // 案例：给ul注册点击事件，然后利用事件对象的target来找到当前点击的li，因为点击li,事件会冒泡到ul上，ul有注册事件，就会触发事件监听器
+        // 
+        var ul = document.querySelector('ul');
+        ul.addEventListener('click', function (e) {
+
+            // 通过e.target 可以读写被点击对象的参数
+            alert('我是' + e.target.innerHTML);
+            e.target.style.backgroundColor = 'skyblue';
+        }, false)
+    </script>
+</body>
+
+</html>

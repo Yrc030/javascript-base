@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ul {
+            width: 240px;
+            height: 180px;
+            list-style: none;
+            margin: 100px auto;
+        }
+
+        li {
+            display: flex;
+            float: left;
+            width: 60px;
+            height: 60px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        li i {
+
+            width: 24px;
+            height: 24px;
+            margin-bottom: 5px;
+            background: url(images/sprite.png) no-repeat 0 0;
+
+        }
+
+        p {
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li><i></i>
+            <p>充话费</p>
+        </li>
+        <li><i></i>
+            <p>充话费</p>
+        </li>
+        <li><i></i>
+            <p>充话费</p>
+        </li>
+        <li><i></i>
+            <p>充话费</p>
+        </li>
+        <li><i></i>
+            <p>充话费</p>
+        </li>
+        <li><i></i>
+            <p>充话费</p>
+        </li>
+        <li><i></i>
+            <p>充话费</p>
+        </li>
+        <li><i></i>
+            <p>充话费</p>
+        </li>
+        <li><i></i>
+            <p>充话费</p>
+        </li>
+        <li><i></i>
+            <p>充话费</p>
+        </li>
+        <li><i></i>
+            <p>充话费</p>
+        </li>
+        <li><i></i>
+            <p>充话费</p>
+        </li>
+    </ul>
+
+    <script>
+        var lis = document.querySelectorAll('li');
+        console.log(lis);
+        for (var i = 0; i < lis.length; i++) {
+            var sprite = lis[i].querySelector('i');
+            var index = i * 44;
+            // 索引号 乘以44 就是每个i的 背景y坐标
+            sprite.style.backgroundPosition = '0 -' + index + 'px';
+            // x坐标为0 ， 0后面的空格要保留
+            // -号，表示y坐标为负
+            // index变量，表示每张精灵图的y轴位置的绝对值
+            // px，为单位
+        }
+    </script>
+</body>
+
+</html>

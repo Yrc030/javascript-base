@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1. 利用字面量{创建对象} {}里面包含表达这个对象的属性和方法。
+        // var obj = {}; // 创建了一个空的对象
+        var obj = {
+            uname: '庸人冲',
+            age: '18',
+            sex: 'male',
+            sayHi: function () {
+                console.log('hi');
+            }
+        };
+        // 1) 里面的属性或方法采取键值对的形式
+        //    键(属性名): 值(属性值)
+        // 2) 多个属性或方法间用逗号隔开
+        // 3) 方法用动词命名，冒号后面跟一个匿名函数
+
+        // 2. 使用对象
+        // 1) 调用对象属性的语法1 对象名.属性名 
+        console.log(obj.uname); // 庸人冲
+
+        // 2) 调用对象属性的语法2 对象名['属性名']
+        console.log(obj['age']); // 18
+
+        // 3) 调用对象方法的语法  对象名.方法名()  后面一定跟()
+        obj.sayHi(); // Hi
+
+
+        // 案例1
+        console.log('----案例1----');
+        var dog = {
+            name: '可可',
+            type: '阿拉斯加',
+            age: 'five',
+            color: '棕红色',
+            skill: 'bark and showFilm',
+            bark: function () {
+                console.log('汪汪汪');
+            },
+            showFilm: function () {
+                console.log('演电影');
+            }
+        };
+        console.log(dog['name']);
+        console.log(dog.type);
+        console.log(dog['age']);
+        console.log(dog.skill);
+        dog.bark();
+        dog.showFilm();
+
+        // 3. 变量、属性、函数、方法的区别
+        // 1) 变量和属性的相同点：
+        // 都是用来存储数据的
+        var num = 10;
+        var obj = {
+            age: 18
+        }
+
+        // 2) 变量和属性的不同点
+        // 变量 单独声明并赋值，使用时直接写变量名
+        // 属性 在对象里不需要声明，使用时必须是 对象名.属性名
+        console.log(obj.age);
+
+        // 3) 函数和方法的相同点 都是实现某种功能
+        function fn() {
+            console.log('函数哈哈哈');
+        }
+
+        var obj = {
+            laugh: function () {
+                console.log('对象方法哈哈哈');
+            }
+        }
+        // 4) 函数和方法的不同点
+        // 函数 是单独声明并且调用 函数名()
+        fn();
+        // 方法 在对象里 调用时 对象.方法()
+        obj.laugh();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

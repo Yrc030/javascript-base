@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <span>我是span</span>
+    <ul>
+        <li>我是li1</li>
+        <li>我是li2</li>
+        <li>我是li3</li>
+        <li>我是li4</li>
+    </ul>
+    <ol>
+        <li class="123">我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+    </ol>
+
+    <div class="box">
+        <div class="erweima">×</div>
+    </div>
+    <script>
+        // 一、获取元素的两种方式
+        // 1. 利用DOM提供的方法获取元素
+        // doucument.getElementsByTagName()
+        // doucument.getElementsById()
+        // document.querySelector()
+        // ...
+        // 缺点：繁琐逻辑性不强
+
+        // 2. 利用节点层级关系获取元素
+        // 父子兄节点关系获取元素
+        // 逻辑学强，但兼容性稍差
+        // 一般地，节点至少拥有nodeType（节点类型）、nodeName（节点名称）和nodeValue（节点值）这三个基本属性。
+
+
+        var div = document.querySelector('div');
+        console.dir(div);
+        //  nodeName: "DIV"
+        //  nodeType: 1
+        //  nodeValue: null
+        // 元素节点 nodeType 为 1
+        // 属性节点 nodeType 为 2
+        // 文本节点 nodeType 为 3
+
+
+        // 二、父级节点
+        // 1. node.parentNode  
+        var erweima = document.querySelector('.erweima');
+        console.log(erweima.parentNode);
+        // 得到的是当前节点最近的父节点，如果找不到父节点就返回null
+        // 三、 子节点
+        // 1. parentNode.childNodes (标准，不推荐)  
+        var ul = document.querySelector('ul');
+        console.log(ul.childNodes);
+        // 得到所有子节点，包含元素节点、文本节点等
+        console.log(ul.childNodes[0].nodeType); // 3 文本节点
+        console.log(ul.childNodes[1].nodeType); // 1 元素节点
+        // 如果只想获得单一类型节点，需要利用for循环，所以一般不提倡使用childNodes
+        for (var i = 1; i < ul.childNodes.length; i++) {
+            if (ul.childNodes[i].nodeType === 1) {
+                console.log(ul.childNodes[i]);
+            }
+        }
+
+        // 2. parentNode.children (非标，更推荐) 子节点
+        // 是一个只读属性，返回所有的子元素节点。其余节点不返还(重点掌握)
+        console.log(ul.children);
+
+        // 3. parentNode.firstChild 获取第一个子节点
+        //    parentNode.lastChild  获取最后一个子节点
+        console.log(ul.firstChild); // #text
+        console.log(ul.lastChild);  // #text
+
+        // 4. parentNode.firstElementChild 获取第一个元素子节点
+        //    parentNode.lastElementChild  获取最后元素子节点
+        console.log(ul.firstElementChild); // li1
+        console.log(ul.lastElementChild);  // li4
+        // 这两个方法有兼容性问题，IE9以上才支持
+
+        // 5. 实际开发中更常用的方法
+        var last = ul.children.length - 1;
+        console.log(ul.children[0]);
+        console.log(ul.children[1]);
+        console.log(ul.children[2]);
+        console.log(ul.children[last]);
+
+
+        // 四、兄弟节点
+        // 1. node.nextSibling 
+        // 得到下一个兄弟节点包含元素节点、文本节点等
+        var lis = ul.children[0];
+        console.log(lis.nextSibling); // #text 
+
+
+        // 2. node.previousSibling
+        // 得到上一个兄弟节点包含元素节点、文本节点等
+        console.log(lis.previousSibling); // #text
+
+
+        // 以下两个方法有兼容性问题，IE9以上支持
+        // 3. node.nextElementSibling
+        // 得到下一个兄弟元素节点
+        console.log(lis.nextElementSibling); // li2
+
+        // 4. node.previousElementSibling
+        // 得到上一个兄弟元素节点
+        console.log(lis.previousElementSibling); // null
+
+
+        //  5. 解决兼容性的问题
+        //     封装兼容性的函数
+        function getNextElementSibling(element) {
+            var el = element;
+            while (el = el.nextsibling) {
+                if (el.nodeType === 1) {
+                    return el;
+                }
+            }
+            return null;
+        }
+        console.log(getNextElementSibling(lis));
+        //
+
+
+    </script>
+</body>
+
+</html>

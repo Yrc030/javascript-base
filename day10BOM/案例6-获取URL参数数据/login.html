@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style></style>
+</head>
+
+<body>
+
+    <p>登录页面</p>
+    <!-- form里的action提交到index.html页面 -->
+    <!-- 用默认的get方式提交 -->
+    <form action="index.html">
+
+        <label for="user">用户名:</label>
+        <!-- 表单必须有name属性才能提交 -->
+        <input type="text" name='uname'>
+        <button>登录</button>
+    </form>
+
+    <script>
+        // index.html 可以是使用当前页面的参数，实现了一个数据不同页面之间的传递效果，
+        // index.html 之所以可以使用当前页面的数据，利用了URL里面的location.search参数
+        // 在index.html 需要把这个参数提取
+        // 第一步去掉 ? 利用substring(start, [end])方法
+        // 第二部利用 = 号分割 键和值 split('=')
+
+    </script>
+</body>
+
+</html>

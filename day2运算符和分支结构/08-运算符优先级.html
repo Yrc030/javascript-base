@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //例一
+        console.log('例一');
+        console.log(4 >= 6 || '人' != '阿凡达' && !(12 * 2 == 144) && true);
+        // 结果为true
+        // 1. (12 * 2 == 144) 为false
+        // 2. !(12 * 2 == 144) 为true
+        // 3. 4 >= 6 为false
+        // 4. '人' != '阿凡达' 为true
+        // 5. 表达式1(F) || 表达式2(T) && 表达式3(T) && 表达式4(T)
+        // 6. F || T && T && T == T
+
+        //例二
+        console.log('例二');
+        var num = 10;
+        console.log(5 == num / 2 && (2 + 2 * num).toString() === '22');
+        //结果为true
+        //1.原式== (5 == 10 / 2 && (2 + 20).toString() === '222')
+        //2. == (5 == 5 && '22' === '22')
+        //3. == (T && T)
+        //4. == T
+
+        //例三
+        console.log('例三');
+        var a = 3 > 5 && 2 < 7 && 3 == 4;
+        console.log(a);
+        //1. a = F && T && F
+        //2. a = false
+
+        //例四
+        console.log('例四');
+        var b = 3 <= 4 || 3 > 1 || 3 != 2;
+        console.log(b);
+        //1. b = T || T || T
+        //2. b = true
+
+        //例五
+        console.log('例五');
+        var c = 2 === "2";
+        console.log(c);
+        // false
+
+        //例六
+        console.log('例六');
+        var d = !c || b && a;
+        console.log(d);
+        //1. d = T || T && F
+        //2. d = T || F
+        //3. d = true
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

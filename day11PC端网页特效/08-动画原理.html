@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            border-right: 10px solid #ccc;
+            border-top: 10px solid #ccc;
+            border-radius: 10px;
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div></div>
+    <script>
+
+        // 核心原理:通过定时器setInterval() 不断移动盒子位置。
+        // 实现步骤：
+        // 1. 获得盒子当前位置
+        // 2. 让盒子再当前位置加上一个移动距离
+        // 3. 利用计时器不断重复这个操作
+        // 4. 加一个结束定时器的条件
+        // 5. 注意移动的元素需要添加定位,才能使用element.style.left
+        let div = document.querySelector('div');
+
+        // 设置定时器
+        let mover = setInterval(function () {
+            let y = div.offsetTop;
+            let x = div.offsetLeft;
+            if (x >= 799) {
+                // 清除定时器
+                clearInterval(mover);
+            }
+            div.style.left = x + 1 + 'px';
+            div.style.top = y + 1 + 'px';
+            // console.log(div.style.left);
+
+        }, 10); // 30ms
+    </script>
+</body>
+
+</html>

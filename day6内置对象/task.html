@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 作业1. 把下面数组的首位两个元素互换
+        let arr = ["鹿晗", "王俊凯", "蔡徐坤", "彭于晏", "周杰伦", "刘德华", "赵本山"];
+        let temp = '';
+        temp = arr[0];
+        arr[0] = arr[arr.length - 1];
+        arr[arr.length - 1] = temp;
+        console.log(arr);
+
+        // 作业2 计算指定日期是今年的第几天
+        // 题目描述：制作一个函数，getDayNum( 年月日日期 )，可以返回指定日期是当前年的第几天
+
+        function getDayNum(date) {
+            let arr = date.split('-');
+            // split() 方法使用指定的分隔符字符串将一个String对象分割成子字符串数组，以一个指定的分割字串来决定每个拆分的位置 
+            let y = +new Date(arr[0]);
+            let y1 = +new Date(date);
+            console.log(y, y1);
+            let d = Math.ceil((((y1 - y) / 1000 / 60 / 60) + 8) / 24);
+            return d;
+        }
+        console.log(getDayNum('2021-5-18'));
+
+        // 作业3. 使用Math对象，制作一个16进制的随机颜色
+        function getColor(num) {
+            var min = 0;
+            var max = num.length - 1;
+            var color = '#'
+            for (var i = 0; i < 6; i++) {
+                color += num.charAt(Math.floor(Math.random() * (max - min + 1) + min));
+            }
+            return color;
+        }
+        var num = '0123456789ABCDEF';
+        console.log(getColor(num));
+
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

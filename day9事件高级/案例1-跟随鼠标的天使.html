@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            position: relative;
+            width: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="images/angel.gif" alt="">
+
+    <script>
+        // 使用 mousemove 鼠标移动事件
+        // 在整个页面移动，给document注册事件
+        // 图片要移动，不能占有位置，使用决定定位即可
+        // 核心原理: 每次鼠标移动，我们都会获得最新的鼠标坐标，把这个x和y坐标作为图片的top和left值
+        var img = document.querySelector('img');
+        console.log(img);
+        document.addEventListener('mousemove', function (e) {
+            // mousemove 只要鼠标移动就会触发这个事件
+            var x = e.pageX;
+            var y = e.pageY;
+            // 后面一定要加单位！
+            img.style.left = x - 25 + 'px';
+            img.style.top = y - 30 + 'px';
+            // 这里减去数值是因为，图片默认以左上角为参考点，所以将图片往x往左 图片一半的宽度，y往上 图片一半的高度 图片就可以居中对齐了；
+        })
+    </script>
+</body>
+
+</html>

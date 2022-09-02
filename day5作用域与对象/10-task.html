@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 作业1 创建电脑对象
+        console.log('----作业1----');
+        var computer = {
+            color: 'skyblue',
+            weight: '20kg',
+            brand: '败家之眼',
+            type: '001',
+            watch: function () {
+                console.log('watching movie');
+            },
+            listen: function () {
+                console.log('listening music');
+            },
+            play: function () {
+                console.log('playing game');
+            },
+            coding: function () {
+                console.log('coding');
+            }
+        }
+        for (var k in computer) {
+            console.log(k)
+            console.log(computer[k]);
+        }
+
+        // 作业2 创建按钮对象
+        console.log('----作业2----');
+
+        var button = new Object();
+        button.width = '20px';
+        button.heigh = '30px';
+        button.bgc = 'skyblue';
+        button.click = function () {
+            console.log('none');
+        }
+        for (var key in button) {
+            console.log(key);
+            console.log(button[key]);
+        }
+        // 作业3 创建汽车对象
+        console.log('----作业3----');
+        function Car(weight, color, brand) {
+            this.weight = weight;
+            this.color = color;
+            this.brand = brand;
+            this.load = function () {
+                console.log('only one, lady first');
+            }
+        }
+        var xpl = new Car('10kg', 'pink', '小破🦌');
+        for (var l in xpl) {
+            console.log(l);
+            console.log(xpl[l]);
+        }
+        // 作业4 创建学生对象
+        console.log('----作业4----');
+        function Students(name, id, sex, grade) {
+            this.name = name;
+            this.id = id;
+            this.sex = sex;
+            this.grade = grade;
+            this.sayHi = function () {
+                console.log('Hi~~');
+            }
+        }
+        var Joker = new Students('Joker', '001', 'male', 'sophomore');
+        console.log('你好我是' + Joker.name);
+
+        // 作业5 输出结果
+        console.log('----作业5----');
+        var num = 1;
+        function demo() {
+            console.log(num); // undefined
+            function demoSon() {
+                num = 3;
+            }
+            var num = 2
+            demoSon();
+        }
+        demo();
+        // 执行流程
+        // var num;
+        // function demo() {
+        //     var num;
+        //     function demoSon() {
+        //         num = 3;
+        //     }
+        //     console.log(num);
+        //     num = 2;
+        //     demoSon();
+        // }
+        // num = 1;
+        // demo();
+
+        // 作业6 写一个函数，实现翻转任意数组
+        console.log('----作业6----');
+        function reverseArr(arr) {
+            var newArr = [];
+            for (var i = arr.length - 1; i >= 0; i--) {
+                newArr[newArr.length] = arr[i];
+            }
+            return newArr;
+        }
+        var res = reverseArr([1, 2, 3, 4, 5]);
+        console.log(res);
+
+        // 作业7 写一个函数，实现对数组的排序
+        console.log('----作业7----');
+        function sort(arr1) {
+            var temp = 0;
+            for (var i = 0; i < arr1.length; i++) {
+                var temp = 0;
+                if (arr1[i] > arr1[i + 1]) {
+                    temp = arr1[i];
+                    arr1[i] = arr1[i + 1];
+                    arr1[i + 1] = temp;
+                }
+            }
+            return arr1;
+        }
+        var re = sort([1, 2, 3, 99, 4, 5, 10]);
+        console.log(re);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

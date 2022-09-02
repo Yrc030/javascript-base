@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>setInterval/clearInterval example</title>
+
+    <script>
+        // 下面的例子里会每隔一秒就调用函数 flashtext() 一次，直至你通过按下 Stop 按钮来清除本次重复操作的唯一辨识符 intervalID。
+        var nIntervId;
+
+        function changeColor() {
+            nIntervId = setInterval(flashText, 1000);
+        }
+
+        function flashText() {
+            var oElem = document.getElementById('my_box');
+            // 不断切换颜色的核心算法:
+            oElem.style.color = oElem.style.color == 'red' ? 'blue' : 'red';
+
+        }
+
+        function stopTextColor() {
+            clearInterval(nIntervId);
+        }
+    </script>
+</head>
+
+<body onload="changeColor();">
+    <div id="my_box">
+        <p>Hello World</p>
+    </div>
+
+    <button onclick="stopTextColor();">Stop</button>
+</body>
+
+</html>

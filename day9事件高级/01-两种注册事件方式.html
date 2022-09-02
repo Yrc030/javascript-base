@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>传统注册事件</button>
+    <button>方法监听注册事件</button>
+    <button>IE9 attachEvent</button>
+
+    <script>
+        // 注册事件有两种方式
+        // 1. 传统方式
+        // 利用on开头的事件 如: onclick、 onmouseover、 onfocus ...
+        // 特点：注册事件唯一性，同一个元素同一个事件只能设置一个处理函数，后面注册的处理涵数将会覆盖前面注册的处理函数
+        var btns = document.querySelectorAll('button');
+        btns[0].onclick = function () {
+            alert('hi~');
+        }
+        btns[0].onclick = function () {
+            alert('how a u');
+        }
+        // 后面的事件处理函数把前面的函数覆盖掉了
+
+
+        // 2. addEventListener() 方法监听注册方式
+        // IE9 之前IE不支持此方法，可使用attachEvent()代替
+        // 特点：同一个元素同一个事件可以注册多个监听器
+        // 1)语法：
+        // eventTarget.addEventListener(type, listener, useCapture);
+        // type: 表示监听的事件类型的字符串，要加'',''里面的字符不加on
+        // listener: 事件处理函数，事件发生时，会调用该监听函数
+        // useCapture: 可选参数，一个布尔值，默认式false
+
+        btns[1].addEventListener('click', function () {
+            alert(22);
+        })
+        btns[1].addEventListener('click', function () {
+            alert(33);
+        })
+        // 后面的监听函数不会覆盖掉前面的
+
+
+        // SBIE 强烈不推荐 不要往下看！！！！
+        // 3. eventTarget.attachEvent() 方法将指定的监听器注册到eventTarget(目标对象)上，当该对象触发指定的事件时，指定的回调函数就会被执行
+
+        // 该方法接受两个参数:
+        // eventNameWithOn: 事件类型字符串，比如onclick、onmouseover 这里要加on
+        // callback: 事件处理函数，当目标触发事件回调函数被调用
+
+        // btns[2].attachEvent('onclick', function () {
+        //     alert('IESB!CHROME YES!');
+        // })
+    </script>
+</body>
+
+</html>

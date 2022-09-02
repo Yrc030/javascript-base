@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 双重for循环
+        /* for (外层的初始化变量; 外层的条件表达式; 外层的操作表达式) {
+            for (里层的初始化变量; 里层的条件表达式; 里层的操作表达式) {
+                执行语句
+            }
+        } */
+        // 把内循环看作外循环的语句
+        // 外循环一次，内循环全部
+
+        // 1. 打印5行5列♥
+        console.log('----打印五行五列----');
+        var star = '';
+        for (var i = 1; i <= 5; i++) {
+            for (var j = 1; j <= 5; j++) {
+                star += '♥';
+            }
+            star += '\n';
+        }
+        console.log(star);
+        // 执行思路
+        // 外循环负责控制行数，内循环负责控制列数
+        // 一行打印完毕，接着执行换行代码;
+
+
+        // 打印倒三角
+        console.log('----打印倒三角----');
+        var str = '';
+        for (var i = 1; i <= 5; i++) {
+            for (var j = i; j <= 5; j++) {
+                str += '♥';
+            }
+            str += '\n'
+        }
+        console.log(str);
+        // 执行思路
+        // 1. 外循环i = 1; 执行内循环 j = 1; 内循环5次打印5颗♥，再执行\n;
+        // 2. 外循环i = 2; 执行内循环 j = 2; 内循环4次打印4颗♥;再执行\n;
+        // 3. 以此类推直到i >= 5 结束循环;
+
+        // 打印正三角
+        console.log('----打印正三角----');
+        var st = '';
+        for (var s = 1; s <= 10; s++) {
+            for (var o = 1; o <= s; o++) {
+                st += '♥';
+            }
+            st += '\n';
+        }
+        console.log(st);
+        // 执行思路
+        // 正三角，每行的列数都等于行数
+        // 因此让列数o <= s，这样内循环的打印次数就会等于行数;
+        // s = 1时，第一行 o = 1 &&  o <= 1,所以只会打印一列，换行;
+        // s = 2时，第二行 o = 1 &&  o <= 2,所以会打印两列，换行;
+        // 依次内推，直到 i > 10 整个循环结束。
+
+        //用户控制打印n行n列
+        console.log('----users control----');
+        var rows = prompt('请输入您要打印的行数');
+        var cols = prompt('请输入您要打印的列数')
+        var sta = '';
+        for (var r = 1; r <= rows; r++) {
+            for (var c = r; c <= cols; c++) {
+                sta += '♥';
+            }
+            sta += '\n';
+        }
+        console.log(sta);
+
+
+        //九九乘法表
+        console.log('----九九乘法表----');
+        var form = '';
+        for (var i = 1; i <= 9; i++) {
+            for (var j = 1; j <= i; j++) {
+                form += j + '×' + i + '=' + i * j + '\t';
+            }
+            form += '\n';
+        }
+        console.log(form);
+        // 执行思路
+        // 控制行数与列数的思路与正三角一致
+        // 打印不同的公式
+        // 观察发现，每一行每一列公式的第一个因数与所在的列数相同，第二个因数与所在行相同，而乘积恰好等于所在列数×所在行数的乘积，所以可以将需要打印的每个数用对应变量替换。
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

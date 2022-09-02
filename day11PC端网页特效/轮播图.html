@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+
+        .box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 400px;
+            width: 2400px;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            background-color: skyblue;
+        }
+
+        .box li {
+            float: left;
+            width: 400px;
+            height: 400px;
+        }
+
+        i {
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            border-right: 3px solid red;
+            border-bottom: 3px solid red;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
+        .prev {
+            display: none;
+            left: 20px;
+            transform: rotate(135deg);
+        }
+
+        .next {
+            display: none;
+            right: 20px;
+            transform: rotate(-45deg);
+        }
+
+        .circle {
+            position: absolute;
+            left: 50%;
+            bottom: 20px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            transform: translateX(-50%);
+        }
+
+        ol li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            box-sizing: border-box;
+            border: 3px solid rgba(255, 255, 255, .3);
+            margin-right: 20px;
+            cursor: pointer;
+        }
+
+        ol li:last-child {
+            margin-right: 0;
+        }
+
+
+
+        .current {
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">container
+        <ul class="box">
+            <li class="item1"></li>
+            <li class="item2"></li>
+            </li>
+            <li class="item3"></li>
+            </li>
+            <li class="item4"></li>
+            <li class="item5"></li>
+            </li>
+        </ul>
+        <i class="prev"></i>
+        <i class="next"></i>
+        <ol class="circle">
+        </ol>
+    </div>
+
+    <script>
+        var con = document.querySelector('.container');
+        var prev = document.querySelector('.prev');
+        var next = document.querySelector('.next');
+        var box = document.querySelector('.box');
+        var lis = document.querySelectorAll('li');
+        var ol = document.querySelector('.circle');
+        var conWdt = con.clientWidth;
+        // 利用循环给每个li添加背景颜色
+        var arr = ['FFB6C1', '6495ED', 'FFD700', '8B4513', '32CD32'];
+
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].style.backgroundColor = '#' + arr[i];
+            // 动态生成圆点按钮数量
+            // 用js创建的元素才能插入，直接获去的元素不能插入
+            var li = document.createElement('li')
+            ol.appendChild(li);
+
+            // 设置索引号控制图片移动
+            li.setAttribute('index', i);
+            // 设置圆点按钮点击功能
+            li.addEventListener('click', function () {
+
+
+                // 排他
+                for (var j = 0; j < ol.children.length; j++) {
+                    ol.children[j].className = '';
+                }
+                // 存己
+                this.className = 'current';
+
+                //设置点击按钮滑动到相应图片 
+                var idx = this.getAttribute('index');
+                // 把idx的值赋给count 用来与下面的左右按钮点击配合
+                count = idx;
+                // 以第一个(最左边)li为参考点，要想往右边移动需要加负值
+                var target = -idx * conWdt;
+                animate(box, target);
+
+            })
+        }
+        // 把ol里面的第一个li设置类名为 current
+        ol.children[0].className = 'current';
+
+        // con 鼠标经过事件
+        con.addEventListener('mouseenter', function () {
+            // 经过con显示按钮，离开隐藏
+            prev.style.display = 'block';
+            next.style.display = 'block';
+
+            // 鼠标经过con 停止自动播放定时器
+            clearInterval(timer);
+            // 不用了最好清空
+            timer = null
+        });
+
+        // con 鼠标离开事件
+        con.addEventListener('mouseleave', function () {
+            prev.style.display = 'none';
+            next.style.display = 'none';
+
+            // 鼠标离开 开启自动播放定时器
+            timer = setInterval(function () {
+                // 手动调用点击事件
+                next.click();
+                // 相当于每隔两秒触发next按钮的点击事件
+                // 我他妈直接好家伙
+
+
+            }, 2000)
+
+        });
+
+
+        // 克隆ul的第一个li放到ul最后面
+        var first = lis[0].cloneNode(true);  // 深克隆
+        box.appendChild(first);
+
+        // dot控制圆点按钮
+        var dot = 0;
+        // count控制图片位置
+        var count = 0;
+
+        // 右侧按钮点击事件
+        next.addEventListener('click', function () {
+            // 到最后一张图片(第一张图片的clone)
+            if (count == (box.children.length - 1)) {
+                // 先快速切换到第一张图片
+                box.style.left = '0px';
+                // 并将值变为0
+                count = 0;
+            }
+            count++;
+            target = -count * conWdt;
+            animate(box, target);
+
+            // 点击箭头按钮圆点按钮跟着变化(实现效果和图片一样)
+            // = count 让圆点按钮和图片同步
+            // % lis.length 控制dot的范围始终在0~图片数量-1的位置直接
+            // 这里lis.length 没有-1 是因为 lis.length 是在克隆li到ul尾部之前获取的
+            dot = count % lis.length;
+            // if (dot == (lis.length)) {
+            //     dot = 0;
+            // }
+
+            changeDot(ol);
+        })
+
+
+        // 左侧按钮点击事件
+        prev.addEventListener('click', function () {
+            if (count == 0) {
+                count = (box.children.length - 1);
+                box.style.left = -count * conWdt + 'px';
+            }
+            count--;
+            target = -count * conWdt;
+            animate(box, target);
+
+            dot = count % lis.length;
+            console.log(count, dot);
+            // if (dot == (lis.length)) {
+            //     dot = 0;
+            // }
+
+            changeDot(ol);
+        })
+
+        // 自动播放
+        var timer = setInterval(function () {
+            // 手动调用点击事件
+            next.click();
+            // 相当于每隔两秒触发next按钮的点击事件
+            // 我他妈直接好家伙
+
+
+        }, 2000)
+
+
+        // 动画函数
+        function animate(obj, target, callback) {
+            clearInterval(obj.mover);
+            obj.mover = setInterval(function () {
+                let step = (target - obj.offsetLeft) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+
+                if (obj.offsetLeft == target) {
+                    clearInterval(obj.mover);
+
+                    callback && callback();
+                }
+                obj.style.left = obj.offsetLeft + step + 'px';
+            }, 15)
+        }
+
+
+        // 排他函数
+        function changeDot(obj) {
+            for (var i = 0; i < lis.length; i++) {
+                // 排他
+                obj.children[i].className = '';
+            }
+            // 存己
+            obj.children[dot].className = 'current';
+        }
+
+    </script>
+</body>
+
+</html>

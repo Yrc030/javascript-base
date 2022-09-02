@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    手机号码：<input type="tel">
+    <button>发送</button>
+    <script>
+        let btn = document.querySelector('button');
+        // 定义一个全局变量，在定时器里面不断递减;
+        let s = 3;
+        btn.addEventListener('click', function () {
+            // 按钮点击之后，会禁用disabled
+            this.disabled = true;
+
+            countDown(); // 先调用一次函数避免出现延迟
+            let stop = setInterval(countDown, 1000);
+            function countDown() {
+                if (0 == s) {
+                    // 如果s == 0，清除定时器和复原按钮并且复原时间
+                    clearInterval(stop);
+                    // 这里不能用this,定时器的this指向window
+                    btn.disabled = false;
+                    btn.innerHTML = '发送';
+                    // s必须复原，因为s是全局变量每次递减的值都被保存下来，如果不初始化，下次点击s == 0;
+                    console.log(this);
+                    s = 3;
+                } else {
+                    // 按钮里面的内会容变化，开始倒计时
+                    btn.innerHTML = '剩余' + s + '秒再次点击'
+                    // 变量不断递减，注意s必须是全局变量，如果写在setInterval 里，相当于每次间隔都将s的值重新初始化
+                    s--;
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

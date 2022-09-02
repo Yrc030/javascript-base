@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 字符串型可以是引号中的任意文本，其语法为""或'', 推荐用''
+        // 'skybule' '庸人冲'  '12' 'true'  都是字符串类型
+        // 1. 字符串引号嵌套
+        // JS 可以用单引号嵌套双引号 ，或者用双引号嵌套单引号(外双内单，外单内双)
+        var str = '我是一名"上进的"的青年';
+        console.log(str);
+
+        // 2. 字符串转义符 以\开头
+        // \n 换行符
+        var str1 = '我是一名"上进的"的\n青年';
+        console.log(str1);
+        // \t tab 缩进
+        var str2 = '\t我是一名\t"上进的"\t的青年'
+        console.log(str2);
+
+        // 案例弹出网页警示框
+        alert('酷热难耐，火辣的太阳地下，我挺拔的身姿，成为了最为独特的风景。\n我审视四周，这里是我的舞台，我就是天地间的王者。\n这一刻，我豪气冲天，终于大喊一声："收破烂啦~"')
+
+        // 3.字符串长度 
+        // 通过length属性获取整个字符串长度。
+        var str = 'my name is andy';
+        console.log(str.length); // 显示15
+
+        // 4.字符串拼接 
+        // 多个字符串之间可以使用 + 进行拼接，其拼接方式为字符串 + 任何类型 = 拼接之后的新字符串
+        console.log('沙漠' + '骆驼'); // 字符串型的结果 沙漠骆驼
+        console.log('pink老师' + 18); // 字符串型的结果 pink老师18
+        console.log('pink' + true); // 字符串型的结果  pinktrue
+        console.log(12 + 12); //数字型的结果 24，因为两个都是数字型 
+        console.log('12' + 12); // 字符串型的结果 1212
+
+        // 变量不能加引号
+        var age = prompt('请输入您的年龄');
+        var username = prompt('请输入您的姓名');
+        var userage = username + '您已经' + age + '岁了';
+        alert(userage);
+        console.log(userage);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //  数字型，包含整形和浮点型
+        var num = 10; // num数字型
+        var PI = 3.14 // PI数字型
+
+        // 1. 八进制数字序列范围：0~7 
+        //程序里数字前面加0表示八进制
+        var num1 = 010;
+        console.log(num1); // 对应十进制的8
+        // 8进制每一位最大数值为7 所以大于7的数字会提示波浪线，同时按十进制转换
+        var num2 = 019;
+        console.log(num2);// 对应十进制的18
+        var num3 = 08;
+        console.log(num3);  // 对应十进制的8
+
+        // 2. 十六进制数字序列范围：0~9以及A~F
+        // 数字的前面加0x 表示十六进制
+        var num = 0xa;
+        console.log(num);
+
+        //3. 数字型范围
+        // 最大值 1.7976931348623157e+308
+        console.log(Number.MAX_VALUE);
+        // 最小值 5e-32
+        console.log(Number.MIN_VALUE);
+
+        // 4. 数字型三个特殊值
+        // Infinity 无穷大，大于任何数值
+        // console.log(Infinity);
+        console.log(Number.MAX_VALUE * 2);
+        // -Infinity 无穷小，小于任何数值
+        // console.log(-Infinity);
+        console.log(-Number.MAX_VALUE * 2);
+        // NaN  Not a number，代表一个非数值
+        // console.log(NaN);
+        console.log('庸人冲' - 100);
+
+        /* 5. isNaN
+           用来判断一个变量是否为非数字的类型，不是数字返回true，是数字返回false */
+        console.log(isNaN(12)); //false
+        console.log(isNaN('skyblue')); //true
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

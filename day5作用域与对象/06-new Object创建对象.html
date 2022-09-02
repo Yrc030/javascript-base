@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 利用new Object 创建对象
+        var obj = new Object();  // 创建了一个空的对象
+        // 给空对象添加属性和方法
+        obj.uname = 'Joker';
+        obj.age = '18';
+        obj.sex = '男';
+        obj.sayHi = function () {
+            console.log('hi~');
+        }
+        // 1) 利用等号赋值的方法，添加对象的属性和方法
+        // 2) 每个属性和方法直接用分号结束
+        // 3) 调用对象的方法与字面量中的方法一致
+        console.log(obj.uname);
+        console.log(obj['age']);
+        console.log(obj.sex);
+        obj.sayHi();
+        // new Object() 首字母大写， 与new Array()一样
+
+
+
+        //案例1
+        console.log('----案例1----');
+        var obj1 = new Object();
+        obj1.name = '鸣人';
+        obj1.sex = '男';
+        obj1.age = '19岁';
+        obj1.separateBoay = function () {
+            console.log('影分身术');
+        }
+        console.log(obj1.name);
+        console.log(obj1['sex']);
+        obj1.separateBoay();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

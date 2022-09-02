@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        div {
+            width: 80px;
+            list-style: none;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+
+        p,
+        li {
+            height: 30px;
+            line-height: 30px;
+            padding-left: 10px;
+        }
+
+        .title {
+            position: relative;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 11px;
+            right: 18px;
+            width: 6px;
+            height: 6px;
+            border-right: 2px solid #333;
+            border-bottom: 2px solid #333;
+            transform: rotate(-45deg);
+            transition: transform .5s;
+        }
+
+        .turn_over {
+            transform: rotate(45deg);
+            border-color: #ff8400;
+        }
+
+        .more {
+            background-color: #ccc;
+            color: #ff8400;
+        }
+
+        ul {
+            display: none;
+            list-style: none;
+            transition: all .5s;
+        }
+
+        ul li {
+            border: 1px solid #ff8400;
+            border-top: 0;
+        }
+
+
+
+        .list_hover {
+            background-color: #fff5da;
+            color: #ff8400;
+        }
+
+        .list_out {
+            background-color: #fff;
+            color: #333;
+        }
+
+        .box {
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <p class="title">微博
+            <i class="arrow"></i>
+        </p>
+        <ul>
+            <li>私信</li>
+            <li>评论</li>
+            <li>@ME</li>
+        </ul>
+    </div>
+
+    <script>
+        var div = document.querySelector('div');
+        var title = document.querySelector('p');
+        var lis = document.querySelectorAll('li');
+        var ul = document.querySelector('ul');
+        var arrow = document.querySelector('i');
+        div.onmouseover = function () {
+            title.className = 'title more';
+            ul.style.display = 'block';
+            arrow.className = 'arrow turn_over'
+        }
+
+        div.onmouseout = function () {
+            title.className = 'title'
+            ul.style.display = 'none';
+            arrow.className = 'arrow'
+        }
+
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].onmouseover = function () {
+                this.className = 'list_hover';
+            }
+        }
+
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].onmouseout = function () {
+                this.className = 'list_out';
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>
